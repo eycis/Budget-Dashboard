@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         primary: ['Poppins'],
+        title: ["Nunito", "sans-serif"],
+        
       },
     },
   },
