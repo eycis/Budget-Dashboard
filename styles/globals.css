@@ -11,7 +11,7 @@
     }
 
     .dashboard-figures{
-        @apply text-white font-title font-bold absolute bottom-9 text-3xl
+        @apply text-white font-title font-bold absolute bottom-9 text-4xl
     }
     
     .dashboard-main {
@@ -19,7 +19,7 @@
     }
 
     .kpi-name {
-        @apply pt-4;
+        @apply pt-20 text-2xl;
     }
 
     .kpi-icons {
