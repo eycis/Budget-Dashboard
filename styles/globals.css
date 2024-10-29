@@ -11,24 +11,27 @@
     }
 
     .dashboard-figures{
-        @apply text-white font-title font-bold absolute bottom-9 text-4xl
+        @apply text-white font-title font-bold absolute bottom-7 text-4xl
     }
     
     .dashboard-main {
-        @apply text-white font-title font-bold p-5 text-5xl hover:text-[#3a3aa3] transition-colors duration-500 w-1/3
+        @apply text-white font-title font-bold p-5 text-5xl hover:text-[#3a3aa3] transition-colors duration-500 w-fit
     }
 
     .kpi-name {
-        @apply pt-20 text-2xl;
+        @apply text-2xl;
     }
 
     .kpi-icons {
-        @apply h-8 w-6 text-white
+        @apply h-10 w-10 mb-20 text-white
     }
 
     .nav-icons {
         @apply mb-4 text-white flex items-center px-3 py-2 rounded hover:text-[#3a3aa3] transition-colors duration-500
     }
 
+    .input-button {
+        @apply p-4 mt-10 ml-16 w-2/4 bg-white rounded-2xl font-title font-bold text-black text-xl hover:bg-[#3a3aa3] transition-colors duration-500
+    }
 
 }
