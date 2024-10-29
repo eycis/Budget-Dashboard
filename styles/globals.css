@@ -34,4 +34,13 @@
         @apply p-4 mt-10 ml-16 w-2/4 bg-white rounded-2xl font-title font-bold text-black text-xl hover:bg-[#3a3aa3] transition-colors duration-500
     }
 
+    .transaction-table {
+        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] mb-10 pb-5 ml-10 mr-56 h-screen
+        rounded-2xl
+    }
+
+    .transactions-text {
+        @apply text-2xl ml-10 font-title text-white pb-4
+    }
+
 }

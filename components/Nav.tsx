@@ -20,7 +20,11 @@ const Nav = () => {
         </Link>
         </div>
         <div className="nav-icons">
+        <Link to="/Statistics">
+            <button>
             <ChartBarIcon className="h-10 w-10" />
+            </button>
+        </Link>
         </div>
   </div>
   )
