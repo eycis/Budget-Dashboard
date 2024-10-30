@@ -43,4 +43,9 @@
         @apply text-2xl ml-10 font-title text-white pb-4
     }
 
+    .dashboard-lineplot {
+        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] pb-5 h-96 w-full mt-10
+        rounded-2xl
+    }
+
 }

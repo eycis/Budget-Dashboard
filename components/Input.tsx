@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Transaction } from '@/models/transation';
 
 const Input = () => {
 
-    function submitTransaction(): void {
-        console.log("you saved your transaction");
-    }
+    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+
+    const submitTransaction= () => {
+        const newTransaction: typeof Transaction = {
+            ...Transaction,
+            id: transactions.length + 1,
+            category: "kategorie",
+            type: (document.getElementById('transactionType') as HTMLSelectElement).value,
+            amount: parseFloat((document.getElementById('transactionAmount') as HTMLInputElement).value),
+            date: Date.now(),
+            description: "popis"
+        };
+
+            const updatedTransactions = [...transactions, newTransaction];
+            setTransactions(updatedTransactions);
+            console.log("transaction:", newTransaction);
+            console.log("you saved your transaction");
+        }
 
   return (
     <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
@@ -13,9 +29,9 @@ const Input = () => {
     <div>
       <div className='transactions-text'> Please select the type of transaction </div>
       <select
-            // id="employerDropdown"
+            name = "type"
             className="ml-10 px-5 w-2/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title"
-            //value={}
+            id = "transactionType"
             // onChange={(e) => setSelectedEmployer(e.target.value)}
           >
             <option value="Výdaj">Výdaj</option>
@@ -26,6 +42,8 @@ const Input = () => {
         <div>
         <div className='transactions-text'> Please select the amount</div>
             <input 
+                name = "amount"
+                id = "transactionAmount"
                 className='ml-10 px-5 w-3/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title'
                 placeholder='0,-'>
             </input>
@@ -44,4 +62,4 @@ const Input = () => {
   )
 }
 
-export default Input
+export default Input;

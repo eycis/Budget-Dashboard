@@ -43,6 +43,14 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <div className='grid grid-cols-2 gap-5 w-3/4'>
+      <div className='dashboard-lineplot'>
+        Lineplot
+      </div>
+      <div className='dashboard-lineplot'>
+        pie plot
+      </div>
+      </div>
       </div>
   )
 }

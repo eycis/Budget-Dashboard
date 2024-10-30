@@ -1,0 +1,44 @@
+{
+    "transactions": [
+      {
+        "id": 1,
+        "type": "expense",
+        "category": "Groceries",
+        "amount": 50.75,
+        "date": "2024-10-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 2,
+        "type": "income",
+        "category": "Salary",
+        "amount": 1500.00,
+        "date": "2024-10-05",
+        "description": "Monthly salary"
+      },
+      {
+        "id": 3,
+        "type": "expense",
+        "category": "Transportation",
+        "amount": 20.00,
+        "date": "2024-10-06",
+        "description": "Bus pass"
+      },
+      {
+        "id": 4,
+        "type": "income",
+        "category": "Freelance",
+        "amount": 200.00,
+        "date": "2024-10-10",
+        "description": "Freelance project for client"
+      },
+      {
+        "id": 5,
+        "type": "expense",
+        "category": "Entertainment",
+        "amount": 30.00,
+        "date": "2024-10-12",
+        "description": "Cinema tickets"
+      }
+    ]
+  }
