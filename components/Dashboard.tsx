@@ -6,7 +6,7 @@ const Dashboard = () => {
     <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
       <div className='dashboard-main'> Dashboard </div>
       <div className='grid grid-cols-4 gap-3 pt-5 w-3/4'>
-        <div className='dashboard-kpi'>
+        <div className='dashboard-kpi' data-aos="fade-right">
           <WalletIcon className="kpi-icons" />
             <div className='kpi-name'>
               Balance
@@ -15,7 +15,7 @@ const Dashboard = () => {
             15113$
           </div>
         </div>
-        <div className='dashboard-kpi'>
+        <div className='dashboard-kpi' data-aos="fade-right">
           <CurrencyDollarIcon className="kpi-icons" />
           <div className='kpi-name'>
             Income
@@ -24,7 +24,7 @@ const Dashboard = () => {
             11$
           </div>
         </div>
-        <div className='dashboard-kpi'>
+        <div className='dashboard-kpi' data-aos="fade-right">
           <BanknotesIcon className="kpi-icons" />
           <div className='kpi-name'>
             Savings
@@ -33,7 +33,7 @@ const Dashboard = () => {
             151$
           </div>
         </div>
-        <div className='dashboard-kpi'>
+        <div className='dashboard-kpi' data-aos="fade-right">
           <CreditCardIcon className="kpi-icons" />
           <div className='kpi-name'>
             Expenses
@@ -44,10 +44,10 @@ const Dashboard = () => {
         </div>
       </div>
       <div className='grid grid-cols-2 gap-5 w-3/4'>
-      <div className='dashboard-lineplot'>
+      <div className='dashboard-lineplot' data-aos="fade-down">
         Lineplot
       </div>
-      <div className='dashboard-lineplot'>
+      <div className='dashboard-lineplot' data-aos="fade-down">
         pie plot
       </div>
       </div>

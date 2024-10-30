@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Transaction } from '@/models/transation';
+import { Transaction } from '@/models/transaction';
 
 const Input = () => {
 
@@ -53,8 +53,8 @@ const Input = () => {
             Submit
         </button>
       </div>
-      <div className='transactions-text mt-10'> Your previous transactions</div>
-      <div className='transaction-table'>
+      <div className='transactions-text mt-10' data-aos="fade-down"> Your previous transactions</div>
+      <div className='transaction-table' data-aos="fade-down">
 
       </div>
       </div>
