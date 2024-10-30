@@ -32,7 +32,6 @@ const Input = () => {
             name = "type"
             className="ml-10 px-5 w-2/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title"
             id = "transactionType"
-            // onChange={(e) => setSelectedEmployer(e.target.value)}
           >
             <option value="Výdaj">Výdaj</option>
             <option value="Příjem">Příjem</option>
