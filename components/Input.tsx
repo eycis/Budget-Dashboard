@@ -1,11 +1,23 @@
 import React, { useState } from 'react'
 import { Transaction } from '@/models/transaction';
+import ConfirmationModal from './confirmationModal';
 
 const Input = () => {
 
     const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleOpenModal = () => {
+        setShowModal(true);
+    }
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    }
 
     const submitTransaction= () => {
+        
+        //TODO: pročistit kód, enkapsulace.
         const newTransaction: typeof Transaction = {
             ...Transaction,
             id: transactions.length + 1,
@@ -15,11 +27,11 @@ const Input = () => {
             date: Date.now(),
             description: "popis"
         };
-
+            handleOpenModal();
             const updatedTransactions = [...transactions, newTransaction];
             setTransactions(updatedTransactions);
             console.log("transaction:", newTransaction);
-            console.log("you saved your transaction");
+
         }
 
   return (
@@ -52,6 +64,12 @@ const Input = () => {
             className='input-button '>
             Submit
         </button>
+        {showModal && (
+            <ConfirmationModal
+          //message="Your transaction was saved"
+            onClose={handleCloseModal}
+        />
+      )}
       </div>
       <div className='transactions-text mt-10' data-aos="fade-down"> Your previous transactions</div>
       <div className='transaction-table' data-aos="fade-down">
