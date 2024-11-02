@@ -4,7 +4,8 @@ import ConfirmationModal from './confirmationModal';
 
 const Input = () => {
 
-    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+    // const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+    const [transactions, setTransactions] = useState<{id: number; category: string; type: string; amount:number; date: number; description: string}[]>([]);
     const [showModal, setShowModal] = useState(false);
 
     const handleOpenModal = () => {
@@ -28,15 +29,13 @@ const Input = () => {
             description: "popis"
         };
             handleOpenModal();
-            const updatedTransactions = [...transactions, newTransaction];
-            setTransactions(updatedTransactions);
+            setTransactions((prev) => [...prev, newTransaction]);
             console.log("transaction:", newTransaction);
-
         }
 
   return (
     <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
-      <div className='dashboard-main'> New Transaction </div>
+      <p className='dashboard-main'> New Transaction </p>
       <div className='grid grid-cols-3 gap-3'>
     <div>
       <div className='transactions-text'> Please select the type of transaction </div>
@@ -71,10 +70,24 @@ const Input = () => {
         />
       )}
       </div>
-      <div className='transactions-text mt-10' data-aos="fade-down"> Your previous transactions</div>
-      <div className='transaction-table' data-aos="fade-down">
-
-      </div>
+      <p className='transactions-text mt-10' data-aos="fade-down"> Your previous transactions</p>
+      <div className='transaction-table'>
+        <div className='grid grid-cols-4 ml-10 pt-5' data-aos="fade-down">
+            <label>Date</label>
+            <label>Transaction Type</label>
+            <label>Amount</label>
+            <label>Description</label>
+        </div>
+        {transactions.map((transaction, index) =>(
+            <div key = {index}
+                className='grid grid-cols-4 gap-36 mt-3 ml-5 h-max max-w-max items-center bg-[#1c1c1e] border-gray-700 pt-3 pb-3 border-b rounded-lg'>
+                <div className='ml-4'>{new Date(transaction.date).toLocaleString()}</div>
+                <div className='ml-4'>{transaction.type}</div>
+                <div className='ml-4'>{transaction.amount}</div>
+                <div>{transaction.description || "NA"}</div>
+            </div>
+        ))}
+        </div>
       </div>
   )
 }

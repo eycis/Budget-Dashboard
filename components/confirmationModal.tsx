@@ -15,6 +15,7 @@ const confirmModal = ({onClose} : confirmationModalProps) => {
           <button
               onClick={onClose}
               className="confirmationCloseButton">
+                
               Close
           </button>
           </div>
