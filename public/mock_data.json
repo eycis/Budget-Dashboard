@@ -5,7 +5,7 @@
         "type": "expense",
         "category": "Groceries",
         "amount": 50.75,
-        "date": "2024-10-01",
+        "date": "2024-06-01",
         "description": "Weekly groceries at local store"
       },
       {
@@ -13,7 +13,7 @@
         "type": "income",
         "category": "Salary",
         "amount": 1500.00,
-        "date": "2024-10-05",
+        "date": "2024-05-02",
         "description": "Monthly salary"
       },
       {
@@ -39,6 +39,54 @@
         "amount": 30.00,
         "date": "2024-10-12",
         "description": "Cinema tickets"
+      },
+      {
+        "id": 6,
+        "type": "income",
+        "category": "Freelance",
+        "amount": 200.00,
+        "date": "2024-05-10",
+        "description": "Freelance project for client"
+      },
+      {
+        "id": 7,
+        "type": "income",
+        "category": "Freelance",
+        "amount": 200.00,
+        "date": "2024-03-11",
+        "description": "Freelance project for client"
+      },  
+      {
+        "id": 8,
+        "type": "income",
+        "category": "Freelance",
+        "amount": 200.00,
+        "date": "2024-12-10",
+        "description": "Freelance project for client"
+      },  
+      {
+        "id": 9,
+        "type": "income",
+        "category": "Freelance",
+        "amount": 500.00,
+        "date": "2024-10-10",
+        "description": "Freelance project for client"
+      },
+      {
+        "id": 10,
+        "type": "expense",
+        "category": "Groceries",
+        "amount": 50.75,
+        "date": "2024-01-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 11,
+        "type": "expense",
+        "category": "Groceries",
+        "amount": 300.75,
+        "date": "2024-06-02",
+        "description": "Weekly groceries at local store"
       }
     ]
   }

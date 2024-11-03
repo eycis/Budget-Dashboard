@@ -3,9 +3,8 @@ import { Transaction } from '@/models/transaction';
 import ConfirmationModal from './confirmationModal';
 
 const Input = () => {
-
-    // const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
-    const [transactions, setTransactions] = useState<{id: number; category: string; type: string; amount:number; date: number; description: string}[]>([]);
+  
+    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
     const [showModal, setShowModal] = useState(false);
 
     const handleOpenModal = () => {
@@ -25,7 +24,7 @@ const Input = () => {
             category: "kategorie",
             type: (document.getElementById('transactionType') as HTMLSelectElement).value,
             amount: parseFloat((document.getElementById('transactionAmount') as HTMLInputElement).value),
-            date: Date.now(),
+            date: Date.now().toString(),
             description: "popis"
         };
             handleOpenModal();
@@ -80,7 +79,7 @@ const Input = () => {
         </div>
         {transactions.map((transaction, index) =>(
             <div key = {index}
-                className='grid grid-cols-4 gap-36 mt-3 ml-5 h-max max-w-max items-center bg-[#1c1c1e] border-gray-700 pt-3 pb-3 border-b rounded-lg'>
+                className='grid grid-cols-4 gap-36 mt-3 ml-5 h-max max-w-max items-center bg-[#1c1c1e] pt-3 pb-3 rounded-lg'>
                 <div className='ml-4'>{new Date(transaction.date).toLocaleString()}</div>
                 <div className='ml-4'>{transaction.type}</div>
                 <div className='ml-4'>{transaction.amount}</div>

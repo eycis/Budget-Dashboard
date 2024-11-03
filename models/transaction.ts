@@ -3,6 +3,6 @@ export const Transaction = {
     type: '' as string,
     category: '' as string,
     amount: 0 as number,
-    date: 0 as number,
+    date: '' as string,
     description: '' as string
 }
