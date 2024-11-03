@@ -9,6 +9,18 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 const Dashboard = () => {
 
+  //KPIs:
+
+  const totalExpenses = transactionsData.transactions.filter(transaction => transaction.type === "expense")
+  .reduce((sum, transaction) => sum+ transaction.amount, 0);
+
+  const totalIncome = transactionsData.transactions.filter(transaction => transaction.type === "income")
+  .reduce((sum, transaction) => sum+ transaction.amount, 0);
+
+  const balance = totalIncome - totalExpenses;
+
+  //--------------------------------------------------------------------------------------
+
   const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
 
   const options:ChartOptions<'line'> = {
@@ -65,7 +77,7 @@ const Dashboard = () => {
               Balance
             </div>
           <div className='dashboard-figures'>
-            15113$
+            {balance}$
           </div>
         </div>
         <div className='dashboard-kpi' data-aos="fade-right">
@@ -74,7 +86,16 @@ const Dashboard = () => {
             Income
           </div>
           <div className='dashboard-figures'>
-            11$
+            {totalIncome}$
+          </div>
+        </div>
+        <div className='dashboard-kpi' data-aos="fade-right">
+          <CreditCardIcon className="kpi-icons" />
+          <div className='kpi-name'>
+            Expenses
+          </div>
+          <div className='dashboard-figures'>
+            {totalExpenses}$
           </div>
         </div>
         <div className='dashboard-kpi' data-aos="fade-right">
@@ -84,15 +105,6 @@ const Dashboard = () => {
           </div>
           <div className='dashboard-figures'>
             151$
-          </div>
-        </div>
-        <div className='dashboard-kpi' data-aos="fade-right">
-          <CreditCardIcon className="kpi-icons" />
-          <div className='kpi-name'>
-            Expenses
-          </div>
-          <div className='dashboard-figures'>
-            15611$
           </div>
         </div>
       </div>
