@@ -111,7 +111,7 @@ const Dashboard = () => {
         <div className='dashboard-kpi' data-aos="fade-right">
           <BanknotesIcon className="kpi-icons" />
           <div className='kpi-name'>
-            Savings
+            Savings & Investment
           </div>
           <div className='dashboard-figures'>
             {investment}$
