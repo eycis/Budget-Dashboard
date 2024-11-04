@@ -85,8 +85,26 @@
         "type": "expense",
         "category": "Groceries",
         "amount": 300.75,
-        "date": "2024-06-02",
-        "description": "Weekly groceries at local store"
+        "date": "2024-07-02",
+        "description": ""
+      }
+      ,
+      {
+        "id": 12,
+        "type": "Savings & Investment",
+        "category": "Saving",
+        "amount": 3000.75,
+        "date": "2024-08-03",
+        "description": "Savings account"
+      }
+      ,
+      {
+        "id": 13,
+        "type": "Savings & Investment",
+        "category": "Investment",
+        "amount": 25.75,
+        "date": "2024-03-02",
+        "description": "S&P"
       }
     ]
   }

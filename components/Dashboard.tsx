@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { WalletIcon, CurrencyDollarIcon, BanknotesIcon, CreditCardIcon } from '@heroicons/react/24/solid';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ChartOptions } from 'chart.js';
-import transactionsData from '@/public/mock_data.json';
+import transactionsData from '@/data/mock_data.json';
 import { Transaction } from '@/models/transaction';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -18,6 +18,9 @@ const Dashboard = () => {
   .reduce((sum, transaction) => sum+ transaction.amount, 0);
 
   const balance = totalIncome - totalExpenses;
+
+  const investment = transactionsData.transactions.filter(transaction => transaction.type === "Savings & Investment")
+  .reduce((sum, transaction) => sum + transaction.amount, 0);
 
   //--------------------------------------------------------------------------------------
 
@@ -48,6 +51,7 @@ const Dashboard = () => {
     const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }))));
     const incomeData = transactions.filter(transaction => transaction.type === 'income').map(transaction => transaction.amount);
     const expenseData = transactions.filter(transaction => transaction.type === 'expense').map(transaction => transaction.amount);
+    const investmentData = transactions.filter(transaction => transaction.type === "Savings & Investment").map(transaction => transaction.amount)
 
     const data = {
       labels: dates,
@@ -62,6 +66,12 @@ const Dashboard = () => {
           label: 'Expenses',
           data: expenseData,
           borderColor: 'red',
+          fill: false,
+        },
+        {
+          label: "Savings & Investment",
+          data: investmentData,
+          borderColor: 'green',
           fill: false,
         },
       ],
@@ -104,7 +114,7 @@ const Dashboard = () => {
             Savings
           </div>
           <div className='dashboard-figures'>
-            151$
+            {investment}$
           </div>
         </div>
       </div>

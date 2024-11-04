@@ -43,9 +43,10 @@ const Input = () => {
             className="ml-10 px-5 w-2/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title"
             id = "transactionType"
           >
-            <option value="Výdaj">Výdaj</option>
-            <option value="Příjem">Příjem</option>
-            <option value="Jiné">Jiné</option>
+            <option value="Expense">Expense</option>
+            <option value="Income">Income</option>
+            <option value="Savings & Investment">Savings & Investment</option>
+            <option value="Other">Other</option>
           </select>
         </div>
         <div>
