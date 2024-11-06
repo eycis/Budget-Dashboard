@@ -3,7 +3,7 @@
       {
         "id": 1,
         "type": "expense",
-        "category": "Groceries",
+        "category": "Clothes",
         "amount": 50.75,
         "date": "2024-06-01",
         "description": "Weekly groceries at local store"
@@ -19,7 +19,7 @@
       {
         "id": 3,
         "type": "expense",
-        "category": "Transportation",
+        "category": "Utilities",
         "amount": 20.00,
         "date": "2024-10-06",
         "description": "Bus pass"
@@ -83,7 +83,7 @@
       {
         "id": 11,
         "type": "expense",
-        "category": "Groceries",
+        "category": "Food",
         "amount": 300.75,
         "date": "2024-07-02",
         "description": ""
@@ -105,6 +105,62 @@
         "amount": 25.75,
         "date": "2024-03-02",
         "description": "S&P"
+      },
+      {
+        "id": 14,
+        "type": "expense",
+        "category": "Clothes",
+        "amount": 50.75,
+        "date": "2024-06-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 15,
+        "type": "expense",
+        "category": "Savings",
+        "amount": 50.75,
+        "date": "2024-06-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 16,
+        "type": "expense",
+        "category": "Investments",
+        "amount": 50.75,
+        "date": "2024-06-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 17,
+        "type": "expense",
+        "category": "Friends",
+        "amount": 50.75,
+        "date": "2024-06-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 18,
+        "type": "expense",
+        "category": "Other",
+        "amount": 50.75,
+        "date": "2024-06-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 18,
+        "type": "expense",
+        "category": "Transportation",
+        "amount": 50.75,
+        "date": "2024-06-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 18,
+        "type": "expense",
+        "category": "Investment",
+        "amount": 50.75,
+        "date": "2024-06-01",
+        "description": "Weekly groceries at local store"
       }
     ]
   }

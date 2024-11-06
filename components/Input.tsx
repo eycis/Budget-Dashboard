@@ -62,6 +62,9 @@ const Input = () => {
             <option value="Friends">Friends</option>
             <option value="Clothes">Clothes</option>
             <option value="Healt">Health</option>
+            <option value="Healt">Transportation</option>
+            <option value="Healt">Savings</option>
+            <option value="Healt">Investment</option>
             <option value="Other">Other</option>
           </select>
         </div>
