@@ -28,10 +28,10 @@ const Dashboard = () => {
   return (
     <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
       <div className='dashboard-main'> Dashboard </div>
-      <div className='grid grid-cols-4 gap-3 pt-5 w-3/4'>
+      <div className='grid grid-cols-4 gap-3 w-3/4'>
         <div className='dashboard-kpi' data-aos="fade-right">
           <WalletIcon className="kpi-icons" />
-            <div className='kpi-name'>
+            <div className='kpi-name pt-6'>
               Balance
             </div>
           <div className='dashboard-figures'>
@@ -40,7 +40,7 @@ const Dashboard = () => {
         </div>
         <div className='dashboard-kpi' data-aos="fade-right">
           <CurrencyDollarIcon className="kpi-icons" />
-          <div className='kpi-name'>
+          <div className='kpi-name pt-6'>
             Income
           </div>
           <div className='dashboard-figures'>
@@ -49,7 +49,7 @@ const Dashboard = () => {
         </div>
         <div className='dashboard-kpi' data-aos="fade-right">
           <CreditCardIcon className="kpi-icons" />
-          <div className='kpi-name'>
+          <div className='kpi-name pt-6'>
             Expenses
           </div>
           <div className='dashboard-figures'>
@@ -67,10 +67,10 @@ const Dashboard = () => {
         </div>
       </div>
       <div className='grid grid-cols-2 gap-5 w-3/4'>
-      <div className='dashboard-lineplot' data-aos="fade-down">
+      <div className='dashboard-plots' data-aos="fade-down">
         <LineChart/>
       </div>
-      <div className='dashboard-lineplot' data-aos="fade-down">
+      <div className='dashboard-plots' data-aos="fade-down">
         <DoughnutChart/>
         </div>
       </div>

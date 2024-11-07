@@ -23,7 +23,7 @@
     }
 
     .kpi-icons {
-        @apply h-10 w-10 mb-20 text-white
+        @apply h-10 w-10 mb-12 text-white
     }
 
     .nav-icons {
@@ -31,25 +31,32 @@
     }
 
     .input-button {
-        @apply p-4 mt-10 ml-16 w-2/4 bg-white rounded-2xl font-title font-bold text-black text-xl hover:bg-[#3a3aa3] transition-colors duration-500
+        @apply p-4 mt-10 ml-16 w-2/4 h-2/4 bg-white rounded-2xl font-title font-bold text-black text-xl hover:bg-[#3a3aa3] transition-colors duration-500
     }
 
     .transaction-table {
-        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] mb-10 pb-5 ml-10 mr-56 h-screen
-        rounded-2xl
+        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] ml-4 w-auto h-1/2 rounded-2xl
     }
 
     .transactions-text {
         @apply text-2xl ml-10 font-title text-white pb-4
     }
 
-    .dashboard-lineplot {
-        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] pb-5 h-96 w-full mt-10
+    .dashboard-plots {
+        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] pb-5 h-80 w-full mt-5
         rounded-2xl
     }
 
     .confirmationCloseButton {
         @apply px-4 py-2 mt-3 bg-white font-title text-[#0f0f0f] rounded-xl hover:bg-[#3a3aa3] transition-colors duration-500 
+    }
+
+    .transactions_columns {
+        @apply font-title text-xl
+    }
+
+    .transactionsTableText {
+        @apply font-title text-base
     }
 
 }

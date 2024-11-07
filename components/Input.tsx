@@ -33,14 +33,14 @@ const Input = () => {
         }
 
   return (
-    <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
+    <div className='bg-[#1c1c1e] w-screen h-screen p-5'>
       <p className='dashboard-main'> New Transaction </p>
-      <div className='grid grid-cols-4 gap-2'>
+      <div className='grid grid-cols-4'>
     <div>
       <div className='transactions-text'> Select the type of transaction </div>
       <select
             name = "type"
-            className="ml-10 px-5 w-2/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title"
+            className="ml-10 px-5 w-3/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title"
             id = "transactionType"
           >
             <option value="Expense">Expense</option>
@@ -53,7 +53,7 @@ const Input = () => {
       <div className='transactions-text'> Select the category of transaction </div>
       <select
             name = "type"
-            className="ml-10 px-5 w-2/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title"
+            className="ml-10 px-5 w-3/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title"
             id = "category"
           >
             <option value="Food">Food</option>
@@ -69,7 +69,7 @@ const Input = () => {
           </select>
         </div>
         <div>
-        <div className='transactions-text'> Please select the amount</div>
+        <div className='transactions-text mb-4 pt-3'> Please select the amount</div>
             <input 
                 name = "amount"
                 id = "transactionAmount"
@@ -92,20 +92,20 @@ const Input = () => {
       <p className='transactions-text mt-10' data-aos="fade-down"> Your previous transactions</p>
       <div className='transaction-table'>
         <div className='grid grid-cols-5 ml-10 pt-5' data-aos="fade-down">
-            <label>Date</label>
-            <label>Transaction Type</label>
-            <label>Category</label>
-            <label>Amount</label>
-            <label>Description</label>
+            <label className='transactions_columns'>Date</label>
+            <label className='transactions_columns'>Transaction Type</label>
+            <label className='transactions_columns'>Category</label>
+            <label className='transactions_columns'>Amount</label>
+            <label className='transactions_columns'>Description</label>
         </div>
         {transactions.map((transaction, index) =>(
             <div key = {index}
-                className='grid grid-cols-5 gap-36 mt-3 ml-5 h-max max-w-max items-center bg-[#1c1c1e] pt-3 pb-3 rounded-lg'>
-                <div className='ml-4'>{new Date(transaction.date).toLocaleString()}</div>
-                <div className='ml-4'>{transaction.type}</div>
-                <div className='ml-4'>{transaction.category}</div>
-                <div className='ml-4'>{transaction.amount}</div>
-                <div>{transaction.description || "NA"}</div>
+                className='grid grid-cols-5 gap-32 mt-3 ml-5 mr-5 h-max w-auto  items-center bg-[#1c1c1e] pt-3 pb-3 rounded-lg'>
+                <div className='transactionsTableText'>{new Date(transaction.date).toLocaleString()}</div>
+                <div className='transactionsTableText'>{transaction.type}</div>
+                <div className='transactionsTableText'>{transaction.category}</div>
+                <div className='transactionsTableText'>{transaction.amount}</div>
+                <div className='transactionsTableText'>{transaction.description || "NA"}</div>
             </div>
         ))}
         </div>

@@ -17,6 +17,7 @@ const LineChart = () => {
 
     const lineOptions:ChartOptions<'line'> = {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: true,
@@ -60,7 +61,7 @@ const LineChart = () => {
       ],
     };
 
-    return <Line data={lineData} options={lineOptions} data-aos="fade-up" className='mt-2 px-2'/>;
+    return <Line data={lineData} options={lineOptions} data-aos="fade-up" className='mt-2 px-2 h-full w-full'/>;
 };
 
 export default LineChart;

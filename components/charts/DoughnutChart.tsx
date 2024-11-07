@@ -17,18 +17,19 @@ const DoughnutChart = () => {
 
     const doughnutOptions: ChartOptions<'doughnut'> = {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             position: 'left',
             labels: {
               usePointStyle: true,
-              boxWidth: 10,
-              padding: 20,
+              boxWidth: 20,
+              padding: 15,
               color: 'white',
             },
           },
         },
-        cutout: '70%',
+        cutout: '80%',
       }
 
     const categories = ['Food', 'Utilities', 'Fun', 'Friends', 'Clothes', 'Health', 'Other', 'Transportation', 'Savings', 'Investment' ];
@@ -48,7 +49,7 @@ const DoughnutChart = () => {
       };
 
   return (
-    <Doughnut data={doughnutData} options={doughnutOptions} data-aos="fade-up" className='ml-16 mt-5'/>
+    <Doughnut data={doughnutData} options={doughnutOptions} data-aos="fade-up" className='pt-2'/>
   )
 }
 
