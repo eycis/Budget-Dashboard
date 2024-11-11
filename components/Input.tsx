@@ -61,10 +61,10 @@ const Input = () => {
             <option value="Fun">Fun</option>
             <option value="Friends">Friends</option>
             <option value="Clothes">Clothes</option>
-            <option value="Healt">Health</option>
-            <option value="Healt">Transportation</option>
-            <option value="Healt">Savings</option>
-            <option value="Healt">Investment</option>
+            <option value="Health">Health</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Savings">Savings</option>
+            <option value="Investment">Investment</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -90,8 +90,8 @@ const Input = () => {
       )}
       </div>
       <p className='transactions-text mt-10' data-aos="fade-down"> Your previous transactions</p>
-      <div className='transaction-table'>
-        <div className='grid grid-cols-5 ml-10 pt-5' data-aos="fade-down">
+      <div className='transaction-table mx-5'>
+        <div className='grid grid-cols-5 text-center pt-5' data-aos="fade-down">
             <label className='transactions_columns'>Date</label>
             <label className='transactions_columns'>Transaction Type</label>
             <label className='transactions_columns'>Category</label>
@@ -100,8 +100,8 @@ const Input = () => {
         </div>
         {transactions.map((transaction, index) =>(
             <div key = {index}
-                className='grid grid-cols-5 gap-32 mt-3 ml-5 mr-5 h-max w-auto  items-center bg-[#1c1c1e] pt-3 pb-3 rounded-lg'>
-                <div className='transactionsTableText'>{new Date(transaction.date).toLocaleString()}</div>
+                className='grid grid-cols-5 mt-3 mx-5 p-3 h-max w-auto text-center items-center bg-[#1c1c1e] rounded-lg'>
+                <div className='transactionsTableText'>{new Date(parseInt(transaction.date)).toLocaleString()}</div>
                 <div className='transactionsTableText'>{transaction.type}</div>
                 <div className='transactionsTableText'>{transaction.category}</div>
                 <div className='transactionsTableText'>{transaction.amount}</div>

@@ -75,7 +75,7 @@
       {
         "id": 10,
         "type": "expense",
-        "category": "Groceries",
+        "category": "Food",
         "amount": 50.75,
         "date": "2024-01-01",
         "description": "Weekly groceries at local store"

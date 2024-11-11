@@ -3,6 +3,7 @@ import { Doughnut, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ChartOptions, ArcElement } from 'chart.js';
 import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
+import Switch from '@mui/material/Switch';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
@@ -24,8 +25,8 @@ const LineChart = () => {
             labels: {
               usePointStyle: true,
               pointStyle: 'line',
-              boxWidth: 20,
-              padding: 15,
+              boxWidth: 10,
+              padding: 10,
               color: 'white',
             },
           },
@@ -61,7 +62,7 @@ const LineChart = () => {
       ],
     };
 
-    return <Line data={lineData} options={lineOptions} data-aos="fade-up" className='mt-2 px-2 h-full w-full'/>;
+    return <Line data={lineData} options={lineOptions} data-aos="fade-up" className='px-2 h-full w-full'/>;
 };
 
 export default LineChart;

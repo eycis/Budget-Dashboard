@@ -5,10 +5,14 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import transactionsData from '@/data/mock_data.json';
 import LineChart from '@/components/charts/LineChart';
 import DoughnutChart from './charts/DoughnutChart';
+import Switch from '@mui/material/Switch/Switch';
+
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
 const Dashboard = () => {
+
+  const[monthView, setMonthView] = useState(false);
 
   //KPIs:
 
@@ -22,6 +26,9 @@ const Dashboard = () => {
 
   const investment = transactionsData.transactions.filter(transaction => transaction.type === "Savings & Investment")
   .reduce((sum, transaction) => sum + transaction.amount, 0);
+
+  const currentMonth = new Date().getMonth() + 1;
+  console.log("current month: ",  currentMonth);
 
   //-------------------------------------------------------------------------------------
 
@@ -68,6 +75,8 @@ const Dashboard = () => {
       </div>
       <div className='grid grid-cols-2 gap-5 w-3/4'>
       <div className='dashboard-plots' data-aos="fade-down">
+        <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
+          <span className="font-title text-sm ml-2">{monthView ? 'monthView' : 'All records'}</span>
         <LineChart/>
       </div>
       <div className='dashboard-plots' data-aos="fade-down">

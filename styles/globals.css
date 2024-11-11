@@ -43,7 +43,7 @@
     }
 
     .dashboard-plots {
-        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] pb-5 h-80 w-full mt-5
+        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] pb-5 h-[22rem] w-full mt-5
         rounded-2xl
     }
 
