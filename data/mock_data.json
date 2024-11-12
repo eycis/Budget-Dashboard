@@ -161,6 +161,70 @@
         "amount": 50.75,
         "date": "2024-06-01",
         "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 19,
+        "type": "expense",
+        "category": "Fun",
+        "amount": 50.75,
+        "date": "2024-11-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 20,
+        "type": "expense",
+        "category": "Investment",
+        "amount": 50.75,
+        "date": "2024-11-03",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 21,
+        "type": "expense",
+        "category": "Transportation",
+        "amount": 50.75,
+        "date": "2024-11-06",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 22,
+        "type": "expense",
+        "category": "Investment",
+        "amount": 50.75,
+        "date": "2024-11-08",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 23,
+        "type": "Savings & Investment",
+        "category": "Investment",
+        "amount": 50.75,
+        "date": "2024-11-01",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 24,
+        "type": "Savings & Investment",
+        "category": "Investment",
+        "amount": 55.62,
+        "date": "2024-11-05",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 24,
+        "type": "Savings & Investment",
+        "category": "Investment",
+        "amount": 20,
+        "date": "2024-11-15",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 25,
+        "type": "Savings & Investment",
+        "category": "Investment",
+        "amount": 300,
+        "date": "2024-11-24",
+        "description": "Weekly groceries at local store"
       }
     ]
   }

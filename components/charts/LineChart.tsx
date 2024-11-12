@@ -9,6 +9,12 @@ import Switch from '@mui/material/Switch';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
 const LineChart = () => {
+
+    const currentMonth = new Date().getMonth() + 1;
+
+    let currentYear = new Date().getFullYear();
+
+    const[monthView, setMonthView] = useState(false);
     
     const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
     useEffect(() => {
@@ -18,7 +24,7 @@ const LineChart = () => {
 
     const lineOptions:ChartOptions<'line'> = {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         plugins: {
           legend: {
             display: true,
@@ -34,9 +40,24 @@ const LineChart = () => {
       };
 
     const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }))));
-    const incomeData = transactions.filter(transaction => transaction.type === 'income').map(transaction => transaction.amount);
-    const expenseData = transactions.filter(transaction => transaction.type === 'expense').map(transaction => transaction.amount);
-    const investmentData = transactions.filter(transaction => transaction.type === "Savings & Investment").map(transaction => transaction.amount)
+    let incomeData = transactions.filter(transaction => transaction.type === 'income').map(transaction => transaction.amount);
+    let expenseData = transactions.filter(transaction => transaction.type === 'expense').map(transaction => transaction.amount);
+    let investmentData = transactions.filter(transaction => transaction.type === "Savings & Investment").map(transaction => transaction.amount)
+
+ 
+    if(monthView == true)
+    {
+      investmentData = transactions.filter(transaction => transaction.type === "Savings & Investment" 
+          && (transaction.date.substring(5,7) == currentMonth.toLocaleString()) && (transaction.date.substring(0,4) == currentYear.toString()))
+          .map(transaction => transaction.amount)
+      expenseData = transactions.filter(transaction => transaction.type === 'expense'
+          && (transaction.date.substring(5,7) == currentMonth.toLocaleString()) && (transaction.date.substring(0,4) == currentYear.toString()))
+          .map(transaction => transaction.amount);
+      incomeData = transactions.filter(transaction => transaction.type === 'income' 
+        && (transaction.date.substring(5,7) == currentMonth.toLocaleString()) && (transaction.date.substring(0,4) == currentYear.toString()))
+        .map(transaction => transaction.amount);
+    }
+
 
     const lineData = {
       labels: dates,
@@ -62,7 +83,15 @@ const LineChart = () => {
       ],
     };
 
-    return <Line data={lineData} options={lineOptions} data-aos="fade-up" className='px-2 h-full w-full'/>;
+    return (
+      <div>
+      <div className='flex items-center'>
+        <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
+        <span className="font-title text-sm ml-2">{monthView ? 'Month View' : 'All Records'}</span>
+      </div>
+      <Line data={lineData} options={lineOptions} data-aos="fade-up" className='px-2 mt-5 h-full w-full' />
+    </div>
+    )
 };
 
 export default LineChart;
