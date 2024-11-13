@@ -31,7 +31,7 @@
     }
 
     .input-button {
-        @apply p-4 mt-10 ml-16 w-2/4 h-2/4 bg-white rounded-2xl font-title font-bold text-black text-xl hover:bg-[#3a3aa3] transition-colors duration-500
+        @apply mt-10 p-2 ml-16 w-2/4 h-2/4 bg-white rounded-2xl font-title font-bold text-black text-xl hover:bg-[#3a3aa3] transition-colors duration-500
     }
 
     .transaction-table {
@@ -39,7 +39,7 @@
     }
 
     .transactions-text {
-        @apply text-2xl ml-10 font-title text-white pb-4
+        @apply text-lg ml-10 font-title text-white pb-4
     }
 
     .dashboard-plots {

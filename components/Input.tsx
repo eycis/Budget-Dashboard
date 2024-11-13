@@ -25,7 +25,7 @@ const Input = () => {
             type: (document.getElementById('transactionType') as HTMLSelectElement).value,
             amount: parseFloat((document.getElementById('transactionAmount') as HTMLInputElement).value),
             date: Date.now().toString(),
-            description: "popis"
+            description: (document.getElementById('transactionDescription') as HTMLInputElement).value
         };
             handleOpenModal();
             setTransactions((prev) => [...prev, newTransaction]);
@@ -40,7 +40,7 @@ const Input = () => {
       <div className='transactions-text'> Select the type of transaction </div>
       <select
             name = "type"
-            className="ml-10 px-5 w-3/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title"
+            className="ml-10 px-5 w-3/4 h-10 text-lg rounded-2xl bg-[#2a2a2c] text-white  font-title"
             id = "transactionType"
           >
             <option value="Expense">Expense</option>
@@ -53,7 +53,7 @@ const Input = () => {
       <div className='transactions-text'> Select the category of transaction </div>
       <select
             name = "type"
-            className="ml-10 px-5 w-3/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title"
+            className="ml-10 px-5 w-3/4 h-10 rounded-2xl bg-[#2a2a2c] text-white text-lg font-title"
             id = "category"
           >
             <option value="Food">Food</option>
@@ -69,11 +69,11 @@ const Input = () => {
           </select>
         </div>
         <div>
-        <div className='transactions-text mb-4 pt-3'> Please select the amount</div>
+        <div className='transactions-text'> Please select the amount</div>
             <input 
                 name = "amount"
                 id = "transactionAmount"
-                className='ml-10 px-5 w-3/4 h-14 rounded-2xl bg-[#2a2a2c] text-white text-xl font-title'
+                className='ml-10 px-5 w-3/4 h-10 rounded-2xl bg-[#2a2a2c] text-white text-lg font-title'
                 placeholder='0,-'>
             </input>
         </div>
@@ -89,8 +89,18 @@ const Input = () => {
         />
       )}
       </div>
+      <div>
+      <div className='transactions-text pt-4'> Add your description</div>
+            <input 
+                name = "description"
+                id = "transactionDescription"
+                maxLength={25}
+                className='ml-10 px-5 w-3/4 h-10 rounded-2xl bg-[#2a2a2c] text-white text-lg font-title'
+                >
+            </input>
+      </div>
       <p className='transactions-text mt-10' data-aos="fade-down"> Your previous transactions</p>
-      <div className='transaction-table mx-5'>
+      <div className='transaction-table mx-5 overflow-y-auto'>
         <div className='grid grid-cols-5 text-center pt-5' data-aos="fade-down">
             <label className='transactions_columns'>Date</label>
             <label className='transactions_columns'>Transaction Type</label>
@@ -100,7 +110,7 @@ const Input = () => {
         </div>
         {transactions.map((transaction, index) =>(
             <div key = {index}
-                className='grid grid-cols-5 mt-3 mx-5 p-3 h-max w-auto text-center items-center bg-[#1c1c1e] rounded-lg'>
+                className='grid grid-cols-5 mt-3 mx-5 mb-3 p-3 h-max w-auto text-center items-center bg-[#1c1c1e] rounded-lg'>
                 <div className='transactionsTableText'>{new Date(parseInt(transaction.date)).toLocaleString()}</div>
                 <div className='transactionsTableText'>{transaction.type}</div>
                 <div className='transactionsTableText'>{transaction.category}</div>
