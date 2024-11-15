@@ -59,4 +59,8 @@
         @apply font-title text-base
     }
 
+    .statisticsTables {
+        @apply col-span-1 bg-[#2a2a2c] rounded-3xl p-3 mb-5
+    }
+
 }

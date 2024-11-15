@@ -17,9 +17,9 @@ const BarChart = () => {
   }, []);
 
   const sortedExpenses = transactions
-  .filter(transaction => transaction.type === 'expense')
-  .sort((a, b) => b.amount - a.amount)
-  .slice(0, 5);
+    .filter(transaction => transaction.type === 'expense')
+    .sort((a, b) => b.amount - a.amount)
+    .slice(0, 5);
 
   const barData = {
     labels: sortedExpenses.map(expense => expense.category),
@@ -27,7 +27,7 @@ const BarChart = () => {
       {
         label: 'Top Expenses',
         data: sortedExpenses.map(expense => expense.amount),
-        backgroundColor:  ['#D32F2F', '#1976D2', '#FBC02D', '#388E3C', '#7B1FA2', '#F57C00', '#9E9E9E', '#C2185B', '#0288D1', '#8E44AD'],
+        backgroundColor:  ['#D32F2F', '#1976D2', '#FBC02D', '#388E3C', '#7B1FA2'],
       },
     ],
   };
@@ -58,7 +58,7 @@ const BarChart = () => {
   };
 
   return (
-    <div className='w-1/3 h-1/2 max-w-5xl mx-auto mt-5'>
+    <div className='w-full h-80 mx-auto mt-5'>
       <Bar data={barData} options={barOptions} />
     </div>
   )

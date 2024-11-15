@@ -24,6 +24,7 @@ const Dashboard = () => {
   const investment = transactionsData.transactions.filter(transaction => transaction.type === "Savings & Investment")
   .reduce((sum, transaction) => sum + transaction.amount, 0);  
 
+ 
   //-------------------------------------------------------------------------------------
 
   return (
