@@ -6,7 +6,8 @@ import transactionsData from '@/data/mock_data.json';
 import Switch from '@mui/material/Switch';
 
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+
 
 const LineChart = () => {
 

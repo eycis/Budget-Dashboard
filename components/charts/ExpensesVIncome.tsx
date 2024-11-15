@@ -1,10 +1,11 @@
 import React, { useEffect, useState }   from 'react'
-import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement, ChartOptions } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement, ChartOptions, LineElement, PointElement } from 'chart.js';
 import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
 import { Doughnut } from 'react-chartjs-2';
 import Switch from '@mui/material/Switch/Switch';
 
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const ExpensesVIncome = () => {
 
