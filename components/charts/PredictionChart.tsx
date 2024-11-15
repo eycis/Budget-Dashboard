@@ -3,7 +3,6 @@ import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, B
 import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
 import { Doughnut, Line } from 'react-chartjs-2';
-import Switch from '@mui/material/Switch/Switch';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -69,7 +68,7 @@ const PredictionChart = () => {
             data: [...balanceData, ...futureBalanceData],
             borderColor: 'green',
             fill: false,
-            borderDash: [5, 5], // Dashed line for forecast
+            borderDash: [5, 5],
           },
         ],
       };
