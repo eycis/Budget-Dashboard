@@ -3,27 +3,36 @@ import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, B
 import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
 import { Doughnut } from 'react-chartjs-2';
+import Switch from '@mui/material/Switch/Switch';
 
 
 const ExpensesVIncome = () => {
 
     const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
 
+    const[monthView, setMonthView] = useState(false);
+
+    const currentMonth = new Date().getMonth() + 1;
+
+    const currentYear = new Date().getFullYear();
+
     useEffect(() => {
     // nahrání mock data
     setTransactions(transactionsData.transactions);
     }, []);
 
-    const totalExpenses = transactionsData.transactions.filter(transaction => transaction.type === "expense")
-    .reduce((sum, transaction) => sum+ transaction.amount, 0);
-
-    const totalIncome = transactionsData.transactions.filter(transaction => transaction.type === "income")
-    .reduce((sum, transaction) => sum+ transaction.amount, 0);  
-
     const types = transactions.map(transaction => transaction.type).filter((value, index, self) => self.indexOf(value)===index);
 
-    const typesTotal = types.map(type => transactions.filter(transaction=> transaction.type === type).
+    let typesTotal = types.map(type => transactions.filter(transaction=> transaction.type === type).
     reduce((sum,transaction) => sum + transaction.amount, 0));
+
+        
+    if(monthView) {
+        typesTotal = types.map(type => transactions.filter(transaction=> transaction.type === type &&
+           transaction.date.substring(5, 7) == currentMonth.toString() &&
+           transaction.date.substring(0, 4) == currentYear.toString()).
+            reduce((sum,transaction) => sum + transaction.amount, 0));
+     }
 
     const doughnutOptions: ChartOptions<'doughnut'> = {
         responsive: true,
@@ -46,7 +55,7 @@ const ExpensesVIncome = () => {
         labels: types,
         datasets: [
           {
-            label: 'Expenses by Category',
+            label: 'Transactions by type',
             data: typesTotal,
             backgroundColor: ['#D32F2F', '#1976D2','#FBC02D'],
             hoverOffset: 2,
@@ -55,8 +64,14 @@ const ExpensesVIncome = () => {
       };
 
     return (
+        <div>
+        <div className='flex items-center'>
+          <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
+          <span className="font-title text-sm ml-2 text-white">{monthView ? 'Month View' : 'All Records'}</span>
+        </div>
         <div className=''>
         <Doughnut data={doughnutData} options={doughnutOptions} data-aos="fade-up" className=' pt-8 w-32 h-72 flex flex-col items-center' />
+      </div>
       </div>
     )
 }
