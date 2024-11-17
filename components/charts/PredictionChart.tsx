@@ -99,7 +99,7 @@ const PredictionChart = () => {
       };
 
     return (
-        <div className='w-full h-96 mx-auto mt-5'>
+        <div className='w-full h-52 mx-auto'>
         <Line data={lineData} options={lineOptions} />
       </div>
     );

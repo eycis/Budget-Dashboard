@@ -116,7 +116,7 @@
       },
       {
         "id": 15,
-        "type": "expense",
+        "type": "Savings & Investment",
         "category": "Savings",
         "amount": 50.75,
         "date": "2024-06-01",
@@ -172,7 +172,7 @@
       },
       {
         "id": 20,
-        "type": "expense",
+        "type": "Savings & Investment",
         "category": "Investment",
         "amount": 50.75,
         "date": "2024-11-03",
@@ -188,7 +188,7 @@
       },
       {
         "id": 22,
-        "type": "expense",
+        "type": "Savings & Investment",
         "category": "Investment",
         "amount": 50.75,
         "date": "2024-11-08",
@@ -222,6 +222,14 @@
         "id": 25,
         "type": "Savings & Investment",
         "category": "Investment",
+        "amount": 300,
+        "date": "2024-11-24",
+        "description": "Weekly groceries at local store"
+      },
+      {
+        "id": 26,
+        "type": "Savings & Investment",
+        "category": "Savings",
         "amount": 300,
         "date": "2024-11-24",
         "description": "Weekly groceries at local store"

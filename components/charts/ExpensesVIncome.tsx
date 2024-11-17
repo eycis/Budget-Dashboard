@@ -71,7 +71,7 @@ const ExpensesVIncome = () => {
           <span className="font-title text-sm ml-2 text-white">{monthView ? 'Month View' : 'All Records'}</span>
         </div>
         <div className=''>
-        <Doughnut data={doughnutData} options={doughnutOptions} data-aos="fade-up" className=' pt-8 w-32 h-72 flex flex-col items-center' />
+        <Doughnut data={doughnutData} options={doughnutOptions} className='w-32 h-52 flex flex-col items-center' />
       </div>
       </div>
     )

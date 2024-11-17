@@ -5,7 +5,7 @@ import transactionsData from '@/data/mock_data.json';
 import Switch from '@mui/material/Switch';
 import { Bar } from 'react-chartjs-2';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement);
 
 
 const BarChart = () => {
@@ -79,7 +79,7 @@ const BarChart = () => {
       <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
       <span className="font-title text-sm ml-2 text-white">{monthView ? 'Month View' : 'All Records'}</span>
     </div>
-    <div className='w-full h-80 mx-auto mt-5'>
+    <div className='w-full h-52 mx-auto'>
       <Bar data={barData} options={barOptions} />
     </div>
     </div>
