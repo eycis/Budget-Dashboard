@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { WalletIcon, CurrencyDollarIcon, BanknotesIcon, CreditCardIcon } from '@heroicons/react/24/solid';
-import { Doughnut, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ChartOptions, ArcElement } from 'chart.js';
 import transactionsData from '@/data/mock_data.json';
 import LineChart from '@/components/charts/LineChart';

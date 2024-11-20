@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Transaction } from '@/models/transaction';
 import ConfirmationModal from './confirmationModal';
 
@@ -6,10 +6,25 @@ const Input = () => {
   
     const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
     const [showModal, setShowModal] = useState(false);
-    const [selectedValue, setSelectedValue] = useState<string>('');
+    const [selectedValue, setSelectedValue] = useState<string>('Expense');
     const [options, setOptions] = useState<string[]>([]);
+    const [saveState, setSaveState] = useState<boolean>(false);
 
-    const handleOpenModal = () => {
+
+    const updateOptions = (value: string) => {
+      if (value === 'Savings & Investment') {
+        setOptions(['Savings', 'Investment']);
+      } else {
+        setOptions(['Utilities', 'Fun', 'Friends', 'Clothes', 'Health', 'Transportation', 'Other']);
+      }
+    };
+
+    useEffect(() => {
+      updateOptions(selectedValue);
+      }, [selectedValue]);
+    
+    
+      const handleOpenModal = () => {
         setShowModal(true);
     }
 
@@ -20,15 +35,8 @@ const Input = () => {
     const handleSelectedValue = (event: ChangeEvent<HTMLSelectElement>) => {
       const value = event.target.value;
       setSelectedValue(value);
-
-      if(value === 'Savings & Investment') {
-        setOptions(['Savings', 'Investment']);       
-      }
-      else {
-        setOptions(['Utilities', 'Fun', 'Friends', 'Clothes', 'Health', 'Transportation', 'Other'])
-      }
+      updateOptions(value);
     }
-
 
     const submitTransaction= () => {
         
@@ -42,9 +50,20 @@ const Input = () => {
             date: Date.now().toString(),
             description: (document.getElementById('transactionDescription') as HTMLInputElement).value
         };
+
+          if (newTransaction.amount == 0 || isNaN(newTransaction.amount)) {
+            console.log("amount je prázdná, nelze uložit.");
+            setSaveState(false);
+            handleOpenModal();
+            console.log("setstate je false a měla by se zobrazit zpráva");
+
+          }
+          else{
             handleOpenModal();
             setTransactions((prev) => [...prev, newTransaction]);
             console.log("transaction:", newTransaction);
+            setSaveState(true);
+          }
         }
 
   return (
@@ -95,7 +114,7 @@ const Input = () => {
         </button>
         {showModal && (
             <ConfirmationModal
-          //message="Your transaction was saved"
+            message={saveState? "Transaction is saved" : "Please fill out the amount with valid figures"}
             onClose={handleCloseModal}
         />
       )}
@@ -126,7 +145,7 @@ const Input = () => {
                 <div className='transactionsTableText'>{transaction.type}</div>
                 <div className='transactionsTableText'>{transaction.category}</div>
                 <div className='transactionsTableText'>{transaction.amount}</div>
-                <div className='transactionsTableText'>{transaction.description || "NA"}</div>
+                <div className='transactionsTableText'>{transaction.description || "-"}</div>
             </div>
         ))}
         </div>

@@ -58,7 +58,7 @@ const ExpensesVIncome = () => {
           {
             label: 'Transactions by type',
             data: typesTotal,
-            backgroundColor: ["#C12AA1", "#D9822F","#1FA14B" ],
+            backgroundColor: ["#8D6C96",  "#1C8F46", "#A3258C" ],
             hoverOffset: 2,
           }
         ],

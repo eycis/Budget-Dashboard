@@ -60,14 +60,14 @@ const PredictionChart = () => {
           {
             label: 'Balance History',
             data: balanceData,
-            borderColor: 'blue',
+            borderColor:  "#A526E1",
             fill: false,
           },
           {
             label: 'Balance Forecast',
             data: [...balanceData, ...futureBalanceData],
             borderColor: 'green',
-            fill: false,
+            fill: "#1FA14B",
             borderDash: [5, 5],
           },
         ],
