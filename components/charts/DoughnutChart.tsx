@@ -4,6 +4,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
 import Switch from '@mui/material/Switch/Switch';
+import colors from '@/styles/colors';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -63,7 +64,7 @@ const DoughnutChart = () => {
           {
             label: 'Expenses by Category',
             data: categoriesTotals,
-            backgroundColor: ['#D32F2F', '#1976D2', '#FBC02D', '#388E3C', '#7B1FA2', '#F57C00', '#9E9E9E', '#C2185B', '#0288D1', '#8E44AD'],
+            backgroundColor: colors,
             hoverOffset: 2,
           }
         ],

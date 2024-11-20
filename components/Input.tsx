@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { Transaction } from '@/models/transaction';
 import ConfirmationModal from './confirmationModal';
 
@@ -6,6 +6,8 @@ const Input = () => {
   
     const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
     const [showModal, setShowModal] = useState(false);
+    const [selectedValue, setSelectedValue] = useState<string>('');
+    const [options, setOptions] = useState<string[]>([]);
 
     const handleOpenModal = () => {
         setShowModal(true);
@@ -14,6 +16,19 @@ const Input = () => {
     const handleCloseModal = () => {
         setShowModal(false);
     }
+
+    const handleSelectedValue = (event: ChangeEvent<HTMLSelectElement>) => {
+      const value = event.target.value;
+      setSelectedValue(value);
+
+      if(value === 'Savings & Investment') {
+        setOptions(['Savings', 'Investment']);       
+      }
+      else {
+        setOptions(['Utilities', 'Fun', 'Friends', 'Clothes', 'Health', 'Transportation', 'Other'])
+      }
+    }
+
 
     const submitTransaction= () => {
         
@@ -42,12 +57,15 @@ const Input = () => {
             name = "type"
             className="ml-10 px-5 w-3/4 h-10 text-lg rounded-2xl bg-[#2a2a2c] text-white  font-title"
             id = "transactionType"
+            value = {selectedValue}
+            onChange = {handleSelectedValue}
           >
             <option value="Expense">Expense</option>
             <option value="Income">Income</option>
             <option value="Savings & Investment">Savings & Investment</option>
             <option value="Other">Other</option>
           </select>
+
         </div>
       <div>
       <div className='transactions-text'> Select the category of transaction </div>
@@ -56,16 +74,9 @@ const Input = () => {
             className="ml-10 px-5 w-3/4 h-10 rounded-2xl bg-[#2a2a2c] text-white text-lg font-title"
             id = "category"
           >
-            <option value="Food">Food</option>
-            <option value="Utilities">Utilities</option>
-            <option value="Fun">Fun</option>
-            <option value="Friends">Friends</option>
-            <option value="Clothes">Clothes</option>
-            <option value="Health">Health</option>
-            <option value="Transportation">Transportation</option>
-            <option value="Savings">Savings</option>
-            <option value="Investment">Investment</option>
-            <option value="Other">Other</option>
+          {options.map((option, index) => (
+            <option key={index} value={option}>{option}</option>
+          ))}
           </select>
         </div>
         <div>

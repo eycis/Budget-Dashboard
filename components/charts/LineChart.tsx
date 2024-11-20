@@ -4,6 +4,8 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
 import Switch from '@mui/material/Switch';
+import { colors } from '@mui/material';
+
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -66,19 +68,19 @@ const LineChart = () => {
         {
           label: 'Income',
           data: incomeData,
-          borderColor: 'blue',
+          borderColor: "#C12AA1",
           fill: false,
         },
         {
           label: 'Expenses',
           data: expenseData,
-          borderColor: 'red',
+          borderColor: "#D9822F",
           fill: false,
         },
         {
           label: "Savings & Investment",
           data: investmentData,
-          borderColor: 'green',
+          borderColor: "#1FA14B",
           fill: false,
         },
       ],
@@ -90,7 +92,7 @@ const LineChart = () => {
         <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
         <span className="font-title text-sm ml-2">{monthView ? 'Month View' : 'All Records'}</span>
       </div>
-      <Line data={lineData} options={lineOptions} className='px-2 mt-5 h-full w-full' />
+      <Line data={lineData} options={lineOptions} className='px-2 mt-3 h-full w-full' />
     </div>
     )
 };

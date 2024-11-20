@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   return (
     <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
-      <div className='dashboard-main'> Dashboard </div>
+      <p className='dashboard-main'> Dashboard </p>
       <div className='grid grid-cols-4 gap-3 w-3/4'>
         <div className='dashboard-kpi' data-aos="fade-right">
           <WalletIcon className="kpi-icons" />

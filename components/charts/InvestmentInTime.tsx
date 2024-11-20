@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement, ChartOptions, LineElement, PointElement } from 'chart.js';
 import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
-import Switch from '@mui/material/Switch';
 import { Bar, Line } from 'react-chartjs-2';
 
 
@@ -44,13 +43,13 @@ const InvestmentInTime = () => {
           {
             label: 'Savings',
             data: savings,
-            borderColor: 'blue',
+            borderColor: "#7A2E3B",
             fill: false,
           },
           {
             label: 'Investments',
             data: investment,
-            borderColor: 'red',
+            borderColor:   "#354A5E",
             fill: false,
           }
         ],
@@ -58,7 +57,7 @@ const InvestmentInTime = () => {
   
     return (
         <div>
-        <Line data={lineData} options={lineOptions} className='px-2 mt-5 h-full w-full' />
+        <Line data={lineData} options={lineOptions} className='mt-5 h-full w-full' />
       </div>
   )
 }
