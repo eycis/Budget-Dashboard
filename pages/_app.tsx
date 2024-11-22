@@ -9,6 +9,7 @@ import '@/styles/globals.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Statistics from "@/components/Statistics";
+import Notifications from "@/components/Notifications";
 
 const App = () => {
 
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/" element={<div className="flex"><Nav/><Dashboard /></div>} />
         <Route path="/input" element={<div className="flex"><Nav/><Input/></div>} />
         <Route path="/Statistics" element={<div className="flex"><Nav/><Statistics/></div>} />
+        <Route path="/Notifications" element={<div className="flex"><Nav/><Notifications/></div>} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,126 @@
+{
+"notifications":
+    [
+        {
+        "dueDate": "2024-12-01",
+        "subject": "Electricity Bill",
+        "isRecurring": true,
+        "user": "User1"
+        },
+        {
+        "dueDate": "2024-12-05",
+        "subject": "Car Insurance",
+        "isRecurring": false,
+        "user": "User2"
+        },
+        {
+        "dueDate": "2024-12-10",
+        "subject": "Water Bill",
+        "isRecurring": true,
+        "user": "User3"
+        },
+        {
+        "dueDate": "2024-12-15",
+        "subject": "Internet Subscription",
+        "isRecurring": true,
+        "user": "User4"
+        },
+        {
+        "dueDate": "2024-12-20",
+        "subject": "Credit Card Payment",
+        "isRecurring": false,
+        "user": "User1"
+        },
+        {
+        "dueDate": "2024-12-25",
+        "subject": "Rent Payment",
+        "isRecurring": true,
+        "user": "User2"
+        },
+        {
+        "dueDate": "2024-12-30",
+        "subject": "Gym Membership",
+        "isRecurring": true,
+        "user": "User3"
+        },
+        {
+        "dueDate": "2025-01-05",
+        "subject": "Streaming Service Subscription",
+        "isRecurring": true,
+        "user": "User4"
+        },
+        {
+        "dueDate": "2025-01-10",
+        "subject": "Student Loan Payment",
+        "isRecurring": false,
+        "user": "User1"
+        },
+        {
+        "dueDate": "2025-01-15",
+        "subject": "Home Insurance",
+        "isRecurring": false,
+        "user": "User2"
+        },
+        {
+        "dueDate": "2025-01-20",
+        "subject": "Property Tax",
+        "isRecurring": false,
+        "user": "User3"
+        },
+        {
+        "dueDate": "2025-01-25",
+        "subject": "Mobile Phone Bill",
+        "isRecurring": true,
+        "user": "User4"
+        },
+        {
+        "dueDate": "2025-01-30",
+        "subject": "Health Insurance",
+        "isRecurring": true,
+        "user": "User1"
+        },
+        {
+        "dueDate": "2025-02-01",
+        "subject": "Car Maintenance",
+        "isRecurring": false,
+        "user": "User2"
+        },
+        {
+        "dueDate": "2025-02-05",
+        "subject": "Subscription to Magazine",
+        "isRecurring": true,
+        "user": "User3"
+        },
+        {
+        "dueDate": "2025-02-10",
+        "subject": "Mortgage Payment",
+        "isRecurring": true,
+        "user": "User4"
+        },
+        {
+        "dueDate": "2025-02-15",
+        "subject": "Electricity Bill",
+        "isRecurring": true,
+        "user": "User1"
+        },
+        {
+        "dueDate": "2025-02-20",
+        "subject": "Tuition Fee",
+        "isRecurring": false,
+        "user": "User2"
+        },
+        {
+        "dueDate": "2025-02-25",
+        "subject": "Personal Loan Payment",
+        "isRecurring": false,
+        "user": "User3"
+        },
+        {
+        "dueDate": "2025-02-28",
+        "subject": "Charity Donation",
+        "isRecurring": true,
+        "user": "User4"
+        }
+    ] 
+}
+  
