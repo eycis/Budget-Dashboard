@@ -40,7 +40,7 @@ const Input = () => {
 
     const submitTransaction= () => {
         
-        //TODO: pročistit kód, enkapsulace.
+        //TODO: pročistit kód:
         const newTransaction: typeof Transaction = {
             ...Transaction,
             id: transactions.length + 1,
