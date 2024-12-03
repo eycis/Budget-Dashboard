@@ -24,7 +24,7 @@ const Input = () => {
       }, [selectedValue]);
     
     
-      const handleOpenModal = () => {
+    const handleOpenModal = () => {
         setShowModal(true);
     }
 
