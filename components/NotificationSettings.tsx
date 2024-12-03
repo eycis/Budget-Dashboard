@@ -1,7 +1,5 @@
-import { Transaction } from '@/models/transaction';
 import React, { useState } from 'react'
 import { Notification } from '@/models/notification';
-import confirmModal from './confirmationModal';
 import Switch from '@mui/material/Switch/Switch';
 import ConfirmationModal from './confirmationModal';
 import DashboardNotifications from './DashboardNotifications';
