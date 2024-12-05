@@ -72,7 +72,7 @@ const NotificationSettings = () => {
         </div>
         {/* Pravá dlaždice rozdělena na dvě části: DashboardNotifications a UpcomingPayments */}
         <div className='grid grid-rows-2 h-[80vh] gap-8 mr-8'>
-          <div className='h-full overflow-y-scroll'>
+          <div className='h-full overflow-hidden'>
             <DashboardNotifications />
           </div>
           <div className='h-full flex flex-col justify-start items-center -ml-56 '>
