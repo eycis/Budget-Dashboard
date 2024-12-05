@@ -6,6 +6,7 @@ import DashboardNotifications from './DashboardNotifications';
 import UpcomingPayments from './charts/UpcomingPayments';
 
 const NotificationSettings = () => {
+
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [ocurringNotification, setOcurringNotification] = useState(false);
@@ -70,7 +71,6 @@ const NotificationSettings = () => {
             <ConfirmationModal message='Notification saved!' onClose={handleCloseModal} />
           )}
         </div>
-        {/* Pravá dlaždice rozdělena na dvě části: DashboardNotifications a UpcomingPayments */}
         <div className='grid grid-rows-2 h-[80vh] gap-8 mr-8'>
           <div className='h-full overflow-hidden'>
             <DashboardNotifications />
