@@ -10,6 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Statistics from "@/components/Statistics";
 import NotificationSettings from "@/components/NotificationSettings";
+import LoginPage from "@/components/LoginPage";
 
 const App = () => {
 
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/input" element={<div className="flex"><Nav/><Input/></div>} />
         <Route path="/Statistics" element={<div className="flex"><Nav/><Statistics/></div>} />
         <Route path="/Notifications" element={<div className="flex"><Nav/><NotificationSettings/></div>} />
+        <Route path="/login" element={<div className="flex"><Nav/><LoginPage/></div>} />
       </Routes>
     </BrowserRouter>
   );

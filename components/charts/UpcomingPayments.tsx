@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import notificationData from '@/data/mock_data_notification.json';
 import {Notification} from '@/models/notification';
-import NotificationSettings from '../NotificationSettings';
 import { Transaction } from '@/models/transaction';
 import transactionData from '@/data/mock_data.json'
 import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement, ChartOptions, LineElement, PointElement } from 'chart.js';
-import { types } from 'util';
 import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
