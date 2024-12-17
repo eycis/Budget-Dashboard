@@ -169,7 +169,7 @@ const Input = () => {
         </div>
         {transactions.map((transaction, index) =>(
             <div key = {index}
-                className='grid grid-cols-5 mt-3 mx-5 mb-3 p-3 h-max w-auto text-center items-center bg-[#1c1c1e] rounded-lg'>
+                className='grid grid-cols-5 mt-3 mx-5 mb-3 p-3 h-max w-auto text-center items-center bg-[#1c1c1e] rounded-lg hover:bg-[#3a3aa3] transition-colors transition-500 '>
                 <div className='transactionsTableText'>{new Date(parseInt(transaction.date)).toLocaleString()}</div>
                 <div className='transactionsTableText'>{transaction.type}</div>
                 <div className='transactionsTableText'>{transaction.category}</div>
