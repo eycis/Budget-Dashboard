@@ -18,10 +18,6 @@ const Input = () => {
         setOptions(['Utilities', 'Fun', 'Friends', 'Clothes', 'Health', 'Transportation', 'Other']);
       }
     };
-
-    useEffect(() => {
-      updateOptions(selectedValue);
-      }, [selectedValue]);
     
     
     const handleOpenModal = () => {
@@ -36,6 +32,23 @@ const Input = () => {
       const value = event.target.value;
       setSelectedValue(value);
       updateOptions(value);
+    }
+
+    const getTransactions = async () => {
+      try {
+        const response = await fetch("api/fetchTransactions");
+        if(!response.ok){
+          throw new Error("error fetching transactions");
+        }
+        const data = await response.json();
+        console.log("-------------------------");
+        console.log("raw data:", data);
+        console.log("transactions z db:", data.transaction);
+        setTransactions(data.transactions);
+      }catch(error){
+        console.error("error with loading transactions", error);
+      }
+
     }
 
     const submitTransaction= async () => {
@@ -57,20 +70,13 @@ const Input = () => {
             },
             body: JSON.stringify(newTransaction),
           });
-
-          const text = await response.text();
-          console.log("response", text);
-          const parsedText = JSON.parse(text);
-          console.log("parsed", parsedText);
-
           if (response.ok) {
             console.log("Data byla úspěšně odeslána!");
-            setTransactions((prev) => [...prev, newTransaction]); // po testování smazat
             setSaveState(true);
+            getTransactions();
           } else {
             console.error("Chyba při odesílání dat na server.");
             const errorData = await response.json();
-            console.log("error data:", errorData);
             setSaveState(false);
           }
       
@@ -80,6 +86,14 @@ const Input = () => {
           console.error("chyba při odesílání dat přes api: ", error);
         }};
 
+        
+        useEffect(() => {
+          updateOptions(selectedValue);
+        }, [selectedValue]);
+        
+        useEffect(() => {
+          getTransactions();
+        }, []);
 
   return (
     <div className='bg-[#1c1c1e] w-screen h-screen p-5'>

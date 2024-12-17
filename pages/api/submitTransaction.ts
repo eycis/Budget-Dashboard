@@ -4,12 +4,9 @@ import admin from "firebase-admin";
 import {dbAdmin} from "@/config/databaseAdmin";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    console.log("----------------------------");
     if (req.method === "POST") {
       try{
         const { category, type, amount, date, description} = req.body;
-        console.log("-------------------------------");
-        console.log(req.body);
         
         if (!category || !type || !amount || !date) {
             return res.status(400).json({ message: "Missing required fields." });
