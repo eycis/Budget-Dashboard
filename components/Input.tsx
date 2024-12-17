@@ -4,7 +4,7 @@ import ConfirmationModal from './confirmationModal';
 
 const Input = () => {
   
-    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedValue, setSelectedValue] = useState<string>('Expense');
     const [options, setOptions] = useState<string[]>([]);
@@ -38,33 +38,48 @@ const Input = () => {
       updateOptions(value);
     }
 
-    const submitTransaction= () => {
-        
-        //TODO: pročistit kód:
-        const newTransaction: typeof Transaction = {
-            ...Transaction,
-            id: transactions.length + 1,
-            category: (document.getElementById('category') as HTMLSelectElement).value,
-            type: (document.getElementById('transactionType') as HTMLSelectElement).value,
-            amount: parseFloat((document.getElementById('transactionAmount') as HTMLInputElement).value),
-            date: Date.now().toString(),
-            description: (document.getElementById('transactionDescription') as HTMLInputElement).value
-        };
+    const submitTransaction= async () => {
 
-          if (newTransaction.amount == 0 || isNaN(newTransaction.amount)) {
-            console.log("amount je prázdná, nelze uložit.");
-            setSaveState(false);
-            handleOpenModal();
-            console.log("setstate je false a měla by se zobrazit zpráva");
+      try {       
+          const newTransaction: Transaction = {
+              category: (document.getElementById('category') as HTMLSelectElement).value,
+              type: (document.getElementById('transactionType') as HTMLSelectElement).value,
+              amount: parseFloat((document.getElementById('transactionAmount') as HTMLInputElement).value),
+              date: Date.now().toString(),
+              description: (document.getElementById('transactionDescription') as HTMLInputElement).value
+          };
+          console.log("----------------------------------------");
+          console.log(newTransaction);
+          const response = await fetch("api/submitTransaction", {
+            method: "POST", 
+            headers: {
+              "Content-Type" : "application/json",
+            },
+            body: JSON.stringify(newTransaction),
+          });
 
-          }
-          else{
-            handleOpenModal();
-            setTransactions((prev) => [...prev, newTransaction]);
-            console.log("transaction:", newTransaction);
+          const text = await response.text();
+          console.log("response", text);
+          const parsedText = JSON.parse(text);
+          console.log("parsed", parsedText);
+
+          if (response.ok) {
+            console.log("Data byla úspěšně odeslána!");
+            setTransactions((prev) => [...prev, newTransaction]); // po testování smazat
             setSaveState(true);
+          } else {
+            console.error("Chyba při odesílání dat na server.");
+            const errorData = await response.json();
+            console.log("error data:", errorData);
+            setSaveState(false);
           }
-        }
+      
+          handleOpenModal();
+          }
+        catch(error){
+          console.error("chyba při odesílání dat přes api: ", error);
+        }};
+
 
   return (
     <div className='bg-[#1c1c1e] w-screen h-screen p-5'>
