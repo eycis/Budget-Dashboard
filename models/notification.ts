@@ -1,7 +1,8 @@
-export const Notification = {
-    dueDate: '' as string,
-    subject: '' as string,
-    isRecurring: false as boolean,
-    user: '' as string,
-    amount: 0 as number,
+export type Notification = {
+    id?: number,
+    dueDate: string,
+    subject: string,
+    isRecurring: boolean,
+    user: string,
+    amount: number,
 }

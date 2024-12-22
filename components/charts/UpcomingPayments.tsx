@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import notificationData from '@/data/mock_data_notification.json';
 import {Notification} from '@/models/notification';
 import { Transaction } from '@/models/transaction';
@@ -15,21 +15,57 @@ const UpcomingPayments = () => {
 
     const currentYear = new Date().getFullYear();
 
-    const [notifications, setNotification] = useState<typeof Notification[]>([]);
-    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+    const [notifications, setNotifications] = useState<Notification[]>([]);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+    const getNotifications = async () => {
+      try{
+        const response = await fetch("api/fetchNotifications");
+        if(!response.ok){
+          console.error("error while fetching the data");
+        }
+        const data = await response.json();
+        setNotifications(data.notifications);
+      }
+      catch(error){
+        console.error("error while api call", error);
+      }
+    }
+
+    const getTransactions = async () => {
+      try {
+        const response = await fetch("api/fetchTransactions");
+        if(!response.ok){
+          console.error("error while fetching the data");
+        }
+        const data = await response.json();
+        console.log(data.transactions);
+        setTransactions(data.transactions);
+      }catch(error){
+        console.error("error with loading transactions", error);
+      }
+
+    }
 
     useEffect(() => {
-      //nahrání mock data pro notifications
-      setNotification(notificationData.notifications);
-      setTransactions(transactionData.transactions);
+      getNotifications();
+      getTransactions();
     }, []);
 
-    const totalIncome = transactionData.transactions.filter(transaction => transaction.type === "income")
-    .reduce((sum, transaction) => sum+ transaction.amount, 0);  
+    const totalIncome = useMemo( () => transactions.filter(transaction => transaction.type === "Income")
+    .reduce((sum, transaction) => sum+ transaction.amount, 0), [transactions]) ;  
 
-    const currentUpcomingPayments= notifications.filter(notification => notification.dueDate.substring(5,7) === currentMonth.toLocaleString() 
-    && notification.dueDate.substring(0,4) === currentYear.toLocaleString()).reduce((sum, notification) => sum + notification.amount, 0);
-    
+
+    const currentUpcomingPayments= useMemo( () => notifications.filter((notification) => {
+      const month = notification.dueDate.substring(5,7);
+      const year = notification.dueDate.substring(0,4);
+
+      return (
+        month === currentMonth.toString().padStart(2, "0") &&
+        year === currentYear.toString()
+      );
+    }).reduce((sum, notification) => sum + notification.amount, 0), [notifications] );
+
     const doughnutOptions: ChartOptions<'doughnut'> = {
         responsive: true,
         maintainAspectRatio: false,

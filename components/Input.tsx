@@ -38,12 +38,9 @@ const Input = () => {
       try {
         const response = await fetch("api/fetchTransactions");
         if(!response.ok){
-          throw new Error("error fetching transactions");
+          console.error("error while fetching the data");
         }
         const data = await response.json();
-        console.log("-------------------------");
-        console.log("raw data:", data);
-        console.log("transactions z db:", data.transaction);
         setTransactions(data.transactions);
       }catch(error){
         console.error("error with loading transactions", error);
@@ -52,7 +49,6 @@ const Input = () => {
     }
 
     const submitTransaction= async () => {
-
       try {       
           const newTransaction: Transaction = {
               category: (document.getElementById('category') as HTMLSelectElement).value,
@@ -61,8 +57,6 @@ const Input = () => {
               date: Date.now().toString(),
               description: (document.getElementById('transactionDescription') as HTMLInputElement).value
           };
-          console.log("----------------------------------------");
-          console.log(newTransaction);
           const response = await fetch("api/submitTransaction", {
             method: "POST", 
             headers: {
@@ -71,19 +65,17 @@ const Input = () => {
             body: JSON.stringify(newTransaction),
           });
           if (response.ok) {
-            console.log("Data byla úspěšně odeslána!");
+            console.log("data was successfully saved!");
             setSaveState(true);
             getTransactions();
           } else {
-            console.error("Chyba při odesílání dat na server.");
-            const errorData = await response.json();
+            console.error("error while sendind the data.");
             setSaveState(false);
           }
-      
           handleOpenModal();
           }
         catch(error){
-          console.error("chyba při odesílání dat přes api: ", error);
+          console.error("error during api call ", error);
         }};
 
         
