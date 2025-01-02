@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Notification } from '@/models/notification';
 import Switch from '@mui/material/Switch/Switch';
 import ConfirmationModal from './confirmationModal';
 import DashboardNotifications from './DashboardNotifications';
 import UpcomingPayments from './charts/UpcomingPayments';
+import { getNotifications } from '@/Services/getNotificationsService';
 
 const NotificationSettings = () => {
 
@@ -20,19 +21,21 @@ const NotificationSettings = () => {
     setShowModal(false);
   };
 
-  const getNotifications = async () => {
-    try{
-      const response = await fetch("api/fetchNotifications");
-      if(!response.ok){
-        console.error("error while fetching the data");
+  useEffect( () => {
+    const fetchData = async () => {
+      const data = await getNotifications();
+      if(data) {
+          console.log("Fetched data:", data);
+          console.log("Data type:", typeof data);
+          console.log("Notification sample:", data?.[0]);
+          //TODO: fix  - dočasné řešení ale datový typ není dobře. 
+          setNotifications(data as unknown as Notification[]);
+        console.log("after:", notifications);
       }
-      const data = await response.json();
-      setNotifications(data.notifications);
     }
-    catch(error){
-      console.error("error while api call", error);
-    }
-  }
+
+    fetchData();
+  }, []);
 
   const createNotification = async () => {
     try{

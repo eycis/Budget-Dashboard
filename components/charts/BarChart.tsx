@@ -18,7 +18,7 @@ const BarChart = () => {
 
   const currentYear = new Date().getFullYear();
 
-    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
     // nahrání mock data
@@ -81,7 +81,7 @@ const BarChart = () => {
       <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
       <span className="font-title text-sm ml-2 text-white">{monthView ? 'Month View' : 'All Records'}</span>
     </div>
-    <div className='w-full h-52 mx-auto'>
+    <div className='w-full max-h-full mx-auto'>
       <Bar data={barData} options={barOptions} />
     </div>
     </div>

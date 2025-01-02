@@ -10,7 +10,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 const PredictionChart = () => {
 
-    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
 
     useEffect(() => {
       // Load transactions data
@@ -99,7 +99,7 @@ const PredictionChart = () => {
       };
 
     return (
-        <div className='w-full h-52 mx-auto'>
+        <div className='w-full h-full mx-auto'>
         <Line data={lineData} options={lineOptions} />
       </div>
     );

@@ -1,5 +1,5 @@
 export type Notification = {
-    id?: number,
+    id?: string,
     dueDate: string,
     subject: string,
     isRecurring: boolean,

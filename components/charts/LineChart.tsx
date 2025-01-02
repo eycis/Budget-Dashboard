@@ -19,7 +19,7 @@ const LineChart = () => {
 
     const[monthView, setMonthView] = useState(false);
     
-    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
     useEffect(() => {
       // nahrání mock data
       setTransactions(transactionsData.transactions);
@@ -53,10 +53,10 @@ const LineChart = () => {
       investmentData = transactions.filter(transaction => transaction.type === "Savings & Investment" 
           && (transaction.date.substring(5,7) == currentMonth.toLocaleString()) && (transaction.date.substring(0,4) == currentYear.toString()))
           .map(transaction => transaction.amount)
-      expenseData = transactions.filter(transaction => transaction.type === 'expense'
+      expenseData = transactions.filter(transaction => transaction.type === 'Expense'
           && (transaction.date.substring(5,7) == currentMonth.toLocaleString()) && (transaction.date.substring(0,4) == currentYear.toString()))
           .map(transaction => transaction.amount);
-      incomeData = transactions.filter(transaction => transaction.type === 'income' 
+      incomeData = transactions.filter(transaction => transaction.type === 'Income' 
         && (transaction.date.substring(5,7) == currentMonth.toLocaleString()) && (transaction.date.substring(0,4) == currentYear.toString()))
         .map(transaction => transaction.amount);
     }
@@ -88,10 +88,8 @@ const LineChart = () => {
 
     return (
       <div>
-      <div className='flex items-center'>
         <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
         <span className="font-title text-sm ml-2">{monthView ? 'Month View' : 'All Records'}</span>
-      </div>
       <Line data={lineData} options={lineOptions} className='px-2 mt-3 h-full w-full' />
     </div>
     )

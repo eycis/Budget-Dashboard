@@ -1,6 +1,4 @@
-import {db} from "@/config/databaseConfig";
 import { NextApiRequest, NextApiResponse } from "next";
-import admin from "firebase-admin";
 import {dbAdmin} from "@/config/databaseAdmin";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

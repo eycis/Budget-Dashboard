@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import notificationData from '@/data/mock_data_notification.json';
+import notificationData from '@/data/mock_data_notification.json'; 
 import {Notification} from '@/models/notification';
 import { Transaction } from '@/models/transaction';
 import transactionData from '@/data/mock_data.json'
@@ -39,7 +39,7 @@ const UpcomingPayments = () => {
           console.error("error while fetching the data");
         }
         const data = await response.json();
-        console.log(data.transactions);
+        //console.log(data.transactions);
         setTransactions(data.transactions);
       }catch(error){
         console.error("error with loading transactions", error);

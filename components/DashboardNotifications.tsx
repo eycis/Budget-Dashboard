@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import notificationData from '@/data/mock_data_notification.json';
 import {Notification} from '@/models/notification';
 
 const DashboardNotifications = () => {

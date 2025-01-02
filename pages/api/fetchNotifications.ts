@@ -11,7 +11,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const notifications = snapshot.docs.map((doc) => ({
             id: doc.id,
-            ...doc.data(),
+            dueDate: doc.data().dueDate,
+            subject: doc.data().subject,
+            isRecurring: doc.data().isRecurring,
+            user: doc.data().user,
+            amount: doc.data().amount,
         }))
         
         res.status(200).json({notifications});
