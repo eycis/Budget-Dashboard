@@ -1,3 +1,5 @@
+import { Notification } from "@/models/notification";
+
 export const getNotifications = async (): Promise<Notification[] | null > => {
     try{
         const response = await fetch("api/fetchNotifications");

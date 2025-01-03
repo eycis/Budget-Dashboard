@@ -26,15 +26,10 @@ const NotificationSettings = () => {
     const fetchData = async () => {
       const data = await getNotifications();
       if(data) {
-          console.log("Fetched data:", data);
-          console.log("Data type:", typeof data);
-          console.log("Notification sample:", data?.[0]);
-          //TODO: fix  - dočasné řešení ale datový typ není dobře. 
-          setNotifications(data as unknown as Notification[]);
+        setNotifications(data);
         console.log("after:", notifications);
       }
     }
-
     fetchData();
   }, []);
 
@@ -46,8 +41,9 @@ const NotificationSettings = () => {
         user: 'user1',
         amount: (document.getElementById('amount') as HTMLInputElement).valueAsNumber,
       };
-      
+
       const isSaved = await SaveNotification(newNotification);
+
       if(isSaved){
         console.log("notification saved!");
         setSaveState(true);

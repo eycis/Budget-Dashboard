@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       try{
         const { dueDate, subject, isRecurring, user, amount} = req.body;
         
-        if ( !dueDate || !subject || !isRecurring || !user || !amount) {
+        if ( !dueDate || !subject || !user || !amount) {
             return res.status(400).json({ message: "Missing required fields." });
           }
 
