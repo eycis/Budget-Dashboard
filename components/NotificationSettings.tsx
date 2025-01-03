@@ -5,6 +5,7 @@ import ConfirmationModal from './confirmationModal';
 import DashboardNotifications from './DashboardNotifications';
 import UpcomingPayments from './charts/UpcomingPayments';
 import { getNotifications } from '@/Services/getNotificationsService';
+import { SaveNotification } from '@/Services/saveNotificationService';
 
 const NotificationSettings = () => {
 
@@ -38,7 +39,6 @@ const NotificationSettings = () => {
   }, []);
 
   const createNotification = async () => {
-    try{
       const newNotification: Notification = {
         dueDate : (document.getElementById('dueDate') as HTMLInputElement).value,
         subject : (document.getElementById('notificationDescription') as HTMLInputElement).value,
@@ -46,30 +46,18 @@ const NotificationSettings = () => {
         user: 'user1',
         amount: (document.getElementById('amount') as HTMLInputElement).valueAsNumber,
       };
-      console.log("-----------------------------------");
-      console.log("notifikace:", newNotification);
-      const response = await fetch("api/saveNotification", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newNotification),
-      });
-      if(response.ok){
+      
+      const isSaved = await SaveNotification(newNotification);
+      if(isSaved){
         console.log("notification saved!");
         setSaveState(true);
         getNotifications();
-
-      }else {
+      } else {
         console.error("error while sending the data");
         setSaveState(false);
       }
-      handleOpenModal();
-    }
-    catch(error){
-      console.error("error during appi call", error);
-    }
-  };
+        handleOpenModal();
+      }
 
   return (
     <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
