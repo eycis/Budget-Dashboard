@@ -12,7 +12,6 @@ export const SaveNotification = async(newNotification : Notification): Promise<b
           });
           if(response.ok){
             saveStatus = true;
-            return saveStatus;
           }
           return saveStatus;
         }

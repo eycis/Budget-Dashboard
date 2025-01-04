@@ -2,6 +2,8 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Transaction } from '@/models/transaction';
 import ConfirmationModal from './confirmationModal';
 import { getTransactions } from '@/Services/getTransactionsService';
+import { SaveNotification } from '@/Services/saveNotificationService';
+import { saveTransaction } from '@/Services/SaveTransactionService';
 
 const Input = () => {
   
@@ -35,8 +37,7 @@ const Input = () => {
       updateOptions(value);
     }
 
-    const submitTransaction= async () => {
-      try {       
+    const submitTransaction= async () => {  
           const newTransaction: Transaction = {
               category: (document.getElementById('category') as HTMLSelectElement).value,
               type: (document.getElementById('transactionType') as HTMLSelectElement).value,
@@ -44,14 +45,10 @@ const Input = () => {
               date: Date.now().toString(),
               description: (document.getElementById('transactionDescription') as HTMLInputElement).value
           };
-          const response = await fetch("api/submitTransaction", {
-            method: "POST", 
-            headers: {
-              "Content-Type" : "application/json",
-            },
-            body: JSON.stringify(newTransaction),
-          });
-          if (response.ok) {
+
+          const isSaved = await saveTransaction(newTransaction);
+
+          if (isSaved == true) {
             console.log("data was successfully saved!");
             await fetchData(); 
             setSaveState(true);
@@ -61,10 +58,6 @@ const Input = () => {
           }
           handleOpenModal();
           }
-        catch(error){
-          console.error("error during api call ", error);
-        }};
-
         
         useEffect(() => {
           updateOptions(selectedValue);

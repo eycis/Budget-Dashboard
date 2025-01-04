@@ -43,7 +43,7 @@ const NotificationSettings = () => {
 
       const isSaved = await SaveNotification(newNotification);
 
-      if(isSaved){
+      if(isSaved == true){
         console.log("notification saved!");
         setSaveState(true);
         getNotifications();
