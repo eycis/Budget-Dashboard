@@ -27,7 +27,6 @@ const NotificationSettings = () => {
       const data = await getNotifications();
       if(data) {
         setNotifications(data);
-        console.log("after:", notifications);
       }
     }
     fetchData();

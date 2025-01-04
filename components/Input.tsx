@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Transaction } from '@/models/transaction';
 import ConfirmationModal from './confirmationModal';
+import { getTransactions } from '@/Services/getTransactionsService';
 
 const Input = () => {
   
@@ -34,20 +35,6 @@ const Input = () => {
       updateOptions(value);
     }
 
-    const getTransactions = async () => {
-      try {
-        const response = await fetch("api/fetchTransactions");
-        if(!response.ok){
-          console.error("error while fetching the data");
-        }
-        const data = await response.json();
-        setTransactions(data.transactions);
-      }catch(error){
-        console.error("error with loading transactions", error);
-      }
-
-    }
-
     const submitTransaction= async () => {
       try {       
           const newTransaction: Transaction = {
@@ -66,8 +53,8 @@ const Input = () => {
           });
           if (response.ok) {
             console.log("data was successfully saved!");
+            await fetchData(); 
             setSaveState(true);
-            getTransactions();
           } else {
             console.error("error while sendind the data.");
             setSaveState(false);
@@ -82,9 +69,16 @@ const Input = () => {
         useEffect(() => {
           updateOptions(selectedValue);
         }, [selectedValue]);
+
+        const fetchData = async() => {
+            const data = await getTransactions();
+            if(data){
+              setTransactions(data);
+            }
+          }
         
         useEffect(() => {
-          getTransactions();
+          fetchData();
         }, []);
 
   return (
