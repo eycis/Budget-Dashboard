@@ -6,6 +6,7 @@ import Switch from '@mui/material/Switch';
 import { Bar } from 'react-chartjs-2';
 //import { colors } from '@mui/material';
 import colors from '@/styles/colors';
+import { getTransactions } from '@/Services/getTransactionsService';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement);
 
@@ -18,21 +19,27 @@ const BarChart = () => {
 
   const currentYear = new Date().getFullYear();
 
-    const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
+  const fetchData = async() => {
+      const data = await getTransactions();
+      if(data){
+        setTransactions(data);
+      }
+    }
+  
   useEffect(() => {
-    // nahrání mock data
-    setTransactions(transactionsData.transactions);
+    fetchData();
   }, []);
 
   let sortedExpenses = transactions
-    .filter(transaction => transaction.type === 'expense')
+    .filter(transaction => transaction.type === 'Expense')
     .sort((a, b) => b.amount - a.amount)
     .slice(0, 5);
 
   if(monthView){
     sortedExpenses = transactions
-      .filter(transaction => transaction.type === 'expense' && 
+      .filter(transaction => transaction.type === 'Expense' && 
       transaction.date.substring(5, 7) == currentMonth.toString() &&
       transaction.date.substring(0, 4) == currentYear.toString())
       .sort((a, b) => b.amount - a.amount)

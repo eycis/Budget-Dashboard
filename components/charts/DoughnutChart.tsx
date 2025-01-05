@@ -5,6 +5,7 @@ import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
 import Switch from '@mui/material/Switch/Switch';
 import colors from '@/styles/colors';
+import { getTransactions } from '@/Services/getTransactionsService';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -18,11 +19,19 @@ const DoughnutChart = () => {
 
   const[monthView, setMonthView] = useState(false);
 
-    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
-    useEffect(() => {
-      // nahrání mock data
-      setTransactions(transactionsData.transactions);
-    }, []);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+  const fetchData = async() => {
+      const data = await getTransactions();
+      if(data){
+        console.log("data from doughnut:", data);
+        setTransactions(data);
+      }
+    }
+  
+  useEffect(() => {
+    fetchData();
+  }, []);
 
     const doughnutOptions: ChartOptions<'doughnut'> = {
         responsive: true,
@@ -43,14 +52,14 @@ const DoughnutChart = () => {
 
     const categories = ['Food', 'Utilities', 'Fun', 'Friends', 'Clothes', 'Health', 'Other', 'Transportation', 'Savings', 'Investment' ];
     let categoriesTotals = categories.map(category => transactions.filter(transaction => transaction.category === category 
-      && transaction.type === 'expense').reduce((sum, transaction) => sum + transaction.amount, 0));
+      && transaction.type === 'Expense').reduce((sum, transaction) => sum + transaction.amount, 0));
 
 
       if(monthView) {
         categoriesTotals = categories.map(category => 
           transactions.filter(transaction => 
             transaction.category === category && 
-            transaction.type === 'expense' &&
+            transaction.type === 'Expense' &&
             transaction.date.substring(5, 7) == currentMonth.toString() &&
             transaction.date.substring(0, 4) == currentYear.toString()
           )

@@ -4,12 +4,13 @@ import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
 import { Doughnut } from 'react-chartjs-2';
 import Switch from '@mui/material/Switch/Switch';
+import { getTransactions } from '@/Services/getTransactionsService';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const ExpensesVIncome = () => {
 
-    const [transactions, setTransactions] = useState<typeof Transaction[]>([]);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
 
     const[monthView, setMonthView] = useState(false);
 
@@ -17,10 +18,16 @@ const ExpensesVIncome = () => {
 
     const currentYear = new Date().getFullYear();
 
-    useEffect(() => {
-    // nahrání mock data
-    setTransactions(transactionsData.transactions);
-    }, []);
+     const fetchData = async() => {
+         const data = await getTransactions();
+         if(data){
+           setTransactions(data);
+         }
+       }
+     
+     useEffect(() => {
+       fetchData();
+     }, []);
 
     const types = transactions.map(transaction => transaction.type).filter((value, index, self) => self.indexOf(value)===index);
 

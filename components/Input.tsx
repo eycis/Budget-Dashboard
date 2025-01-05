@@ -2,7 +2,6 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Transaction } from '@/models/transaction';
 import ConfirmationModal from './confirmationModal';
 import { getTransactions } from '@/Services/getTransactionsService';
-import { SaveNotification } from '@/Services/saveNotificationService';
 import { saveTransaction } from '@/Services/SaveTransactionService';
 
 const Input = () => {
@@ -42,7 +41,8 @@ const Input = () => {
               category: (document.getElementById('category') as HTMLSelectElement).value,
               type: (document.getElementById('transactionType') as HTMLSelectElement).value,
               amount: parseFloat((document.getElementById('transactionAmount') as HTMLInputElement).value),
-              date: Date.now().toString(),
+              //TODO: fix date format
+              date: `${new Date().getFullYear()}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${new Date().getDate().toString().padStart(2, '0')}`,
               description: (document.getElementById('transactionDescription') as HTMLInputElement).value
           };
 
