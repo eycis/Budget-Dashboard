@@ -3,6 +3,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, B
 import { Transaction } from '@/models/transaction';
 import transactionsData from '@/data/mock_data.json';
 import { Doughnut, Line } from 'react-chartjs-2';
+import { getTransactions } from '@/Services/getTransactionsService';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -12,10 +13,17 @@ const PredictionChart = () => {
 
     const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-    useEffect(() => {
-      // Load transactions data
-      setTransactions(transactionsData.transactions);
-    }, []);
+    const fetchData = async() => {
+          const data = await getTransactions();
+          if(data){
+            setTransactions(data);
+          }
+        }
+      
+      useEffect(() => {
+        fetchData();
+      }, []);
+  
 
     const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }))));
     

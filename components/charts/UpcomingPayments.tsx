@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import notificationData from '@/data/mock_data_notification.json'; 
 import {Notification} from '@/models/notification';
 import { Transaction } from '@/models/transaction';
-import transactionData from '@/data/mock_data.json'
 import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement, ChartOptions, LineElement, PointElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { getNotifications } from '@/Services/getNotificationsService';
+import { getTransactions } from '@/Services/getTransactionsService';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -18,43 +18,27 @@ const UpcomingPayments = () => {
     const [notifications, setNotifications] = useState<Notification[]>([]);
     const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-    const getNotifications = async () => {
-      try{
-        const response = await fetch("api/fetchNotifications");
-        if(!response.ok){
-          console.error("error while fetching the data");
+    useEffect( () => {
+      const fetchNotificationData = async () => {
+        const notificationData = await getNotifications();
+        if(notificationData) {
+          setNotifications(notificationData);
         }
-        const data = await response.json();
-        setNotifications(data.notifications);
-      }
-      catch(error){
-        console.error("error while api call", error);
-      }
-    }
-
-    const getTransactions = async () => {
-      try {
-        const response = await fetch("api/fetchTransactions");
-        if(!response.ok){
-          console.error("error while fetching the data");
-        }
-        const data = await response.json();
-        //console.log(data.transactions);
-        setTransactions(data.transactions);
-      }catch(error){
-        console.error("error with loading transactions", error);
       }
 
-    }
+      const fetchTransactionData = async() => {
+      const transactionsData = await getTransactions();
+      if(transactionsData){
+        setTransactions(transactionsData);
+      }
+      }
 
-    useEffect(() => {
-      getNotifications();
-      getTransactions();
+      fetchTransactionData();
+      fetchNotificationData();
     }, []);
 
     const totalIncome = useMemo( () => transactions.filter(transaction => transaction.type === "Income")
     .reduce((sum, transaction) => sum+ transaction.amount, 0), [transactions]) ;  
-
 
     const currentUpcomingPayments= useMemo( () => notifications.filter((notification) => {
       const month = notification.dueDate.substring(5,7);

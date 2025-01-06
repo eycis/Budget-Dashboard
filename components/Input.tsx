@@ -41,6 +41,7 @@ const Input = () => {
               category: (document.getElementById('category') as HTMLSelectElement).value,
               type: (document.getElementById('transactionType') as HTMLSelectElement).value,
               amount: parseFloat((document.getElementById('transactionAmount') as HTMLInputElement).value),
+              //TODO: fix date format
               date: `${new Date().getDate().toString().padStart(2,'0')}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${new Date().getFullYear()}`,
               description: (document.getElementById('transactionDescription') as HTMLInputElement).value
           };
