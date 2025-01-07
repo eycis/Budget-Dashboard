@@ -42,9 +42,11 @@ const Input = () => {
               type: (document.getElementById('transactionType') as HTMLSelectElement).value,
               amount: parseFloat((document.getElementById('transactionAmount') as HTMLInputElement).value),
               //TODO: fix date format
-              date: `${new Date().getDate().toString().padStart(2,'0')}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${new Date().getFullYear()}`,
+              date: `${new Date().getFullYear()}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${new Date().getDate().toString().padStart(2,'0')}`,
               description: (document.getElementById('transactionDescription') as HTMLInputElement).value
           };
+
+          console.log(newTransaction);
 
           const isSaved = await saveTransaction(newTransaction);
 
@@ -149,7 +151,7 @@ const Input = () => {
         {transactions.map((transaction, index) =>(
             <div key = {index}
                 className='grid grid-cols-5 mt-3 mx-5 mb-3 p-3 h-max w-auto text-center items-center bg-[#1c1c1e] rounded-lg hover:bg-[#3a3aa3] transition-colors transition-500 '>
-                <div className='transactionsTableText'>{new Date(parseInt(transaction.date)).toLocaleString()}</div>
+                <div className='transactionsTableText'>{new Date(transaction.date).toLocaleDateString('en-US')}</div>
                 <div className='transactionsTableText'>{transaction.type}</div>
                 <div className='transactionsTableText'>{transaction.category}</div>
                 <div className='transactionsTableText'>{transaction.amount}</div>

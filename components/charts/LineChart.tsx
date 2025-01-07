@@ -50,7 +50,6 @@ const LineChart = () => {
     };
 
   const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }))));
-  console.log(dates);
   let incomeData = transactions.filter(transaction => transaction.type === 'Income').map(transaction => transaction.amount);
   let expenseData = transactions.filter(transaction => transaction.type === 'Expense').map(transaction => transaction.amount);
   let investmentData = transactions.filter(transaction => transaction.type === "Savings & Investment").map(transaction => transaction.amount)
