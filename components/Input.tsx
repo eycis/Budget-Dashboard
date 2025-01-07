@@ -16,7 +16,10 @@ const Input = () => {
     const updateOptions = (value: string) => {
       if (value === 'Savings & Investment') {
         setOptions(['Savings', 'Investment']);
-      } else {
+      }else if(value === "Income"){
+          setOptions(['Income', 'Second job', 'other'])
+      } 
+      else {
         setOptions(['Utilities', 'Fun', 'Friends', 'Clothes', 'Health', 'Transportation', 'Other']);
       }
     };

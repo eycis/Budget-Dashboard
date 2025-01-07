@@ -4,9 +4,9 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import transactionsData from '@/data/mock_data.json';
 import LineChart from '@/components/charts/LineChart';
 import DoughnutChart from './charts/DoughnutChart';
-import notificationData from '@/data/mock_data_notification.json';
-import {Notification} from '@/models/notification';
 import DashboardNotifications from './DashboardNotifications';
+import { getTransactions } from '@/Services/getTransactionsService';
+import { Transaction } from '@/models/transaction';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
@@ -14,16 +14,28 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 const Dashboard = () => {
   
   //KPIs:
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  
+  const fetchData = async() => {
+            const data = await getTransactions();
+            if(data){
+              setTransactions(data);
+            }
+          }
+        
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const totalExpenses = transactionsData.transactions.filter(transaction => transaction.type === "expense")
+  const totalExpenses = transactions.filter(transaction => transaction.type === "Expense")
   .reduce((sum, transaction) => sum+ transaction.amount, 0);
 
-  const totalIncome = transactionsData.transactions.filter(transaction => transaction.type === "income")
+  const totalIncome = transactions.filter(transaction => transaction.type === "Income")
   .reduce((sum, transaction) => sum+ transaction.amount, 0);
 
   const balance = totalIncome - totalExpenses;
 
-  const investment = transactionsData.transactions.filter(transaction => transaction.type === "Savings & Investment")
+  const investment = transactions.filter(transaction => transaction.type === "Savings & Investment")
   .reduce((sum, transaction) => sum + transaction.amount, 0);  
 
  
