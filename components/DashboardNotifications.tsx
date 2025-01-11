@@ -26,7 +26,7 @@ const DashboardNotifications = () => {
   
     const filteredNotifications = notifications.filter((notification) => notification.user === "user1")
   return (
-    <div className='row-span-2 h-screen max-h-[608px] bg-[#2a2a2c] text-white rounded-lg px-1 overflow-y-auto'>
+    <div className='row-span-2 max-h-[608px] bg-[#2a2a2c] text-white rounded-lg px-1 overflow-y-auto'>
       <h2 className='font-title text-xl text-center font-bold text-white pt-5'>Upcoming Payments</h2>
         {filteredNotifications.map((notification, index) => (
           <div key = {index} className='bg-[#444447] hover:bg-[#3a3aa3] transition-colors duration-500 h-min w-full rounded-xl mt-3'>

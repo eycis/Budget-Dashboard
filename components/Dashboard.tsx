@@ -42,11 +42,12 @@ const Dashboard = () => {
   //-------------------------------------------------------------------------------------
 
   return (
-    <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
+    <div className='bg-[#1c1c1e] relative w-full min-h-screen p-5'>
       <p className='dashboard-main'> Dashboard </p>
       
       {/* Hlavní grid pro dlaždice */}
-      <div className='grid grid-cols-5 gap-3 w-full'>
+      {/* když sem přidám h-screen, najednou se roztáhne a způsobí to to, že pro zobrazení grafů musím scrollovat dolů.  */}
+      <div className='grid grid-cols-5 gap-3 w-full min-h-0'> 
         {/* Levá část - KPIs a grafy */}
         <div className='col-span-4 grid grid-cols-4 gap-3'>
           {/* KPI dlaždice */}
@@ -93,7 +94,7 @@ const Dashboard = () => {
           <div className='dashboard-plots col-span-2' data-aos="fade-down">
             <LineChart />
           </div>
-          <div className='dashboard-plots col-span-2' data-aos="fade-down">
+          <div className='dashboard-plots col-span-2 ' data-aos="fade-down">
             <DoughnutChart />
           </div>
           </div>

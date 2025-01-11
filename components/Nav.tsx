@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Nav = () => {
   return (
-    <div className="w-min h-screen bg-[#141414] p-4 flex flex-col items-start">
+    <div className="w-min min-h-screen bg-[#141414] p-4 items-start">
         <div className="nav-icons">
         <Link to="/">
             <button>

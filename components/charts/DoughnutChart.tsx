@@ -85,8 +85,8 @@ const DoughnutChart = () => {
         <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
         <span className="font-title text-sm ml-2">{monthView ? 'Month View' : 'All Records'}</span>
       </div>
-      <div className=''>
-        <Doughnut data={doughnutData} options={doughnutOptions} data-aos="fade-up" className=' pt-3 w-36 h-64 flex flex-col items-center' />
+      <div>
+        <Doughnut data={doughnutData} options={doughnutOptions} data-aos="fade-up" className='pt-3 w-full flex flex-col items-center' />
       </div>
     </div>
   )

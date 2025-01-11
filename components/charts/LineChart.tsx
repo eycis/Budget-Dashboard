@@ -97,7 +97,7 @@ const LineChart = () => {
       <div>
         <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
         <span className="font-title text-sm ml-2">{monthView ? 'Month View' : 'All Records'}</span>
-      <Line data={lineData} options={lineOptions} className='px-2 mt-3 h-full w-full' />
+      <Line data={lineData} options={lineOptions} className='px-2 mt-3 h-screen w-full' />
     </div>
     )
 };

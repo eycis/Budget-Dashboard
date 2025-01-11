@@ -13,6 +13,9 @@ const config: Config = {
         title: ["Nunito", "sans-serif"],
         
       },
+      screens:{
+        '5xl':'3840x2160px',
+      }
     },
   },
   plugins: [
