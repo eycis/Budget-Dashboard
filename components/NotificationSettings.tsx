@@ -14,6 +14,8 @@ const NotificationSettings = () => {
   const [ocurringNotification, setOcurringNotification] = useState(false);
   const [saveState, setSaveState] = useState(false);
 
+  const currentDay = `${new Date().getFullYear()}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${new Date().getDate().toString().padStart(2,'0')}`; 
+
   const handleOpenModal = () => {
     setShowModal(true);
   };
@@ -27,6 +29,8 @@ const NotificationSettings = () => {
       const data = await getNotifications();
       if(data) {
         setNotifications(data);
+        const filteredNotifications = notifications.filter((notification) => notification.user === "user1" && notification.dueDate >= currentDay)
+        setNotifications(filteredNotifications);
       }
     }
     fetchData();
@@ -109,8 +113,8 @@ const NotificationSettings = () => {
             <ConfirmationModal message= {saveState? 'Notification saved!': 'Something went wrong!'} onClose={handleCloseModal} />
           )}
         </div>
-        <div className='grid grid-rows-2 h-[80vh] gap-8 mr-8'>
-          <div className='h-full overflow-hidden'>
+        <div className='grid grid-rows-2 h-[80%] gap-8 mr-8'>
+          <div className='h-full overflow-hidden overflow-y-auto rounded-2x'>
             <DashboardNotifications />
           </div>
           <div className='h-full flex flex-col justify-start items-center -ml-56 '>
