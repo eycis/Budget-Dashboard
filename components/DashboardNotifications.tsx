@@ -5,6 +5,8 @@ const DashboardNotifications = () => {
 
     const [notifications, setNotifications] = useState<Notification[]>([]);
 
+    const currentDay = `${new Date().getFullYear()}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${new Date().getDate().toString().padStart(2,'0')}`; 
+
     const getNotifications = async () => {
       try{
         const response = await fetch("api/fetchNotifications");
@@ -23,8 +25,10 @@ const DashboardNotifications = () => {
     useEffect(() => {
       getNotifications();
     }, []);
-  
-    const filteredNotifications = notifications.filter((notification) => notification.user === "user1")
+    
+    console.log(notifications);
+
+    const filteredNotifications = notifications.filter((notification) => notification.user === "user1" && notification.dueDate >= currentDay)
   return (
     <div className='row-span-2 max-h-[608px] bg-[#2a2a2c] text-white rounded-lg px-1 overflow-y-auto'>
       <h2 className='font-title text-xl text-center font-bold text-white pt-5'>Upcoming Payments</h2>
