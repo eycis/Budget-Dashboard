@@ -1,8 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { dbAdmin } from "@/config/databaseAdmin"; 
 
-
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === "GET") {
     try{

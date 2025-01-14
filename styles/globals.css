@@ -63,4 +63,8 @@
         @apply col-span-1 h-full bg-[#2a2a2c] rounded-3xl p-3
     }
 
+    .loginInput {
+        @apply ml-10 px-5 w-1/4 h-10 rounded-2xl bg-[#2a2a2c] text-white text-lg font-title
+    }
+
 }

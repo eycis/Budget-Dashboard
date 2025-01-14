@@ -74,7 +74,7 @@ const NotificationSettings = () => {
             name = 'amount'
             type = 'number'
             id = "amount"
-            className='ml-10 px-5 w-1/4 h-10 rounded-2xl bg-[#2a2a2c] text-white text-lg font-title'
+            className='ml-10 px-5 w-1/4 h-10 rounded-2xl bg-[#2a2a2c] text-white font-title'
           />
           <div className='grid grid-cols-2 w-fit'>
             <div>

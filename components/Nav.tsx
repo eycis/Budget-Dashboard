@@ -3,6 +3,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Nav = () => {
+
+  //TODO: přes props předat bool, zda je uživatel připojen/není, na základě toho zobrazíme tlačítko. 
   return (
     <div className="w-min min-h-screen bg-[#141414] p-4 items-start">
         <div className="nav-icons">
