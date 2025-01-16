@@ -1,18 +1,27 @@
 import React, { useState } from 'react'
 import ConfirmationModal from './confirmationModal';
 import { getLoginUser } from '@/Services/loginUserService';
+import {user} from "@/models/user"
 
 const LoginPage = () => {
     const [modalVisibility, setModalVisibility] = useState<boolean>(false);
+    const [loginState, setLoginState] = useState<boolean>(false);
+
     const LoginUser = async () => {
-        const user : String = (document.getElementById("user") as HTMLInputElement).value
-        const password : String = (document.getElementById("password") as HTMLInputElement).value
-        const result = await getLoginUser(user, password);
+        const user : string = (document.getElementById("user") as HTMLInputElement).value
+        const password : string = (document.getElementById("password") as HTMLInputElement).value
+        console.log(user);
+        console.log(password);
+        const result = await getLoginUser({user, password});
+        if(!result){
+          console.log(result)
+          setLoginState(true);
+        } 
         setModalVisibility(true);
+        
         //TODO:
         //add link to Dashboard, login user- change the visibility of the button to false, display page with logoff option. 
         //all buttons on nav should not be visible until the status of logged is true. 
-
         
     }
 
@@ -44,7 +53,7 @@ const LoginPage = () => {
         </button> 
         {modalVisibility && (
             <ConfirmationModal
-            message={"You were logged in!"}
+            message= {loginState? "You were logged in! :) " : "there is something wrong :("}
             onClose={handleCloseModal}
         />
       )}
