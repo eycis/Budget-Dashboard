@@ -2,7 +2,11 @@ import { HomeIcon, ChartBarIcon, PlusCircleIcon, BellIcon, ArrowRightOnRectangle
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Nav = () => {
+type LoginProps = {
+  loginState : boolean;
+}
+
+const Nav = ({loginState} : LoginProps) => {
 
   //TODO: přes props předat bool, zda je uživatel připojen/není, na základě toho zobrazíme tlačítko. 
   return (

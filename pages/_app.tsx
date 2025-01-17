@@ -14,6 +14,8 @@ import LoginPage from "@/components/LoginPage";
 
 const App = () => {
 
+  const [loginState, setLoginState] = useState<boolean>(false);
+
   useEffect(() => {
     AOS.init({
       disable: false,
@@ -33,16 +35,7 @@ const App = () => {
       anchorPlacement: 'top-bottom',
     });
   }, []);
-  
-  const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return null;
-  }
 
   return (
     <BrowserRouter>

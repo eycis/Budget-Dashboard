@@ -2,10 +2,16 @@ import React, { useState } from 'react'
 import ConfirmationModal from './confirmationModal';
 import { getLoginUser } from '@/Services/loginUserService';
 import {user} from "@/models/user"
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+type LoginPageProps = {
+  setLoginState : (state: boolean) => void;
+}
+
+const LoginPage = ({setLoginState} : LoginPageProps) => {
     const [modalVisibility, setModalVisibility] = useState<boolean>(false);
-    const [loginState, setLoginState] = useState<boolean>(false);
+    const [loginStateMessage, setLoginStateMessage] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const LoginUser = async () => {
         const user : string = (document.getElementById("user") as HTMLInputElement).value
@@ -13,9 +19,10 @@ const LoginPage = () => {
         console.log(user);
         console.log(password);
         const result = await getLoginUser({user, password});
-        if(!result){
-          console.log(result)
+        if(result){
+          setLoginStateMessage(true);
           setLoginState(true);
+          navigate('/');
         } 
         setModalVisibility(true);
         
@@ -53,7 +60,7 @@ const LoginPage = () => {
         </button> 
         {modalVisibility && (
             <ConfirmationModal
-            message= {loginState? "You were logged in! :) " : "there is something wrong :("}
+            message= {loginStateMessage? "You were logged in! :) " : "there is something wrong :("}
             onClose={handleCloseModal}
         />
       )}
