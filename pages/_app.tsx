@@ -4,7 +4,6 @@ import Input from "@/components/Input";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import { Route, Router, Routes, BrowserRouter } from "react-router-dom";
 import '@/styles/globals.css'; 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -14,7 +13,7 @@ import LoginPage from "@/components/LoginPage";
 
 const App = () => {
 
-  const [loginState, setLoginState] = useState<boolean>(false);
+  // const [loginState, setLoginState] = useState<boolean>(false);
 
   useEffect(() => {
     AOS.init({
@@ -36,17 +35,19 @@ const App = () => {
     });
   }, []);
 
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<div className="flex"><Nav/><Dashboard /></div>} />
-        <Route path="/input" element={<div className="flex"><Nav/><Input/></div>} />
-        <Route path="/Statistics" element={<div className="flex"><Nav/><Statistics/></div>} />
-        <Route path="/Notifications" element={<div className="flex"><Nav/><NotificationSettings/></div>} />
-        <Route path="/login" element={<div className="flex"><Nav/><LoginPage/></div>} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <Nav/>
+    </div>
   );
 };
 

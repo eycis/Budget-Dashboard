@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import ConfirmationModal from './confirmationModal';
 import { getLoginUser } from '@/Services/loginUserService';
-import {user} from "@/models/user"
-import { useNavigate } from 'react-router-dom';
 
-type LoginPageProps = {
-  setLoginState : (state: boolean) => void;
-}
 
-const LoginPage = ({setLoginState} : LoginPageProps) => {
+// type LoginPageProps = {
+//   setLoginState : (state: boolean) => void;
+// }
+
+// const LoginPage = ({setLoginState} : LoginPageProps) => {
+  const LoginPage = () => {
     const [modalVisibility, setModalVisibility] = useState<boolean>(false);
     const [loginStateMessage, setLoginStateMessage] = useState<boolean>(false);
-    const navigate = useNavigate();
+    const [loginState, setLoginState] = useState<boolean>(false);
 
     const LoginUser = async () => {
         const user : string = (document.getElementById("user") as HTMLInputElement).value
@@ -22,7 +22,7 @@ const LoginPage = ({setLoginState} : LoginPageProps) => {
         if(result){
           setLoginStateMessage(true);
           setLoginState(true);
-          navigate('/');
+          window.location.href = "/";
         } 
         setModalVisibility(true);
         

@@ -1,18 +1,14 @@
 import React from 'react'
 import Dashboard from '@/components/Dashboard';
 import Nav from '@/components/Nav';
-import { useRouter } from 'next/router'; 
 
-const index = () => {
-
-  
-
-  const router = useRouter();
-
+const Index = () => {
   return(
     <div>
+      <Nav />
+      <Dashboard />
     </div>
   )
 }
 
-export default index
+export default Index
