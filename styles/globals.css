@@ -52,7 +52,7 @@
     }
 
     .transactions_columns {
-        @apply font-title text-xl
+        @apply font-title text-sm
     }
 
     .transactionsTableText {

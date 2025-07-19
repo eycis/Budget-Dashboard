@@ -2,14 +2,8 @@ import { HomeIcon, ChartBarIcon, PlusCircleIcon, BellIcon, ArrowRightOnRectangle
 import React from 'react'
 import Link from "next/link";
 
-type LoginProps = {
-  loginState : boolean;
-}
-
-//const Nav = ({loginState} : LoginProps) => {
 const Nav = () => {
 
-  //TODO: přes props předat bool, zda je uživatel připojen/není, na základě toho zobrazíme tlačítko. 
   return (
     <div className="w-min min-h-screen bg-[#141414] p-4 items-start">
         <div className="nav-icons">
@@ -20,33 +14,33 @@ const Nav = () => {
         </Link>
         </div>
         <div className="nav-icons">
-        {/* <Link to="/Input"> */}
+        <Link href="/Input">
             <button>
                 <PlusCircleIcon className="h-10 w-10" />
             </button>
-        {/* </Link> */}
+        </Link>
         </div>
-        {/* <div className="nav-icons">
-        <Link to="/Statistics">
+        <div className="nav-icons">
+        <Link href="/Statistics">
             <button>
             <ChartBarIcon className="h-10 w-10" />
             </button>
         </Link>
         </div>
         <div className="nav-icons">
-        <Link to="/Notifications">
+        <Link href="/Notifications">
           <button>
             <BellIcon className="h-10 w-10" />
           </button>
         </Link>
       </div>
       <div className="nav-icons">
-        <Link to="/Login">
+        <Link href="/Login">
           <button>
           <UserCircleIcon className="h-10 w-10" />
           </button>
         </Link>
-      </div> */}
+      </div>
   </div>
   )
 }

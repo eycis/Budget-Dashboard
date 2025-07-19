@@ -12,7 +12,6 @@ import { Transaction } from '@/models/transaction';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
 const Dashboard = () => {
-  
   //KPIs:
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   

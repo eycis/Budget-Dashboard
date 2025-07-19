@@ -8,7 +8,7 @@ import { getLoginUser } from '@/Services/loginUserService';
 // }
 
 // const LoginPage = ({setLoginState} : LoginPageProps) => {
-  const LoginPage = () => {
+  const Login = () => {
     const [modalVisibility, setModalVisibility] = useState<boolean>(false);
     const [loginStateMessage, setLoginStateMessage] = useState<boolean>(false);
     const [loginState, setLoginState] = useState<boolean>(false);
@@ -69,4 +69,4 @@ import { getLoginUser } from '@/Services/loginUserService';
   )
 }
 
-export default LoginPage
+export default Login

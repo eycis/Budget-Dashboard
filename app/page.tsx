@@ -1,14 +1,16 @@
+'use client'
+
 import React from 'react'
 import Dashboard from '@/components/Dashboard';
 import Nav from '@/components/Nav';
 
-const Index = () => {
+const Home = () => {
   return(
-    <div>
+    <div className="flex">
       <Nav />
       <Dashboard />
     </div>
   )
 }
 
-export default Index
+export default Home
