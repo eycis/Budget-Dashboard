@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {Notification} from '@/models/notification';
 import { Transaction } from '@/models/transaction';
-import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement, ChartOptions, LineElement, PointElement } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement, ChartOptions, LineElement, PointElement, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { getNotifications } from '@/Services/getNotificationsService';
 import { getTransactions } from '@/Services/getTransactionsService';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
 
 const UpcomingPayments = () => {

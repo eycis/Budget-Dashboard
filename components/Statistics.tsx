@@ -34,10 +34,10 @@ const Statistics = () => {
         </div>
         </div>
         <div>
-        <p  className='font-title text-white ml-5 mt-10 mb-2' >Prediction of Balance</p>
-        <div className='statisticsTables h-fulls' data-aos="fade-right">
+        {/* <p  className='font-title text-white ml-5 mt-10 mb-2' >Prediction of Balance</p>
+        <div className='col-span-1 bg-[#2a2a2c] rounded-3xl p-3' data-aos="fade-right">
         <PredictionChart/>
-        </div>
+        </div> */}
         </div>
         </div>
   )

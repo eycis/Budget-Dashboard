@@ -8,7 +8,7 @@ import colors from '@/styles/colors';
 import { getTransactions } from '@/Services/getTransactionsService';
 
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
 
 const DoughnutChart = () => {

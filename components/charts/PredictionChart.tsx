@@ -107,7 +107,7 @@ const PredictionChart = () => {
       };
 
     return (
-        <div className='w-full h-full mx-auto'>
+        <div className='w-full aspect-[2/1]'>
         <Line data={lineData} options={lineOptions} />
       </div>
     );

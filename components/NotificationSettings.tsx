@@ -62,12 +62,12 @@ const NotificationSettings = () => {
       <p className='dashboard-main'>Notifications Settings</p>
       <div className='grid grid-cols-2 gap-2'>
         <div>
-        <div className='grid grid-cols-2 w-fit'>
+        <div className='grid grid-cols-2 w-full'>
           <p className='transactions-text'>Description of Notification</p>
           <input
             name = 'notificationDescription'
             id = "notificationDescription"
-            className='ml-10 px-5 w-3/5 h-fit rounded-2xl bg-[#2a2a2c] text-white text-lg font-title'
+            className='ml-10 px-5 w-3/5 h-fit rounded-2xl bg-[#2a2a2c] text-white font-title'
           />
           <p className='transactions-text'>Set the amount</p>
           <input
@@ -76,10 +76,8 @@ const NotificationSettings = () => {
             id = "amount"
             className='ml-10 px-5 w-3/5 h-fit rounded-2xl bg-[#2a2a2c] text-white font-title'
           />
-            <div>
-              <p className='transactions-text'>Reoccuring transaction</p>
-            </div>
-            <div>
+          <p className='transactions-text'>Reoccuring transaction</p>
+            <div className='flex items-center gap-2 ml-10'>
               <Switch
                 name = 'isReccuring'
                 id = "isRecurring"
@@ -90,10 +88,8 @@ const NotificationSettings = () => {
                 {ocurringNotification ? 'Ocurring' : 'One-Time-Thing'}
               </span>
             </div>
-              <div className='' data-aos='fade-up'>
                 <p className='transactions-text'>Date of payment</p>
-                </div>
-                <div>
+                <div className='flex items-center gap-2 ml-10'>
                 <input
                   type='date'
                   name= 'dueDate'
@@ -105,7 +101,7 @@ const NotificationSettings = () => {
           <button
             onClick={createNotification}
             data-aos='fade-down'
-            className='p-3 mt-5  bg-white rounded-2xl font-title font-bold text-black hover:bg-[#3a3aa3] transition-colors duration-500'
+            className='p-3 mt-5 bg-white rounded-2xl font-title font-bold text-black hover:bg-[#3a3aa3] transition-colors duration-500'
           >
             Create Notification
           </button>
