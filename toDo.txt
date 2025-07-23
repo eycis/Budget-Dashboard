@@ -1,0 +1,8 @@
+připojit k db
+opravit typování
+přepsat komponenty a pages
+upravit UI k Input Transactions a Input Notifications
+
+
+
+deploy na vercel ke konci? 

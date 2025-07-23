@@ -40,3 +40,4 @@ yarn-error.log*
 next-env.d.ts
 config/databaseConfig.ts
 config/serviceAccountKey.json
+config/serviceAccountKeys.json
