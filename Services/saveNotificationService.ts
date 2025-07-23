@@ -3,7 +3,7 @@ import { Notification } from "@/models/notification";
 export const SaveNotification = async(newNotification : Notification): Promise<boolean> => {
     let saveStatus = false;
     try{
-          const response = await fetch("api/saveNotification", {
+          const response = await fetch("api/Notifications", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

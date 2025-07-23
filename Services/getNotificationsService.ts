@@ -2,7 +2,7 @@ import { Notification } from "@/models/notification";
 
 export const getNotifications = async (): Promise<Notification[] | null > => {
     try{
-        const response = await fetch("api/fetchNotifications");
+        const response = await fetch("api/Notifications");
         if(!response.ok){
           console.error("error while fetching the data");
           return null;

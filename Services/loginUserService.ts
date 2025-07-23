@@ -2,10 +2,9 @@ import {user} from "@/models/user"
 
 export const getLoginUser = async({user, password}: user): Promise<boolean> => {
     let data = false;
-    console.log(user);
-        console.log(password);
+
     try {
-        const response = await fetch("api/fetchLoginUser", {
+        const response = await fetch("api/Login", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

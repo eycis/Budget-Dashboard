@@ -1,12 +1,10 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { dbAdmin } from "@/config/databaseAdmin"; 
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { NextRequest, NextResponse } from "next/server";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === "POST") {
+export async function GET(req: NextRequest) {
     try{
-        
-        const {user, password} = req.body;
+        const body = await req.json();
+        const {user, password} = body;
 
         const userRef = dbAdmin.collection("users");
 
@@ -14,17 +12,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const querySnapshot = await userQuery.get();
         
-        if (!querySnapshot.empty) {
-            res.status(200).json({message: 'user logged in!'});
-            console.log('v pořádku');
-        } else {
-            res.status(401).json({message: 'invalid credential'});
+        if (querySnapshot.empty) {
+            NextResponse.json({message: 'invalid credential'}, {status: 401});
         }
+
+        NextResponse.json({message: 'user logged in!'}, {status: 200});
     } catch(error){
-        console.error("Error trying to log in", error);
-        res.status(500).json({message:"failed due to", error});
-    }}
-    else{
-        res.status(405).json({message:"method not allowed"});
+        console.error("Error while trying to log in", error);
+        NextResponse.json({message:"Server error"}, {status: 500});
     }
-    }
+}

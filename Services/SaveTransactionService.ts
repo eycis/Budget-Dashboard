@@ -3,7 +3,7 @@ import { Transaction } from "@/models/transaction";
 export const saveTransaction = async(newTransaction: Transaction) : Promise<boolean> => {
     let saveStatus = false;
     try{
-        const response = await fetch("api/submitTransaction", {
+        const response = await fetch("api/Transactions", {
         method: "POST", 
         headers: {
             "Content-Type" : "application/json",

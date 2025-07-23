@@ -2,7 +2,7 @@ import { Transaction } from "@/models/transaction";
 
 export const getTransactions = async(): Promise<Transaction [] | null> => {
     try {
-        const response = await fetch("api/fetchTransactions");
+        const response = await fetch("api/Transactions");
         if(!response.ok){
         console.error("error while fetching the data");
         }

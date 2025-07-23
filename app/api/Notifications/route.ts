@@ -1,55 +1,53 @@
-// import {db} from "@/config/databaseConfig";
-// import { NextApiRequest, NextApiResponse } from "next";
-// import admin from "firebase-admin";
-// import {dbAdmin} from "@/config/databaseAdmin";
+//import {db} from "@/config/databaseConfig";
+import { NextApiRequest, NextApiResponse } from "next";
+import admin from "firebase-admin";
+import {dbAdmin} from "@/config/databaseAdmin";
+import { NextRequest, NextResponse } from "next/server";
 
-// export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-//     if (req.method === "POST") {
-//       try{
-//         const { dueDate, subject, isRecurring, user, amount} = req.body;
+export async function POST (req: NextRequest) {
+      try{
+        const body = await req.json();
+        const { dueDate, subject, isRecurring, user, amount} = body;
         
-//         if ( !dueDate || !subject || !user || !amount) {
-//             return res.status(400).json({ message: "Missing required fields." });
-//           }
+        if ( !dueDate || !subject || !user || !amount) {
+            return NextResponse.json({ message: "Missing required fields."}, {status: 400});
+        }
 
-//         const newNotification = {
-//             dueDate,
-//             subject,
-//             isRecurring,
-//             user,
-//             amount
-//           };
+        const newNotification = {
+            dueDate,
+            subject,
+            isRecurring,
+            user,
+            amount
+          };
 
-//           await dbAdmin.collection("notifications").doc().set(newNotification);
-//           res.status(201).json({ message: "Notification added"});
-//         } catch (error) {
-//           console.error("Error adding transaction:", error);
-//           res.status(500).json({ message: "Internal Server Error", error });
-//         }
-//     }};
+        await dbAdmin.collection("notifications").add(newNotification);
+
+        NextResponse.json({ message: "Notification added"}, {status: 200});
+        } catch (error) {
+          console.error("Error adding transaction:", error);
+          NextResponse.json({ message: "Internal Server Error"}, {status: 500});
+        }
+    };
     
-//     export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-//         if (req.method === "GET") {
-//         try{
-//             const notificationsRef = dbAdmin.collection("notifications");
-//             const snapshot = await notificationsRef.get();
+    export async function GET() {
+        try{
+            const docData = await dbAdmin.collection("notifications").get();
+
+            if(docData.empty){
+                NextResponse.json({message:"No notifications found"}, {status: 204})
+            }
     
-//             const notifications = snapshot.docs.map((doc) => ({
-//                 id: doc.id,
-//                 dueDate: doc.data().dueDate,
-//                 subject: doc.data().subject,
-//                 isRecurring: doc.data().isRecurring,
-//                 user: doc.data().user,
-//                 amount: doc.data().amount,
-//             }))
+            const notifications = docData.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }))
             
-//             res.status(200).json({notifications});
-//         } catch(error){
-//             console.error("Error fetching notifications:", error);
-//             res.status(500).json({message:"failed to fetch notifications", error});
-//         }}
-//         else{
-//             res.status(405).json({message:"method not allowed"});
-//         }
-//         }
+            NextResponse.json({data: notifications}, {status: 200});
+        } catch(error){
+            console.error("Error fetching notifications:", error);
+            NextResponse.json({message:"failed to fetch notifications"}, {status:500});
+        }
+    };
+        
     
