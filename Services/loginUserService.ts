@@ -1,8 +1,6 @@
 import {user} from "@/models/user"
 
 export const getLoginUser = async({user, password}: user): Promise<boolean> => {
-    let data = false;
-
     try {
         const response = await fetch("api/Login", {
             method: 'POST',
@@ -11,17 +9,14 @@ export const getLoginUser = async({user, password}: user): Promise<boolean> => {
             },
             body: JSON.stringify({user, password})
             });
+
             if(!response.ok){
                 console.error("error while fetching the data");
-                return data;
+                return false;
             }
-            console.log("------------------");
-            
-            data = true;
-            console.log(data);
-            return data;
+            return true;
     }catch(error){
         console.error("error with loading transactions", error);
-        return data;
+        return false;
     }
 }

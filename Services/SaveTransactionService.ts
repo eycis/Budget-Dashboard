@@ -1,7 +1,6 @@
 import { Transaction } from "@/models/transaction";
 
 export const saveTransaction = async(newTransaction: Transaction) : Promise<boolean> => {
-    let saveStatus = false;
     try{
         const response = await fetch("api/Transactions", {
         method: "POST", 
@@ -10,13 +9,13 @@ export const saveTransaction = async(newTransaction: Transaction) : Promise<bool
         },
         body: JSON.stringify(newTransaction),
         });
-        if(response.ok){
-            saveStatus = true;
+        if(!response.ok){
+            return false;
         }
-        return saveStatus; 
+        return true;
     }
     catch (error) {
         console.error("error during api call", error);
-        return saveStatus;
+        return false;
     }    
 }

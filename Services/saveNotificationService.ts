@@ -1,7 +1,6 @@
 import { Notification } from "@/models/notification";
 
 export const SaveNotification = async(newNotification : Notification): Promise<boolean> => {
-    let saveStatus = false;
     try{
           const response = await fetch("api/Notifications", {
             method: "POST",
@@ -10,13 +9,13 @@ export const SaveNotification = async(newNotification : Notification): Promise<b
             },
             body: JSON.stringify(newNotification),
           });
-          if(response.ok){
-            saveStatus = true;
+          if(!response.ok){
+            return false;
           }
-          return saveStatus;
+          return true;
         }
         catch(error){
           console.error("error during appi call", error);
-          return saveStatus;
+          return false;
         }
       };

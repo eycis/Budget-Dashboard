@@ -1,15 +1,18 @@
 import { Transaction } from "@/models/transaction";
 
-export const getTransactions = async(): Promise<Transaction [] | null> => {
+export const getTransactions = async(): Promise<{data: Transaction [] | null, message: string}> => {
     try {
         const response = await fetch("api/Transactions");
-        if(!response.ok){
-        console.error("error while fetching the data");
-        }
+
         const data = await response.json();
-        return data.transactions;
+
+        if(!response.ok){
+            return {data: null, message: data.message};
+        }
+     
+        return {data: data.data, message: data.message };
     }catch(error){
         console.error("error with loading transactions", error);
-        return null;
+        return {data: null, message: "Internal Server Error"};
     }
 }

@@ -1,17 +1,19 @@
 import { Notification } from "@/models/notification";
 
-export const getNotifications = async (): Promise<Notification[] | null > => {
+export const getNotifications = async (): Promise<{data: Notification[] | null, message : string} > => {
     try{
         const response = await fetch("api/Notifications");
+        const json = await response.json();
+
         if(!response.ok){
           console.error("error while fetching the data");
-          return null;
+          return {data: null, message:json.message}
         }
-        const data = await response.json();
-        return data.notifications; 
+
+        return {data: json.data, message: json.message} 
       }
       catch(error){
         console.error("error while api call", error);
-        return null;
+        return {data: null, message: "Internal Server Error"};
       }
 }
