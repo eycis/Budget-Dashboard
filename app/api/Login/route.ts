@@ -7,8 +7,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try{
         
         const {user, password} = req.body;
-        console.log("++++++++++++++++++++++");
-        console.log(req.body);
 
         const userRef = dbAdmin.collection("users");
 
