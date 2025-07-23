@@ -19,6 +19,6 @@ export async function GET(req: NextRequest) {
         NextResponse.json({message: 'user logged in!'}, {status: 200});
     } catch(error){
         console.error("Error while trying to log in", error);
-        NextResponse.json({message:"Server error"}, {status: 500});
+        NextResponse.json({message:"Internal Server Error"}, {status: 500});
     }
 }

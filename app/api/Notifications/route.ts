@@ -23,10 +23,10 @@ export async function POST (req: NextRequest) {
 
         await dbAdmin.collection("notifications").add(newNotification);
 
-        NextResponse.json({ message: "Notification added"}, {status: 200});
+        return NextResponse.json({ message: "Notification added"}, {status: 200});
         } catch (error) {
           console.error("Error adding transaction:", error);
-          NextResponse.json({ message: "Internal Server Error"}, {status: 500});
+          return NextResponse.json({ message: "Internal Server Error"}, {status: 500});
         }
     };
     
@@ -43,10 +43,10 @@ export async function POST (req: NextRequest) {
                 ...doc.data()
             }))
             
-            NextResponse.json({data: notifications}, {status: 200});
+            return NextResponse.json({data: notifications}, {status: 200});
         } catch(error){
             console.error("Error fetching notifications:", error);
-            NextResponse.json({message:"failed to fetch notifications"}, {status:500});
+            return NextResponse.json({message:"Internal Server Error"}, {status:500});
         }
     };
         
