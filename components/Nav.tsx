@@ -34,7 +34,7 @@ const Nav = () => {
           </button>
         </Link>
       </div>
-      <div className="nav-icons">
+      <div className="nav-icons absolute bottom-5">
         <Link href="/Login">
           <button>
           <UserCircleIcon className="h-10 w-10" />

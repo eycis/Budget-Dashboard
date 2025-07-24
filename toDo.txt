@@ -5,5 +5,28 @@ přepsat komponenty a pages
 upravit UI k Input Transactions a Input Notifications
 
 
+Statistics:
+
+6. 🕐 Cashflow Timeline (měsíční/čtvrtletní pohyb)
+Zobraz cashflow jako:
+
+plaintext
+Zkopírovat
+Upravit
+Jan: +5 000 Kč
+Feb: -2 000 Kč
+Mar: +1 300 Kč
+7. 🧩 Anomálie nebo upozornění
+Např. výdaj přesahující běžný limit („Spending on Fun is 150% higher than usual“)
+
+4. 🧠 Rozpočtové cíle (Budget Goals Tracker)
+Pokud máš nastavené budgety na kategorie (např. max 5 000 Kč na „Jídlo“), ukazuj progress bar:
+
+Přidej malé boxy s vývojem oproti předchozímu období:
+
+Např. "Expenses vs last month", "Investments vs last quarter"
+
+Ikonka ↑ / ↓, zelená / červená barva
+
 
 deploy na vercel ke konci? 

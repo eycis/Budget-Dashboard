@@ -18,20 +18,21 @@ const UpcomingPayments = () => {
     const [notifications, setNotifications] = useState<Notification[]>([]);
     const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-    useEffect( () => {
-      const fetchNotificationData = async () => {
-        const notificationData = await getNotifications();
-        if(notificationData.data) {
-          setNotifications(notificationData.data);
-        }
+    const fetchNotificationData = async () => {
+      const notificationData = await getNotifications();
+      if(notificationData.data) {
+        setNotifications(notificationData.data);
       }
+    }
 
-      const fetchTransactionData = async() => {
-      const transactionsData = await getTransactions();
-      if(transactionsData.data){
-        setTransactions(transactionsData.data);
-      }
-      }
+    const fetchTransactionData = async() => {
+    const transactionsData = await getTransactions();
+    if(transactionsData.data){
+      setTransactions(transactionsData.data);
+    }
+    }
+
+    useEffect( () => {
 
       fetchTransactionData();
       fetchNotificationData();
@@ -41,6 +42,7 @@ const UpcomingPayments = () => {
     .reduce((sum, transaction) => sum+ transaction.amount, 0), [transactions]) ;  
 
     const currentUpcomingPayments= useMemo( () => notifications.filter((notification) => {
+      if(!notification.dueDate) return false;
       const month = notification.dueDate.substring(5,7);
       const year = notification.dueDate.substring(0,4);
 
@@ -48,7 +50,8 @@ const UpcomingPayments = () => {
         month === currentMonth.toString().padStart(2, "0") &&
         year === currentYear.toString()
       );
-    }).reduce((sum, notification) => sum + notification.amount, 0), [notifications] );
+    }).reduce((sum, notification) => sum + notification.amount, 0),
+     [notifications] );
 
     const doughnutOptions: ChartOptions<'doughnut'> = {
         responsive: true,
