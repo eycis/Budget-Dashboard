@@ -11,7 +11,7 @@ import { getTransactions } from '@/Services/getTransactionsService';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement);
 
 
-const BarChart = () => {
+const TopExpenses = () => {
 
   const[monthView, setMonthView] = useState(false);
 
@@ -88,11 +88,11 @@ const BarChart = () => {
       <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
       <span className="font-title text-sm ml-2 text-white">{monthView ? 'Month View' : 'All Records'}</span>
     </div>
-    <div className='w-full max-h-full mx-auto'>
+    <div className='w-full aspect-[3/2] mx-auto'>
       <Bar data={barData} options={barOptions} />
     </div>
     </div>
   )
 }
 
-export default BarChart
+export default TopExpenses

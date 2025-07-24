@@ -28,7 +28,7 @@ const InvestmentInTime = () => {
 
     const lineOptions:ChartOptions<'line'> = {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           display: true,
@@ -36,7 +36,7 @@ const InvestmentInTime = () => {
             usePointStyle: true,
             pointStyle: 'line',
             boxWidth: 10,
-            padding: 10,
+            padding: 0,
             color: 'white',
           },
         },
@@ -62,8 +62,8 @@ const InvestmentInTime = () => {
     };
   
     return (
-        <div>
-        <Line data={lineData} options={lineOptions} className='mt-5 h-full w-full' />
+        <div className='h-fit w-full'>
+        <Line data={lineData} options={lineOptions} />
       </div>
   )
 }
