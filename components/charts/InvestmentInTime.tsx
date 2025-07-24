@@ -12,8 +12,8 @@ const InvestmentInTime = () => {
 
     const fetchData = async() => {
           const data = await getTransactions();
-          if(data){
-            setTransactions(data);
+          if(data.data){
+            setTransactions(data.data);
           }
         }
       

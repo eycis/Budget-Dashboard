@@ -26,8 +26,8 @@ const NotificationSettings = () => {
   useEffect( () => {
     const fetchData = async () => {
       const data = await getNotifications();
-      if(data) {
-        setNotifications(data);
+      if(data.data) {
+        setNotifications(data.data);
         const filteredNotifications = notifications.filter((notification) => notification.user === "user1" && notification.dueDate >= currentDay)
         setNotifications(filteredNotifications);
       }

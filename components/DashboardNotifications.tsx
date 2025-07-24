@@ -7,23 +7,24 @@ const DashboardNotifications = () => {
 
     const currentDay = `${new Date().getFullYear()}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${new Date().getDate().toString().padStart(2,'0')}`; 
 
-    const getNotifications = async () => {
-      try{
-        const response = await fetch("api/fetchNotifications");
-        if(!response.ok){
-          console.error("error while fetching the data");
-        }
-        const data = await response.json();
-        console.log("should update");
-        setNotifications(data.notifications);
-      }
-      catch(error){
-        console.error("error while api call", error);
-      }
-    }
+    // const getNotifications = async () => {
+    //   try{
+    //     const response = await fetch("api/fetchNotifications");
+    //     if(!response.ok){
+    //       console.error("error while fetching the data");
+    //     }
+    //     const data = await response.json();
+    //     console.log("should update");
+    //     setNotifications(data.notifications);
+    //   }
+    //   catch(error){
+    //     console.error("error while api call", error);
+    //   }
+    // }
+    // }
 
     useEffect(() => {
-      getNotifications();
+      // getNotifications();
     }, []);
     
     console.log(notifications);

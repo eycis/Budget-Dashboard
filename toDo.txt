@@ -1,4 +1,5 @@
-připojit k db
+připojit k db - done
+
 opravit typování
 přepsat komponenty a pages
 upravit UI k Input Transactions a Input Notifications

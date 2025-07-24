@@ -21,15 +21,15 @@ const UpcomingPayments = () => {
     useEffect( () => {
       const fetchNotificationData = async () => {
         const notificationData = await getNotifications();
-        if(notificationData) {
-          setNotifications(notificationData);
+        if(notificationData.data) {
+          setNotifications(notificationData.data);
         }
       }
 
       const fetchTransactionData = async() => {
       const transactionsData = await getTransactions();
-      if(transactionsData){
-        setTransactions(transactionsData);
+      if(transactionsData.data){
+        setTransactions(transactionsData.data);
       }
       }
 

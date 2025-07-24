@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET () {
     try{
+        console.log("in api");
         const transactionsRef = dbAdmin.collection("transactions");
         const snapshot = await transactionsRef.get();
 

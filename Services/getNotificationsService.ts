@@ -6,7 +6,6 @@ export const getNotifications = async (): Promise<{data: Notification[] | null, 
         const json = await response.json();
 
         if(!response.ok){
-          console.error("error while fetching the data");
           return {data: null, message:json.message}
         }
 

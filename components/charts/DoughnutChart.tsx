@@ -23,9 +23,9 @@ const DoughnutChart = () => {
 
   const fetchData = async() => {
       const data = await getTransactions();
-      if(data){
+      if(data.data){
         console.log("data from doughnut:", data);
-        setTransactions(data);
+        setTransactions(data.data);
       }
     }
   
