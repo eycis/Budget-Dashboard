@@ -19,6 +19,11 @@
     { "id": 17, "type": "Expense", "category": "Other", "amount": 90, "date": "2024-02-18", "description": "Misc purchase" },
     { "id": 18, "type": "Expense", "category": "Utilities", "amount": 70, "date": "2024-02-20", "description": "Gas bill" },
     { "id": 19, "type": "Savings & Investment", "category": "Investment", "amount": 250, "date": "2024-02-25", "description": "Stock buy" },
-    { "id": 20, "type": "Income", "category": "Income", "amount": 2700, "date": "2024-03-01", "description": "March salary" }
+    { "id": 20, "type": "Income", "category": "Income", "amount": 2700, "date": "2024-03-01", "description": "March salary" },
+    { "id": 21, "type": "Income", "category": "Second job", "amount": 350, "date": "2025-07-05", "description": "Freelance project" },
+    { "id": 22, "type": "Expense", "category": "Transportation", "amount": 45, "date": "2025-07-07", "description": "Monthly metro pass" },
+    { "id": 23, "type": "Savings & Investment", "category": "Savings", "amount": 400, "date": "2025-07-10", "description": "Savings deposit" },
+    { "id": 24, "type": "Expense", "category": "Fun", "amount": 90, "date": "2025-07-12", "description": "Movie and dinner" },
+    { "id": 25, "type": "Income", "category": "Income", "amount": 2600, "date": "2025-07-15", "description": "July salary" }
   ]
 }

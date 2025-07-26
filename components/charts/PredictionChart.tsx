@@ -33,9 +33,9 @@ const PredictionChart = () => {
 
       const dailyTransactions = transactions.filter(transaction => new Date(transaction.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) === date);
       
-      const dailyIncome = dailyTransactions.filter(transaction => transaction.type === 'income').reduce((sum, transaction) => sum + transaction.amount, 0);
+      const dailyIncome = dailyTransactions.filter(transaction => transaction.type === 'Income').reduce((sum, transaction) => sum + transaction.amount, 0);
       
-      const dailyExpenses = dailyTransactions.filter(transaction => transaction.type === 'expense').reduce((sum, transaction) => sum + transaction.amount, 0);
+      const dailyExpenses = dailyTransactions.filter(transaction => transaction.type === 'Expense').reduce((sum, transaction) => sum + transaction.amount, 0);
       
       cumulativeBalance += dailyIncome - dailyExpenses;
       
@@ -43,9 +43,9 @@ const PredictionChart = () => {
     });
 
     
-    const avgIncome = transactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0) / dates.length;
+    const avgIncome = transactions.filter(t => t.type === 'Income').reduce((sum, t) => sum + t.amount, 0) / dates.length;
     
-    const avgExpenses = transactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0) / dates.length;
+    const avgExpenses = transactions.filter(t => t.type === 'Expense').reduce((sum, t) => sum + t.amount, 0) / dates.length;
     
     const avgMonthlyChange = avgIncome - avgExpenses;
 
@@ -57,7 +57,7 @@ const PredictionChart = () => {
         
         date.setMonth(date.getMonth() + i + 1);
         
-        return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+        return date.toLocaleDateString('cs-CZ', { year: 'numeric', month: 'short' });
     });
     
     const futureBalanceData = Array.from({ length: forecastMonths }, (_, i) => cumulativeBalance + (i + 1) * avgMonthlyChange);

@@ -21,7 +21,7 @@ const InvestmentInTime = () => {
       fetchData();
     }, []);
 
-    const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }))));
+    const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('cz-CZ'))));
 
     const investment = transactions.filter(transaction => transaction.category === 'Investment').map(transaction => transaction.amount);
     const savings = transactions.filter(transaction => transaction.category === 'Savings').map(transaction => transaction.amount);

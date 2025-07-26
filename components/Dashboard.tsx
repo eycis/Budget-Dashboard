@@ -45,7 +45,6 @@ const Dashboard = () => {
       <p className='dashboard-main'> Dashboard </p>
       
       {/* Hlavní grid pro dlaždice */}
-      {/* když sem přidám h-screen, najednou se roztáhne a způsobí to to, že pro zobrazení grafů musím scrollovat dolů.  */}
       <div className='grid grid-cols-5 gap-3 w-full min-h-0'> 
         {/* Levá část - KPIs a grafy */}
         <div className='col-span-4 grid grid-cols-4 gap-3'>
