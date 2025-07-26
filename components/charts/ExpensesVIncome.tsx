@@ -127,9 +127,9 @@ const ExpensesVIncome = () => {
         <div className='flex w-full h-fit'>
             <Line ref={chartRef} data={chartData} options={options} className=' flex flex-col items-center w-auto' />
             </div>
-            <div className='flex items-center justify-center'>
+            {/* <div className='flex items-center justify-center'>
             <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
-            <span className="font-title text-sm ml-2 text-white">{monthView ? 'Month View' : 'All Records'}</span></div>
+            <span className="font-title text-sm ml-2 text-white">{monthView ? 'Month View' : 'All Records'}</span></div> */}
         </div>
     )
 }
