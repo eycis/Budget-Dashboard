@@ -10,12 +10,6 @@ Statistics:
 6. 🕐 Cashflow Timeline (měsíční/čtvrtletní pohyb)
 Zobraz cashflow jako:
 
-plaintext
-Zkopírovat
-Upravit
-Jan: +5 000 Kč
-Feb: -2 000 Kč
-Mar: +1 300 Kč
 Přidat na spodní stranu filtrování pro měsíce jako osu
 Upravit vzhled pro LG
 

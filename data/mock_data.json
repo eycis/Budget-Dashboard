@@ -24,6 +24,11 @@
     { "id": 22, "type": "Expense", "category": "Transportation", "amount": 45, "date": "2025-07-07", "description": "Monthly metro pass" },
     { "id": 23, "type": "Savings & Investment", "category": "Savings", "amount": 400, "date": "2025-07-10", "description": "Savings deposit" },
     { "id": 24, "type": "Expense", "category": "Fun", "amount": 90, "date": "2025-07-12", "description": "Movie and dinner" },
-    { "id": 25, "type": "Income", "category": "Income", "amount": 2600, "date": "2025-07-15", "description": "July salary" }
+    { "id": 25, "type": "Income", "category": "Income", "amount": 2600, "date": "2025-07-15", "description": "July salary" },
+    { "id": 26, "type": "Income", "category": "Income", "amount": 2550, "date": "2025-06-01", "description": "June salary" },
+    { "id": 27, "type": "Expense", "category": "Groceries", "amount": 140, "date": "2025-06-05", "description": "Weekly shopping" },
+    { "id": 28, "type": "Savings & Investment", "category": "Savings", "amount": 500, "date": "2025-06-10", "description": "Monthly savings" },
+    { "id": 29, "type": "Expense", "category": "Utilities", "amount": 85, "date": "2025-06-15", "description": "Electric and gas" },
+    { "id": 30, "type": "Income", "category": "Second job", "amount": 320, "date": "2025-06-20", "description": "Side gig" }
   ]
 }

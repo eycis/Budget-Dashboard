@@ -11,8 +11,8 @@ const CashFlow = ({transactions} : Props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await calculateCashFlow(transactions);
-            setCashflow(result);
+            const result : number  = await calculateCashFlow(transactions);
+            setCashflow(Math.round(result));
         };
         
         fetchData();

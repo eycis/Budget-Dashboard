@@ -23,13 +23,14 @@ const getCalculations = (transactions : Transaction[], month: number, year: numb
     const income : number = transactions.filter((transaction) => transaction.type === "Income" 
     && isSameMonth(transaction.date, month, year))
     .reduce((sum, transaction) => sum + transaction.amount, 0);
-
+    //TODO: opatřit výjimku v případě, že za minulý měsíc nejsou k dispozici data.
     const difference : number = income - expenses;
-
     return difference;
 }
 
-const isSameMonth = (date: string, month : number, year: number) => {
-    date.substring(5,7) == month.toString().padStart(2, "0")
-    && date.substring(0, 4) == year.toString()
+const isSameMonth = (date: string, month : number, year: number) : boolean => {
+    return(
+        date.substring(5,7) == month.toString().padStart(2, "0")
+        && date.substring(0, 4) == year.toString()
+    )
 }
