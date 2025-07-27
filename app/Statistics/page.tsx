@@ -7,17 +7,23 @@ import InvestmentInTime from '@/components/charts/InvestmentInTime'
 import TopExpenses from '@/components/charts/TopExpenses'
 import MonthView from '@/components/MonthView'
 import Nav from '@/components/Nav'
+import { isSameMonth } from '@/lib/calculations/isSameMonth'
 import { Transaction } from '@/models/transaction'
 import { getTransactions } from '@/Services/getTransactionsService'
 import React, { useEffect, useState } from 'react'
 
 const StatisticsPage = () => {
 
+    const [ allTransactions, setAllTransactions] = useState<Transaction[]>();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const currentMonth : number = new Date().getMonth() + 1;
+    const currentYear : number = new Date().getFullYear();
+    const prevYear : number = new Date().getFullYear();
   
     const fetchData = async() => {
         const data = await getTransactions();
         if(data.data){
+          setAllTransactions(data.data);
           setTransactions(data.data);
         }
       }
@@ -26,9 +32,19 @@ const StatisticsPage = () => {
       fetchData();
     }, []);
     
-    //TODO: async
+    //TODO: async 
+    //TODO: setTransactions according to selected month and send it via parameter in {} props
     const  handleMonthChange = (month: number) => {
+      if(!allTransactions) return;
 
+      const year : number = month > currentMonth ? prevYear : currentYear;
+
+      const filtered = allTransactions.filter((transaction) =>
+        isSameMonth(transaction.date, month, year)
+      );
+      
+      console.log(filtered);
+      setTransactions(filtered);
     }
 
 

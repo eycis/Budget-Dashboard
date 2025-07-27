@@ -4,6 +4,11 @@ Přepsat anomalies a enkapsulovat kalkulace- done
 Zobraz cashflow jako: - done
 
 přepsat komponenty a pages
+    Přepsat : expensesvincome 
+        DoughnutChart - změnit i jméno pro zlepšení přehlednosti 
+        Line Chart - změnit i jméno komponenty
+        Upcoming Payments
+        Dashboard
 upravit UI k Input Transactions a Input Notifications
 Přidat na spodní stranu filtrování pro měsíce jako osu
 Upravit vzhled pro LG

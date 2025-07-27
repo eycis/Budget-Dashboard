@@ -13,7 +13,7 @@ const MonthView = ({onSelectMonth} : Props) => {
         {months.map((month, index) => (
             <button
                 key = {month}
-                onClick= { () => onSelectMonth(index + 1)}>
+                onClick= { () => { console.log("clicked") , onSelectMonth(index + 1)}}>
                 {month}
             </button>
         ))}
