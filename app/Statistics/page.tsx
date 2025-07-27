@@ -1,6 +1,7 @@
 'use client'
 
 import AnomaliesKPI from '@/components/charts/AnomaliesKPI'
+import CashFlow from '@/components/charts/CashFlow'
 import ExpensesVIncome from '@/components/charts/ExpensesVIncome'
 import InvestmentInTime from '@/components/charts/InvestmentInTime'
 import TopExpenses from '@/components/charts/TopExpenses'
@@ -41,15 +42,18 @@ const StatisticsPage = () => {
         </div>
         <div>
         <div>
-        <p className='font-title text-white ml-5 mb-2'>Anomalies</p>
+        <p className='font-title text-white ml-5 mb-2'> Statistics KPI</p>
+        <div className='grid grid-cols-3 gap-2'>
         <AnomaliesKPI transactions = {transactions}/>
-        <p className='font-title text-white ml-5 mb-2'>Ratio of Investments, Expenses, and Income</p>
+        <CashFlow transactions={transactions} />
+        </div>
+        <p className='font-title text-white ml-5 mb-2 mt-3'>Ratio of Investments, Expenses, and Income</p>
         <div className='statisticsTables' data-aos="fade-up">
         <ExpensesVIncome/>
         </div>
         </div>
         <div>
-        <p  className='font-title text-white ml-5 mb-2'>Investments in Time</p>
+        <p  className='font-title text-white ml-5 mb-2 mt-3'>Investments in Time</p>
         <div className='statisticsTables' data-aos="fade-up">
         <InvestmentInTime/>
         </div>

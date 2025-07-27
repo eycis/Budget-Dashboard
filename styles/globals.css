@@ -9,6 +9,10 @@
         @apply relative text-white font-title font-bold text-2xl bg-[#2a2a2c] pt-4 pb-5 px-5 h-full
         rounded-lg hover:bg-[#3a3aa3] transition-colors duration-500
     }
+    .statistics-kpi {
+        @apply text-white font-title font-bold text-sm bg-[#2a2a2c] pt-4 pb-8 px-5 h-full max-w-full
+        rounded-lg hover:bg-[#3a3aa3] transition-colors duration-500
+    }
 
     .dashboard-figures{
         @apply text-white font-title font-bold text-2xl mt-5

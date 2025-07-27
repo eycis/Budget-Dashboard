@@ -88,7 +88,7 @@ const TopExpenses = () => {
       <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
       <span className="font-title text-sm ml-2 text-white">{monthView ? 'Month View' : 'All Records'}</span>
     </div>
-    <div className='w-full aspect-[3/2] mx-auto'>
+    <div className='w-full aspect-[3/2] mx-auto pb-8'>
       <Bar data={barData} options={barOptions} />
     </div>
     </div>

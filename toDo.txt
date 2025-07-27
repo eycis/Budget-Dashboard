@@ -1,6 +1,6 @@
 připojit k db - done
-V každém grafu získáváme data individuálně, nešlo by propojit data při spuštění a změně a sdílet je, aby nebylo tolik getů?
-opravit typování
+Přepsat anomalies a enkapsulovat kalkulace- done
+
 přepsat komponenty a pages
 upravit UI k Input Transactions a Input Notifications
 
@@ -16,16 +16,7 @@ Upravit
 Jan: +5 000 Kč
 Feb: -2 000 Kč
 Mar: +1 300 Kč
-
-
-7. 🧩 Anomálie nebo upozornění
-Např. výdaj přesahující běžný limit („Spending on Fun is 150% higher than usual“)
-
-Přidej malé boxy s vývojem oproti předchozímu období:
-
-Např. "Expenses vs last month", "Investments vs last quarter"
-
-Ikonka ↑ / ↓, zelená / červená barva
-
+Přidat na spodní stranu filtrování pro měsíce jako osu
+Upravit vzhled pro LG
 
 deploy na vercel ke konci? 
