@@ -1,26 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement, ChartOptions, LineElement, PointElement } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement, ChartOptions } from 'chart.js';
 import { Transaction } from '@/models/transaction';
-import transactionsData from '@/data/mock_data.json';
 import { Bar, Line } from 'react-chartjs-2';
-import { getTransactions } from '@/Services/getTransactionsService';
 
+interface Props {
+  transactions : Transaction [];
+}
 
-const InvestmentInTime = () => {
+const InvestmentInTime = ({transactions} : Props) => {
   
-    const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-    const fetchData = async() => {
-          const data = await getTransactions();
-          if(data.data){
-            setTransactions(data.data);
-          }
-        }
-      
-    useEffect(() => {
-      fetchData();
-    }, []);
-
     const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('cz-CZ'))));
 
     const investment = transactions.filter(transaction => transaction.category === 'Investment').map(transaction => transaction.amount);

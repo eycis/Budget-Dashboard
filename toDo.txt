@@ -1,15 +1,10 @@
 připojit k db - done
 Přepsat anomalies a enkapsulovat kalkulace- done
+6. 🕐 Cashflow Timeline (měsíční/čtvrtletní pohyb)
+Zobraz cashflow jako: - done
 
 přepsat komponenty a pages
 upravit UI k Input Transactions a Input Notifications
-
-
-Statistics:
-
-6. 🕐 Cashflow Timeline (měsíční/čtvrtletní pohyb)
-Zobraz cashflow jako:
-
 Přidat na spodní stranu filtrování pro měsíce jako osu
 Upravit vzhled pro LG
 

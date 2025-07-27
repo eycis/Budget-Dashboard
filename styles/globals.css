@@ -64,7 +64,7 @@
     }
 
     .statisticsTables {
-        @apply col-span-1 row-span-1 bg-[#2a2a2c] rounded-3xl pt-3 px-3
+        @apply col-span-1 row-span-1 bg-[#2a2a2c] rounded-3xl pt-3 px-3 
     }
 
     .loginInput {

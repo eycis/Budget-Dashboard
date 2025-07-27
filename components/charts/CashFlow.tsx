@@ -1,6 +1,7 @@
 import { calculateCashFlow } from '@/lib/calculations/calculateCashFlow';
 import { Transaction } from '@/models/transaction';
 import React, { useEffect, useState } from 'react'
+
 interface Props {
     transactions : Transaction [];
 }

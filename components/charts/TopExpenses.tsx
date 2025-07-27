@@ -6,31 +6,19 @@ import Switch from '@mui/material/Switch';
 import { Bar } from 'react-chartjs-2';
 //import { colors } from '@mui/material';
 import colors from '@/styles/colors';
-import { getTransactions } from '@/Services/getTransactionsService';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement);
+interface Props {
+  transactions : Transaction [];
+}
 
-
-const TopExpenses = () => {
+const TopExpenses = ({transactions} : Props) => {
 
   const[monthView, setMonthView] = useState(false);
 
   const currentMonth = new Date().getMonth() + 1;
 
   const currentYear = new Date().getFullYear();
-
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  const fetchData = async() => {
-      const data = await getTransactions();
-      if(data.data){
-        setTransactions(data.data);
-      }
-    }
-  
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   let sortedExpenses = transactions
     .filter(transaction => transaction.type === 'Expense')

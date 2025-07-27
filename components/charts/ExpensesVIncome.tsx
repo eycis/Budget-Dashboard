@@ -7,26 +7,16 @@ import { getTransactions } from '@/Services/getTransactionsService';
 import colors from '@/styles/colors';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
+interface Props {
+  transactions : Transaction [];
+}
 
-const ExpensesVIncome = () => {
+const ExpensesVIncome = ({transactions} : Props) => {
 
-    const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [monthView, setMonthView] = useState<boolean>(false);
     const currentMonth : number = new Date().getMonth() + 1;
     const currentYear : number = new Date().getFullYear();
     const chartRef = useRef<ChartJS<'line'> | null>(null);
-    //const [gradient, setGradient] = useState<string | CanvasGradient>('#9C1F8B');
-
-     const fetchData = async() => {
-         const result = await getTransactions();
-         if(result.data){
-           setTransactions(result.data);
-         }
-       }
-     
-     useEffect(() => {
-       fetchData();
-     }, []);
 
     const filtered = monthView? transactions.filter((transaction) => {
       const month = parseInt(transaction.date.substring(5,7));
