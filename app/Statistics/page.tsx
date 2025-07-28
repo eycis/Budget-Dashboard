@@ -11,15 +11,13 @@ import { useToast } from '@/components/ToastProvider'
 import { isSameMonth } from '@/lib/calculations/isSameMonth'
 import { Transaction } from '@/models/transaction'
 import { getTransactions } from '@/Services/getTransactionsService'
+import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import React, { useEffect, useState } from 'react'
 
 const StatisticsPage = () => {
 
     const [ allTransactions, setAllTransactions] = useState<Transaction[]>();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
-    const currentMonth : number = new Date().getMonth() + 1;
-    const currentYear : number = new Date().getFullYear();
-    const prevYear : number = new Date().getFullYear();
     const {showToast} = useToast();
   
     const fetchData = async() => {
@@ -33,9 +31,11 @@ const StatisticsPage = () => {
     useEffect(() => {
       fetchData();
     }, []);
+
+    const resetView = () => {
+      setTransactions(allTransactions!);
+    }
     
-    //TODO: async 
-    //TODO: setTransactions according to selected month and send it via parameter in {} props
     const  handleMonthChange = (month: number, year: number) => {
       if(!allTransactions) return;
 
@@ -45,7 +45,6 @@ const StatisticsPage = () => {
 
       if(filtered.length === 0) {showToast("No data for selected parameters", "error")}
       
-      console.log(filtered);
       setTransactions(filtered);
     }
 
@@ -55,6 +54,11 @@ const StatisticsPage = () => {
         <Nav />
         <div className='bg-[#1c1c1e] min-h-screen relative overflow-hidden'>
         <div className='dashboard-main'> Statistics </div>
+        <button
+          className='font-title text-white hover:text-[#3a3aa3] transition-colors duration-500 absolute right-20 top-10'
+          onClick={() => resetView()}>
+          <ArrowPathIcon className='w-7 h-7'/>
+        </button>
         <div className='grid grid-cols-2 gap-2 mt-8 p-5 items-stretch flex-1 '>
         <div className='flex flex-col h-full'>
         <p className='font-title text-white ml-5 mb-2'>Top 5 Expenses</p>
