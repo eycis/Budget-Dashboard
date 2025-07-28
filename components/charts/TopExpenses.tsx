@@ -14,25 +14,10 @@ interface Props {
 
 const TopExpenses = ({transactions} : Props) => {
 
-  const[monthView, setMonthView] = useState(false);
-
-  const currentMonth = new Date().getMonth() + 1;
-
-  const currentYear = new Date().getFullYear();
-
   let sortedExpenses = transactions
     .filter(transaction => transaction.type === 'Expense')
     .sort((a, b) => b.amount - a.amount)
     .slice(0, 5);
-
-  // if(monthView){
-  //   sortedExpenses = transactions
-  //     .filter(transaction => transaction.type === 'Expense' && 
-  //     transaction.date.substring(5, 7) == currentMonth.toString() &&
-  //     transaction.date.substring(0, 4) == currentYear.toString())
-  //     .sort((a, b) => b.amount - a.amount)
-  //     .slice(0, 5);
-  // }
 
   const barData = {
     labels: sortedExpenses.map(expense => expense.category),
@@ -71,14 +56,8 @@ const TopExpenses = ({transactions} : Props) => {
   };
 
   return (
-    <div>
-    {/* <div className='flex items-center'>
-      <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
-      <span className="font-title text-sm ml-2 text-white">{monthView ? 'Month View' : 'All Records'}</span>
-    </div> */}
-    <div className='w-full aspect-[3/2] mx-auto pb-8'>
-      <Bar data={barData} options={barOptions} />
-    </div>
+    <div className='w-full h-full'>
+      <Bar data={barData} options={barOptions} className='h-full w-full p-4' />
     </div>
   )
 }

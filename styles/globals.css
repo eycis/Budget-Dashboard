@@ -19,7 +19,7 @@
     }
     
     .dashboard-main {
-        @apply text-white font-title font-bold pb-3 text-5xl hover:text-[#3a3aa3] transition-colors duration-500 w-fit
+        @apply text-white font-title font-bold px-5 mb-5 mt-5 text-5xl hover:text-[#3a3aa3] transition-colors duration-500 w-fit
     }
 
     .kpi-name {

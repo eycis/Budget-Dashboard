@@ -41,7 +41,7 @@ const Dashboard = () => {
   //-------------------------------------------------------------------------------------
 
   return (
-    <div className='bg-[#1c1c1e] relative w-full min-h-screen p-5'>
+    <div className='bg-[#1c1c1e] relative w-full min-h-screen'>
       <p className='dashboard-main'> Dashboard </p>
       
       {/* Hlavní grid pro dlaždice */}

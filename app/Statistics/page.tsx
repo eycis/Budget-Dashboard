@@ -7,6 +7,7 @@ import InvestmentInTime from '@/components/charts/InvestmentInTime'
 import TopExpenses from '@/components/charts/TopExpenses'
 import MonthView from '@/components/MonthView'
 import Nav from '@/components/Nav'
+import { useToast } from '@/components/ToastProvider'
 import { isSameMonth } from '@/lib/calculations/isSameMonth'
 import { Transaction } from '@/models/transaction'
 import { getTransactions } from '@/Services/getTransactionsService'
@@ -19,6 +20,7 @@ const StatisticsPage = () => {
     const currentMonth : number = new Date().getMonth() + 1;
     const currentYear : number = new Date().getFullYear();
     const prevYear : number = new Date().getFullYear();
+    const {showToast} = useToast();
   
     const fetchData = async() => {
         const data = await getTransactions();
@@ -34,14 +36,14 @@ const StatisticsPage = () => {
     
     //TODO: async 
     //TODO: setTransactions according to selected month and send it via parameter in {} props
-    const  handleMonthChange = (month: number) => {
+    const  handleMonthChange = (month: number, year: number) => {
       if(!allTransactions) return;
-
-      const year : number = month > currentMonth ? prevYear : currentYear;
 
       const filtered = allTransactions.filter((transaction) =>
         isSameMonth(transaction.date, month, year)
       );
+
+      if(filtered.length === 0) {showToast("No data for selected parameters", "error")}
       
       console.log(filtered);
       setTransactions(filtered);
@@ -51,12 +53,12 @@ const StatisticsPage = () => {
     return (
         <div className="flex">
         <Nav />
-        <div className='bg-[#1c1c1e] w-full min-h-screen p-5'>
+        <div className='bg-[#1c1c1e] min-h-screen relative overflow-hidden'>
         <div className='dashboard-main'> Statistics </div>
-        <div className='grid grid-cols-2 gap-2 mt-8'>
-        <div>
+        <div className='grid grid-cols-2 gap-2 mt-8 p-5 items-stretch flex-1 '>
+        <div className='flex flex-col h-full'>
         <p className='font-title text-white ml-5 mb-2'>Top 5 Expenses</p>
-        <div className='statisticsTables' data-aos="fade-up">
+        <div className='statisticsTables flex-1' data-aos="fade-up">
         <TopExpenses transactions = {transactions}/>
         </div>
         </div>

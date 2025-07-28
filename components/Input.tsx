@@ -80,11 +80,11 @@ const Input = () => {
         }, []);
 
   return (
-    <div className='bg-[#1c1c1e] w-screen h-screen p-5'>
+    <div className='bg-[#1c1c1e] w-screen h-screen'>
       <p className='dashboard-main'> New Transaction </p>
-      <div className='grid grid-cols-4'>
+      <div className='grid grid-cols-4 p-5'>
     <div>
-      <div className='transactions-text'> Select the type of transaction </div>
+      <div className='transactions-text p-5'> Select the type of transaction </div>
       <select
             name = "type"
             className="ml-10 px-5 w-3/4 h-10 text-lg rounded-2xl bg-[#2a2a2c] text-white  font-title"
@@ -133,7 +133,7 @@ const Input = () => {
       )}
       </div>
       <div>
-      <div className='transactions-text pt-4'> Add your description</div>
+      <div className='transactions-text p-5'> Add your description</div>
             <input 
                 name = "description"
                 id = "transactionDescription"
