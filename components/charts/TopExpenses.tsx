@@ -23,7 +23,6 @@ const TopExpenses = ({transactions} : Props) => {
     labels: sortedExpenses.map(expense => expense.category),
     datasets: [
       {
-        label: 'Top Expenses',
         data: sortedExpenses.map(expense => expense.amount),
         backgroundColor: colors,
       },
@@ -35,7 +34,7 @@ const TopExpenses = ({transactions} : Props) => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: true,
+        display: false,
         labels: {
           color: 'white',
         },

@@ -51,44 +51,45 @@ const StatisticsPage = () => {
 
     return (
         <div className="flex">
-        <Nav />
-        <div className='bg-[#1c1c1e] min-h-screen relative overflow-hidden'>
-        <div className='dashboard-main'> Statistics </div>
-        <button
-          className='font-title text-white hover:text-[#3a3aa3] transition-colors duration-500 absolute right-20 top-10'
-          onClick={() => resetView()}>
-          <ArrowPathIcon className='w-7 h-7'/>
-        </button>
-        <div className='grid grid-cols-2 gap-2 mt-8 p-5 items-stretch flex-1 '>
-        <div className='flex flex-col h-full'>
-        <p className='font-title text-white ml-5 mb-2'>Top 5 Expenses</p>
-        <div className='statisticsTables flex-1' data-aos="fade-up">
-        <TopExpenses transactions = {transactions}/>
-        </div>
-        </div>
-        <div>
-        <div>
-        <p className='font-title text-white ml-5 mb-2'> Statistics KPI</p>
-        <div className='grid grid-cols-3 gap-2'>
-        <AnomaliesKPI transactions = {transactions}/>
-        <CashFlow transactions={transactions} />
-        </div>
-        <p className='font-title text-white ml-5 mb-2 mt-3'>Ratio of Investments, Expenses, and Income</p>
-        <div className='statisticsTables' data-aos="fade-up">
-        <ExpensesVIncome transactions = {transactions}/>
-        </div>
-        </div>
-        <div>
-        <p  className='font-title text-white ml-5 mb-2 mt-3'>Investments in Time</p>
-        <div className='statisticsTables' data-aos="fade-up">
-        <InvestmentInTime transactions = {transactions}/>
-        </div>
-        </div>
-        </div>
-        </div>
-        <MonthView onSelectMonth={handleMonthChange}/>
-        </div>
-        </div>
+          <Nav />
+            <div className='bg-[#1c1c1e] min-h-screen relative overflow-hidden'>
+              <div className='dashboard-main'> Statistics </div>
+                <button
+                  className='font-title text-white hover:text-[#3a3aa3] transition-colors 
+                    duration-500 absolute right-20 top-10'
+                  onClick={() => resetView()}>
+                  <ArrowPathIcon className='w-7 h-7'/>
+                </button>
+                <div className='grid grid-cols-2 gap-2 mt-8 p-5 items-stretch flex-1 '>
+                  <div className='flex flex-col h-full'>
+                    <p className='statistics-labels'>Top 5 Expenses</p>
+                      <div className='statisticsTables flex-1' data-aos="fade-up">
+                        <TopExpenses transactions = {transactions}/>
+                      </div>
+                  </div>
+                <div>
+                  <div>
+                    <p className='statistics-labels'> Statistics KPI</p>
+                      <div className='grid grid-cols-3 gap-2'>
+                        <AnomaliesKPI transactions = {transactions}/>
+                        <CashFlow transactions={transactions} />
+                      </div>
+                    <p className='statistics-labels'>Ratio of Investments, Expenses, and Income</p>
+                      <div className='statisticsTables' data-aos="fade-up">
+                        <ExpensesVIncome transactions = {transactions}/>
+                      </div>
+                    </div>
+                  <div>
+                    <p  className='statistics-labels'>Investments in Time</p>
+                      <div className='statisticsTables' data-aos="fade-up">
+                        <InvestmentInTime transactions = {transactions}/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <MonthView onSelectMonth={handleMonthChange}/>
+              </div>
+            </div>
     )
 }
 

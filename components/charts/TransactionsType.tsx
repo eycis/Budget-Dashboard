@@ -1,36 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { Doughnut, Line } from 'react-chartjs-2';
+import React, { useState } from 'react'
+import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ChartOptions, ArcElement } from 'chart.js';
 import { Transaction } from '@/models/transaction';
-import transactionsData from '@/data/mock_data.json';
 import Switch from '@mui/material/Switch';
-import { colors } from '@mui/material';
-import { getTransactions } from '@/Services/getTransactionsService';
-
+import { isSameMonth } from '@/lib/calculations/isSameMonth';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
+interface Props {
+  transactions: Transaction[];
+}
 
-const LineChart = () => {
+const TransactionsType = ({transactions}: Props) => {
 
   const currentMonth = new Date().getMonth() + 1;
 
-  let currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   const[monthView, setMonthView] = useState(false);
-  
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const fetchData = async() => {
-        const data = await getTransactions();
-        if(data.data){
-          setTransactions(data.data);
-        }
-      }
-    
-    useEffect(() => {
-      fetchData();
-    }, []);
 
   const lineOptions:ChartOptions<'line'> = {
       responsive: true,
@@ -49,7 +37,8 @@ const LineChart = () => {
       },
     };
 
-  const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('cs-CZ'))));
+  //TODO: sort dates:
+  const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('cs-CZ')))).sort();
   let incomeData = transactions.filter(transaction => transaction.type === 'Income').map(transaction => transaction.amount);
   let expenseData = transactions.filter(transaction => transaction.type === 'Expense').map(transaction => transaction.amount);
   let investmentData = transactions.filter(transaction => transaction.type === "Savings & Investment").map(transaction => transaction.amount)
@@ -58,14 +47,14 @@ const LineChart = () => {
   if(monthView == true)
   {
     investmentData = transactions.filter(transaction => transaction.type === "Savings & Investment" 
-        && (transaction.date.substring(5,7) == currentMonth.toLocaleString()) && (transaction.date.substring(0,4) == currentYear.toString()))
+        && isSameMonth(transaction.date, currentMonth, currentYear))
         .map(transaction => transaction.amount)
     expenseData = transactions.filter(transaction => transaction.type === 'Expense'
-        && (transaction.date.substring(5,7) == currentMonth.toLocaleString()) && (transaction.date.substring(0,4) == currentYear.toString()))
-        .map(transaction => transaction.amount);
+        && isSameMonth(transaction.date, currentMonth, currentYear))
+        .map(transaction => transaction.amount)
     incomeData = transactions.filter(transaction => transaction.type === 'Income' 
-      && (transaction.date.substring(5,7) == currentMonth.toLocaleString()) && (transaction.date.substring(0,4) == currentYear.toString()))
-      .map(transaction => transaction.amount);
+      && isSameMonth(transaction.date, currentMonth, currentYear))
+      .map(transaction => transaction.amount)
   }
 
 
@@ -102,4 +91,4 @@ const LineChart = () => {
     )
 };
 
-export default LineChart;
+export default TransactionsType;

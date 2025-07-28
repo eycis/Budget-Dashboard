@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { WalletIcon, CurrencyDollarIcon, BanknotesIcon, CreditCardIcon } from '@heroicons/react/24/solid';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ChartOptions, ArcElement } from 'chart.js';
 import transactionsData from '@/data/mock_data.json';
-import LineChart from '@/components/charts/LineChart';
-import DoughnutChart from './charts/DoughnutChart';
+import LineChart from '@/components/charts/TransactionsType';
+import DoughnutChart from './charts/ExpensesDivided';
 import DashboardNotifications from './DashboardNotifications';
 import { getTransactions } from '@/Services/getTransactionsService';
 import { Transaction } from '@/models/transaction';

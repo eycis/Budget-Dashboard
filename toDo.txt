@@ -2,6 +2,7 @@ připojit k db - done
 Přepsat anomalies a enkapsulovat kalkulace- done
 6. 🕐 Cashflow Timeline (měsíční/čtvrtletní pohyb)
 Zobraz cashflow jako: - done
+Přidat na spodní stranu filtrování pro měsíce jako osu- done
 
 přepsat komponenty a pages
     Přepsat : expensesvincome 
@@ -10,7 +11,7 @@ přepsat komponenty a pages
         Upcoming Payments
         Dashboard
 upravit UI k Input Transactions a Input Notifications
-Přidat na spodní stranu filtrování pro měsíce jako osu
+
 Upravit vzhled pro LG
 
 deploy na vercel ke konci? 

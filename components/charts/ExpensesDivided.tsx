@@ -1,37 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { Doughnut, Line } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ChartOptions, ArcElement } from 'chart.js';
 import { Transaction } from '@/models/transaction';
-import transactionsData from '@/data/mock_data.json';
 import Switch from '@mui/material/Switch/Switch';
 import colors from '@/styles/colors';
 import { getTransactions } from '@/Services/getTransactionsService';
+import { isSameMonth } from '@/lib/calculations/isSameMonth';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
+interface Props {
+  transactions: Transaction [];
+ }
 
-const DoughnutChart = () => {
+const ExpensesDivided = ({transactions} : Props) => {
 
   const currentMonth = new Date().getMonth() + 1;
 
   const currentYear = new Date().getFullYear();
 
   const[monthView, setMonthView] = useState(false);
-
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  const fetchData = async() => {
-      const data = await getTransactions();
-      if(data.data){
-        console.log("data from doughnut:", data);
-        setTransactions(data.data);
-      }
-    }
-  
-  useEffect(() => {
-    fetchData();
-  }, []);
+    
 
     const doughnutOptions: ChartOptions<'doughnut'> = {
         responsive: true,
@@ -59,11 +49,8 @@ const DoughnutChart = () => {
         categoriesTotals = categories.map(category => 
           transactions.filter(transaction => 
             transaction.category === category && 
-            transaction.type === 'Expense' &&
-            transaction.date.substring(5, 7) == currentMonth.toString() &&
-            transaction.date.substring(0, 4) == currentYear.toString()
-          )
-          .reduce((sum, transaction) => sum + transaction.amount, 0)
+            transaction.type === 'Expense' && isSameMonth(transaction.date, currentMonth, currentYear))
+            .reduce((sum, transaction) => sum + transaction.amount, 0)
         );
       }
     
@@ -92,4 +79,4 @@ const DoughnutChart = () => {
   )
 }
 
-export default DoughnutChart
+export default ExpensesDivided
