@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import { WalletIcon, CurrencyDollarIcon, BanknotesIcon, CreditCardIcon } from '@heroicons/react/24/solid';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ChartOptions, ArcElement } from 'chart.js';
-import LineChart from '@/components/charts/TransactionsType';
-import DoughnutChart from '@/components/charts/ExpensesDivided';
 // import DashboardNotifications from './DashboardNotifications';
 import { getTransactions } from '@/Services/getTransactionsService';
 import { Transaction } from '@/models/transaction';
@@ -16,7 +14,7 @@ import TransactionsType from '@/components/charts/TransactionsType';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
 const Dashboard = () => {
-  //KPIs:
+
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   
   const fetchData = async() => {
@@ -30,6 +28,7 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
+  //TODO: fix only for current month? 
   const totalExpenses = transactions.filter(transaction => transaction.type === "Expense")
   .reduce((sum, transaction) => sum+ transaction.amount, 0);
 
@@ -40,9 +39,6 @@ const Dashboard = () => {
 
   const investment = transactions.filter(transaction => transaction.type === "Savings & Investment")
   .reduce((sum, transaction) => sum + transaction.amount, 0);  
-
- 
-  //-------------------------------------------------------------------------------------
 
   return (
     <div className="flex">
@@ -100,8 +96,8 @@ const Dashboard = () => {
                 <div className='dashboard-plots col-span-2 ' data-aos="fade-down">
                   <ExpensesDivided transactions = {transactions} />
                 </div>
-                </div>
-                </div>
+              </div>
+            </div>
           </div>
   )
 }

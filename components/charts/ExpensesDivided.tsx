@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ChartOptions, ArcElement } from 'chart.js';
 import { Transaction } from '@/models/transaction';
 import Switch from '@mui/material/Switch/Switch';
 import colors from '@/styles/colors';
-import { getTransactions } from '@/Services/getTransactionsService';
 import { isSameMonth } from '@/lib/calculations/isSameMonth';
 
 
@@ -40,7 +39,8 @@ const ExpensesDivided = ({transactions} : Props) => {
         cutout: '80%',
       }
 
-    const categories = ['Food', 'Utilities', 'Fun', 'Friends', 'Clothes', 'Health', 'Other', 'Transportation', 'Savings', 'Investment' ];
+    const categories : string [] = transactions.map(transaction => transaction.category)
+      .filter((value, index, self) => self.indexOf(value) == index);
     let categoriesTotals = categories.map(category => transactions.filter(transaction => transaction.category === category 
       && transaction.type === 'Expense').reduce((sum, transaction) => sum + transaction.amount, 0));
 
