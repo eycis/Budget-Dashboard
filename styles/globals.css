@@ -51,7 +51,7 @@
     }
 
     .transactions-text {
-        @apply text-lg font-title text-white pb-4
+        @apply font-title text-white pb-2
     }
 
     .confirmationCloseButton {

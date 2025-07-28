@@ -43,7 +43,7 @@ const Dashboard = () => {
   return (
     <div className="flex">
       <Nav />
-        <div className='bg-[#1c1c1e] min-h-screen relative overflow-hidden'>
+        <div className='bg-[#1c1c1e] min-h-screen  w-full relative overflow-hidden'>
           <div className='dashboard-main'> Dashboard </div>
             {/* Hlavní grid pro dlaždice */}
             <div className='grid grid-cols-5 gap-3 w-full p-5'> 

@@ -52,8 +52,8 @@ const StatisticsPage = () => {
     return (
         <div className="flex">
           <Nav />
-            <div className='bg-[#1c1c1e] min-h-screen relative overflow-hidden'>
-              <div className='dashboard-main'> Statistics </div>
+          <div className='bg-[#1c1c1e] min-h-screen w-full relative overflow-hidden'>
+            <div className='dashboard-main'> Statistics </div>
                 <button
                   className='font-title text-white hover:text-[#3a3aa3] transition-colors 
                     duration-500 absolute right-20 top-10'
