@@ -76,12 +76,12 @@ const Input = () => {
       <Nav />
         <div className='bg-[#1c1c1e] min-h-screen relative w-full overflow-hidden'>
           <div className='dashboard-main'> New Transaction </div>
-            <div className='grid grid-cols-5 gap-4 p-5'>
-              <div>
+          <div className='grid grid-cols-5 gap-3 justify-items-center w-full max-w-6xl mx-auto p-5'>
+          <div>
                 {/* <p className='transactions-text'> Please</p> */}
                 <select
                       name = "type"
-                      className="p-2 rounded-2xl bg-[#2a2a2c] text-white font-title"
+                      className="p-2 rounded-2xl w-[12rem] bg-[#2a2a2c] text-white font-title"
                       id = "transactionType"
                       value = {selectedValue}
                       onChange = {handleSelectedValue}
@@ -96,7 +96,7 @@ const Input = () => {
           {/* <p className='transactions-text'> Select the category </p> */}
           <select
                 name = "type"
-                className="p-2 rounded-2xl bg-[#2a2a2c] text-white font-title"
+                className="p-2 rounded-2xl bg-[#2a2a2c] w-[12rem] text-white font-title"
                 id = "category"
                 >
                 {options.map((option, index) => (
@@ -109,7 +109,7 @@ const Input = () => {
                 <input 
                     name = "amount"
                     id = "transactionAmount"
-                    className='p-2 rounded-2xl bg-[#2a2a2c] text-white font-title'
+                    className='p-2 rounded-2xl bg-[#2a2a2c] w-[12rem] text-white font-title'
                     placeholder='0,-'>
                 </input>
             </div>
@@ -120,38 +120,38 @@ const Input = () => {
                     id = "transactionDescription"
                     placeholder='description'
                     maxLength={25}
-                    className='p-2 rounded-2xl bg-[#2a2a2c] text-white font-title'
+                    className='p-2 rounded-2xl bg-[#2a2a2c] w-[12rem] text-white font-title'
                     >
                 </input>
                 </div>
             <button 
                 onClick={submitTransaction}
-                className=''>
-                <CheckCircleIcon className='w-5 h-5' />
+                className='font-title text-white hover:text-[#3a3aa3] transition-colors 
+                    duration-500 '>
+                <CheckCircleIcon className='w-10 h-10' />
             </button>
           </div>
-          <p className='transactions-text mt-10' data-aos="fade-down"> Your previous transactions</p>
-        {/* <div className='transaction-table mx-5 overflow-y-auto'>
-          <div className='grid grid-cols-5 text-center pt-5' data-aos="fade-down">
-              <label className='transactions_columns'>Date</label>
-              <label className='transactions_columns'>Transaction Type</label>
-              <label className='transactions_columns'>Category</label>
-              <label className='transactions_columns'>Amount</label>
-              <label className='transactions_columns'>Description</label>
+          <p className='transactions-text mt-5 justify-center text-center' data-aos="fade-down"> Your previous transactions</p>
+          <div className='transaction-table overflow-y-auto max-h-[500px]'>
+            <div className='grid grid-cols-5 gap-5 text-center justify-center pt-5' data-aos="fade-down">
+                <label className='transactions_columns'>Date</label>
+                <label className='transactions_columns'>Transaction Type</label>
+                <label className='transactions_columns'>Category</label>
+                <label className='transactions_columns'>Amount</label>
+                <label className='transactions_columns'>Description</label>
+            </div>
+            {transactions.map((transaction, index) =>(
+                <div key = {index}
+                    className='grid grid-cols-5 gap-5 m-3 text-center items-center bg-[#1c1c1e] rounded-lg hover:bg-[#3a3aa3] transition-colors transition-500 '>
+                    <div className='transactionsTableText'>{new Date(transaction.date).toLocaleDateString('cs-CZ')}</div>
+                    <div className='transactionsTableText'>{transaction.type}</div>
+                    <div className='transactionsTableText'>{transaction.category}</div>
+                    <div className='transactionsTableText'>{transaction.amount}</div>
+                    <div className='transactionsTableText'>{transaction.description || "-"}</div>
+                </div>
+            ))}
+            </div>
           </div>
-          {transactions.map((transaction, index) =>(
-              <div key = {index}
-                  className='grid grid-cols-5 mt-3 mx-5 mb-3 p-3 w-auto text-center items-center bg-[#1c1c1e] rounded-lg hover:bg-[#3a3aa3] transition-colors transition-500 '>
-                  <div className='transactionsTableText'>{new Date(transaction.date).toLocaleDateString('en-US')}</div>
-                  <div className='transactionsTableText'>{transaction.type}</div>
-                  <div className='transactionsTableText'>{transaction.category}</div>
-                  <div className='transactionsTableText'>{transaction.amount}</div>
-                  <div className='transactionsTableText'>{transaction.description || "-"}</div>
-              </div>
-          ))}
-          </div>
-          </div> */}
-        </div>
       </div>
   )
 }

@@ -47,7 +47,7 @@
     }
 
     .transaction-table {
-        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] ml-4 w-auto h-3/6 rounded-2xl
+        @apply  text-white font-title font-bold text-2xl bg-[#2a2a2c] ml-4 w-auto h-auto rounded-2xl
     }
 
     .transactions-text {
@@ -59,11 +59,11 @@
     }
 
     .transactions_columns {
-        @apply font-title text-sm
+        @apply font-title text-sm text-white px-2 py-1 text-center
     }
 
     .transactionsTableText {
-        @apply font-title text-base
+        @apply font-title text-sm text-white px-2 py-2 text-center
     }
 
     .statisticsTables {
