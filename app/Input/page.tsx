@@ -15,16 +15,17 @@ const Input = () => {
   
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const {showToast} = useToast();
-    const { register, handleSubmit, formState: { errors } } = useForm<Transaction>();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<Transaction>();
 
 
     const onSubmit = async(data: Transaction) => {
       try{
-        const result = await saveTransaction(data);
+        const result : boolean = await saveTransaction(data);
 
         if(result === true){
           //TODO: update Transactions
-          console.log("success");
+          await fetchData();
+          reset();
           showToast("Transaction saved successfully!", "success");
         }else{
           showToast("Error while saving the data", "error");
@@ -35,9 +36,14 @@ const Input = () => {
     }
 
     const fetchData = async() => {
-        const data = await getTransactions();
-        if(data.data){
-          setTransactions(data.data);
+        const result = await getTransactions();
+        if(result.data){
+          const sorted : Transaction []= result.data.sort((a, b)=> {
+            return new Date(b.date).getTime() - new Date(a.date).getTime()
+          });
+          setTransactions(sorted);
+        }else{
+          showToast("Error while saving the data", "error");
         }
       }
     
