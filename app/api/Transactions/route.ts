@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { dbAdmin } from "@/config/databaseAdmin"; 
 import { NextRequest, NextResponse } from "next/server";
+import { Transaction } from "@/models/transaction";
 
 
 export async function GET () {
@@ -23,13 +24,15 @@ export async function GET () {
     export async function POST (req: NextRequest){
           try{
             const body = await req.json();
-            const { category, type, amount, date, description} = body;
+            const { category, type, amount, description} = body;
+            const date : string = new Date().toISOString().split("T")[0]; 
+
             
-            if (!category || !type || !amount || !date) {
+            if (!category || !type || !amount) {
                 return NextResponse.json({ message: "Missing required fields."}, {status: 400});
               }
-              //TODO: fix data type
-            const newTransaction = {
+    
+            const newTransaction : Transaction = {
                 category,
                 type,
                 amount,
