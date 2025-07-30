@@ -1,6 +1,6 @@
 import Nav from "@/components/Nav";
 
-import NotificationSettings from "@/components/NotificationSettings";
+import NotificationSettings from "@/components/NotificationForm";
 
 const Notifications = () => {
 

@@ -42,8 +42,8 @@
         @apply mb-4 text-white flex items-center px-3 py-2 rounded hover:text-[#3a3aa3] transition-colors duration-500
     }
 
-    .input-button {
-        @apply mt-10 p-2 ml-16 w-2/4 h-2/4 bg-white rounded-2xl font-title font-bold text-black text-xl hover:bg-[#3a3aa3] transition-colors duration-500
+    .submit-button{
+        @apply font-title text-white hover:text-[#3a3aa3] transition-colors duration-500
     }
 
     .transaction-table {
@@ -72,6 +72,10 @@
 
     .loginInput {
         @apply ml-10 px-5 w-1/4 h-10 rounded-2xl bg-[#2a2a2c] text-white text-lg font-title
+    }
+
+    .inputs{
+        @apply p-2 rounded-2xl w-[12rem] bg-[#2a2a2c] text-white font-title border-2 border-solid border-[#3a3aa3]
     }
 
 }

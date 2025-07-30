@@ -3,14 +3,19 @@ Přepsat anomalies a enkapsulovat kalkulace- done
 6. 🕐 Cashflow Timeline (měsíční/čtvrtletní pohyb)
 Zobraz cashflow jako: - done
 Přidat na spodní stranu filtrování pro měsíce jako osu- done
+  Přepsat : expensesvincome -done
+        DoughnutChart - změnit i jméno pro zlepšení přehlednosti -done
+        Line Chart - změnit i jméno komponenty- done
+        Dashboard-done
+UI Input-done
+
+
 
 přepsat komponenty a pages
-    Přepsat : expensesvincome 
-        DoughnutChart - změnit i jméno pro zlepšení přehlednosti 
-        Line Chart - změnit i jméno komponenty
+  
         Upcoming Payments
-        Dashboard
-upravit UI k Input Transactions a Input Notifications
+transaction table fix h if empty
+a Input Notifications
 
 Upravit vzhled pro LG
 

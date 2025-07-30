@@ -1,7 +1,7 @@
 import admin from "firebase-admin";
 import fs from "fs";
 import path from "path";
-import { Transaction } from "./models/transaction";
+import { Notification} from "./models/notification";
 
 
 const serviceAccount = JSON.parse(
@@ -15,7 +15,7 @@ admin.initializeApp({
 const db = admin.firestore();
 
 async function clearUsersCollection() {
-  const snapshot = await db.collection("transactions").get();
+  const snapshot = await db.collection("notifications").get();
   const batch = db.batch();
 
   snapshot.docs.forEach((doc) => {
@@ -23,26 +23,26 @@ async function clearUsersCollection() {
   });
 
   await batch.commit();
-  console.log("🧹 Kolekce 'transactions' byla vymazána.");
+  console.log("🧹 Kolekce 'notifications' byla vymazána.");
 }
 
 clearUsersCollection();
 
 async function importTransactions() {
 
-    const filePath = path.join(__dirname, "data", "mock_data.json");
+    const filePath = path.join(__dirname, "data", "mock_data_notification.json");
     const fileData = fs.readFileSync(filePath, "utf-8");
     const json = JSON.parse(fileData);
 
-    const transactions : Transaction []  = json.transactions;
+    const notifications: Notification[]  = json.notifications;
 
-    console.log(Array.isArray(transactions)); // true → OK
-    if(!Array.isArray(transactions)){
+    console.log(Array.isArray(notifications)); // true → OK
+    if(!Array.isArray(notifications)){
         throw new Error("JSON neobsahuje očekávaná data");
     }
 
-    const promises = transactions.map((tx) =>
-        db.collection("transactions").add(tx)
+    const promises = notifications.map((tx) =>
+        db.collection("notifications").add(tx)
     );
 
     await Promise.all(promises);

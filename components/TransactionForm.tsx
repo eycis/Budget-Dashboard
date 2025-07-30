@@ -11,14 +11,14 @@ interface Props{
 const TransactionForm = ({register, errors}: Props) => {
 
     const options: string[] = ['Utilities', 'Fun', 'Friends', 'Clothes', 'Health', 
-            'Transportation', 'Other', 'Salary', 'Second Job', 'Other', 'Savings', 'Investment'];
+            'Transportation', 'Other', 'Salary', 'Second Job', 'Savings', 'Investment'];
 
   return (
     <div>
         <div className='grid grid-cols-5 gap-3 justify-items-center w-full max-w-6xl mx-auto p-3'>
         <div>
         <select 
-            className="p-2 rounded-2xl w-[12rem] bg-[#2a2a2c] text-white font-title"
+            className="inputs"
             {...register("type", {required: true})}>
                 <option value="Expense">Expense</option>
                 <option value="Income">Income</option>
@@ -28,7 +28,7 @@ const TransactionForm = ({register, errors}: Props) => {
             </div>
           <div>
           <select
-            className="p-2 rounded-2xl bg-[#2a2a2c] w-[12rem] text-white font-title"
+            className="inputs"
             {...register("category", {required: true})}>
             {errors.category && <p>This field is required</p>}
                 {options?.map((option, index) => (
@@ -39,7 +39,7 @@ const TransactionForm = ({register, errors}: Props) => {
             <div>
                 <input 
                     {...register("amount", {required: true})}
-                    className='p-2 rounded-2xl bg-[#2a2a2c] w-[12rem] text-white font-title'
+                    className='inputs'
                     placeholder='0,-'>
                 </input>
                 {errors.category && <p>This field is required</p>}
@@ -49,12 +49,12 @@ const TransactionForm = ({register, errors}: Props) => {
                 {...register("description", {required: true})}
                 placeholder='Description'
                 maxLength={25}
-                className='p-2 rounded-2xl bg-[#2a2a2c] w-[12rem] text-white font-title'
+                className='inputs'
                 >
             </input>
             {errors.category && <p>This field is required</p>}
             </div>
-            <button type="submit" className="font-title text-white hover:text-[#3a3aa3] transition-colors duration-500">
+            <button type="submit" className="submit-button">
                 <CheckCircleIcon className="w-10 h-10" />
               </button>
         </div>

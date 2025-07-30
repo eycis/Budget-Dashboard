@@ -29,15 +29,15 @@ const Dashboard = () => {
   }, []);
 
   //TODO: fix only for current month? 
-  const totalExpenses = transactions.filter(transaction => transaction.type === "Expense")
+  const totalExpenses : number = transactions.filter(transaction => transaction.type === "Expense")
   .reduce((sum, transaction) => sum+ transaction.amount, 0);
 
-  const totalIncome = transactions.filter(transaction => transaction.type === "Income")
+  const totalIncome : number = transactions.filter(transaction => transaction.type === "Income")
   .reduce((sum, transaction) => sum+ transaction.amount, 0);
 
-  const balance = totalIncome - totalExpenses;
+  const balance : number  = totalIncome - totalExpenses;
 
-  const investment = transactions.filter(transaction => transaction.type === "Savings & Investment")
+  const investment : number = transactions.filter(transaction => transaction.type === "Savings & Investment")
   .reduce((sum, transaction) => sum + transaction.amount, 0);  
 
   return (
