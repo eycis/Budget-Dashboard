@@ -3,12 +3,14 @@
 import React, { useEffect, useState } from 'react'
 import { WalletIcon, CurrencyDollarIcon, BanknotesIcon, CreditCardIcon } from '@heroicons/react/24/solid';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ChartOptions, ArcElement } from 'chart.js';
-// import DashboardNotifications from './DashboardNotifications';
+import DashboardNotifications from '@/components/DashboardNotifications';
 import { getTransactions } from '@/Services/getTransactionsService';
 import { Transaction } from '@/models/transaction';
 import Nav from '@/components/Nav';
 import ExpensesDivided from '@/components/charts/ExpensesDivided';
 import TransactionsType from '@/components/charts/TransactionsType';
+import { getNotifications } from '@/Services/getNotificationsService';
+import { Notification } from '@/models/notification';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
@@ -16,16 +18,25 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 const Dashboard = () => {
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
   
-  const fetchData = async() => {
-            const data = await getTransactions();
-            if(data.data){
-              setTransactions(data.data);
-            }
-          }
-        
+  const fetchTransactions = async() => {
+    const result = await getTransactions();
+    if(result.data){
+      setTransactions(result.data);
+    }
+  }
+
+  const fetchNotifications = async() => {
+    const result = await getNotifications();
+    if(result.data){
+      setNotifications(result.data);
+    }
+  }
+  
   useEffect(() => {
-    fetchData();
+    fetchNotifications();
+    fetchTransactions();
   }, []);
 
   //TODO: fix only for current month? 
@@ -88,7 +99,7 @@ const Dashboard = () => {
                 </div>
                 </div>
                 {/* Pravá dlaždice pro připomínky následujících transakcí */}
-                {/* <DashboardNotifications/> */}
+                <DashboardNotifications notifications={notifications}/>
                 {/* Grafy */}
                 <div className='dashboard-plots col-span-2' data-aos="fade-down">
                   <TransactionsType transactions = {transactions} />

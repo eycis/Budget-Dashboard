@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { User } from '@/models/user';
+import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
+import { ArrowDownCircleIcon } from '@heroicons/react/24/solid';
 
 interface Props {
   register: UseFormRegister<User>;
@@ -10,7 +12,7 @@ interface Props {
 const Login = ({register, errors} : Props) => {
 
   return (
-    <div>
+    <div className='items-center justify-center text-center'>
       <p className='transactions-text mt-5'>Username</p>
           <input 
             {...register("user", {required: true})}
@@ -20,14 +22,15 @@ const Login = ({register, errors} : Props) => {
           <p className='transactions-text mt-5'>Password</p>
           <input
             {...register("password", {required: true})}
-            className='input'>
+            className='input'
+            type="password">
           </input>  
           {errors.password && <p>This field is required</p>}
-          <div className='mt-5 ml-24'>
+          <div className='mt-10'>
           <button
             type="submit"
             className='submit-button'>
-            Log In
+            <ArrowDownCircleIcon className='h-10 w-10'></ArrowDownCircleIcon>
           </button>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { useToast } from '@/components/ToastProvider';
 import { useForm } from 'react-hook-form';
 import { User } from '@/models/user';
 import Login from '@/components/Login';
+import Nav from '@/components/Nav';
 
   const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<User>();
@@ -17,7 +18,10 @@ import Login from '@/components/Login';
         if(result){
           // setLoginStateMessage(true);
           // setLoginState(true);
-          window.location.href = "/";
+          showToast("Login successful", "success");
+          setTimeout(() => {
+            window.location.href = "/", 300
+          })
         }else{
           showToast("Incorrect username or password", "error");
         }
@@ -29,11 +33,14 @@ import Login from '@/components/Login';
     }
 
   return (
-    <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
-        <h1 className='dashboard-main'> Log In </h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Login register={register} errors={errors} /> 
-        </form>
+    <div className='flex'>
+      <Nav/>
+      <div className='bg-[#1c1c1e] relative w-full h-screen overflow-y-scroll p-5'>
+          <h1 className='dashboard-main'> Log In </h1>
+          <form onSubmit={handleSubmit(onSubmit)} className='flex items-center justify-center'>
+            <Login register={register} errors={errors} /> 
+          </form>
+      </div>
     </div>
   )
 }
