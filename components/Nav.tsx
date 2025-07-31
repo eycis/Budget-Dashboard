@@ -1,4 +1,4 @@
-import { HomeIcon, ChartBarIcon, PlusCircleIcon, BellIcon, ArrowRightOnRectangleIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { HomeIcon, ChartBarIcon, PlusCircleIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import React from 'react'
 import Link from "next/link";
 
@@ -27,13 +27,6 @@ const Nav = () => {
             </button>
         </Link>
         </div>
-        <div className="nav-icons">
-        <Link href="/Notifications">
-          <button>
-            <BellIcon className="h-10 w-10" />
-          </button>
-        </Link>
-      </div>
       <div className="nav-icons absolute bottom-5">
         <Link href="/Login">
           <button>

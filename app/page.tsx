@@ -85,10 +85,12 @@ const Dashboard = () => {
           <div className='absolute right-72 top-12 '>
           <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
                   <span className="font-title text-white text-sm ml-2">{monthView ? 'Month View' : 'All Records'}</span></div>
-          <PlusIcon className='absolute right-10 top-12 h-8 w-8  text-white hover:text-[#3a3aa3] transition-colors 
+          <button onClick={() => {window.location.href = "/Notifications"}}>
+            <PlusIcon className='absolute right-10 top-12 h-8 w-8  text-white hover:text-[#3a3aa3] transition-colors 
                     duration-500 '/>
+          </button>
             {/* Hlavní grid pro dlaždice */}
-            <div className='grid grid-cols-5 gap-3 w-full p-5'> 
+            <div className='grid grid-cols-5 gap-3 w-full px-5'> 
               {/* Levá část - KPIs a grafy */}
               <div className='col-span-4 grid grid-cols-4 gap-3'>
                 {/* KPI dlaždice */}
