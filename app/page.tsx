@@ -11,6 +11,9 @@ import ExpensesDivided from '@/components/charts/ExpensesDivided';
 import TransactionsType from '@/components/charts/TransactionsType';
 import { getNotifications } from '@/Services/getNotificationsService';
 import { Notification } from '@/models/notification';
+import { PlusIcon } from '@heroicons/react/24/solid';
+import { isSameMonth } from '@/lib/calculations/isSameMonth';
+import Switch from '@mui/material/Switch';
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
@@ -19,6 +22,11 @@ const Dashboard = () => {
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [monthView, setMonthView] = useState<boolean>(false);
+
+  const currentMonth = new Date().getMonth() + 1;
+
+  const currentYear = new Date().getFullYear();
   
   const fetchTransactions = async() => {
     const result = await getTransactions();
@@ -40,22 +48,45 @@ const Dashboard = () => {
   }, []);
 
   //TODO: fix only for current month? 
-  const totalExpenses : number = transactions.filter(transaction => transaction.type === "Expense")
+  let totalExpenses : number = transactions.filter(transaction => transaction.type === "Expense")
   .reduce((sum, transaction) => sum+ transaction.amount, 0);
 
-  const totalIncome : number = transactions.filter(transaction => transaction.type === "Income")
+  let totalIncome : number = transactions.filter(transaction => transaction.type === "Income")
   .reduce((sum, transaction) => sum+ transaction.amount, 0);
 
-  const balance : number  = totalIncome - totalExpenses;
+  let balance : number  = totalIncome - totalExpenses;
 
-  const investment : number = transactions.filter(transaction => transaction.type === "Savings & Investment")
+  let investment : number = transactions.filter(transaction => transaction.type === "Savings & Investment")
   .reduce((sum, transaction) => sum + transaction.amount, 0);  
+
+    if(monthView == true)
+    {
+      investment = transactions.filter(transaction => transaction.type === "Savings & Investment" 
+          && isSameMonth(transaction.date, currentMonth, currentYear))
+          .reduce((sum, transaction) => sum + transaction.amount, 0);
+
+      totalExpenses = transactions.filter(transaction => transaction.type === 'Expense'
+          && isSameMonth(transaction.date, currentMonth, currentYear))
+          .reduce((sum, transaction) => sum + transaction.amount, 0);
+
+      totalIncome = transactions.filter(transaction => transaction.type === 'Income' 
+        && isSameMonth(transaction.date, currentMonth, currentYear))
+        .reduce((sum, transaction) => sum + transaction.amount, 0);
+
+        balance  = totalIncome - totalExpenses;
+    }
+  
 
   return (
     <div className="flex">
       <Nav />
         <div className='bg-[#1c1c1e] min-h-screen  w-full relative overflow-hidden'>
           <div className='dashboard-main'> Dashboard </div>
+          <div className='absolute right-72 top-12 '>
+          <Switch checked={monthView} onChange={() => setMonthView(!monthView)} />
+                  <span className="font-title text-white text-sm ml-2">{monthView ? 'Month View' : 'All Records'}</span></div>
+          <PlusIcon className='absolute right-10 top-12 h-8 w-8  text-white hover:text-[#3a3aa3] transition-colors 
+                    duration-500 '/>
             {/* Hlavní grid pro dlaždice */}
             <div className='grid grid-cols-5 gap-3 w-full p-5'> 
               {/* Levá část - KPIs a grafy */}

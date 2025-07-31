@@ -2,7 +2,6 @@
 import Nav from '@/components/Nav'
 import React, { useEffect, useState } from 'react'
 import { Transaction } from '@/models/transaction';
-import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { getTransactions } from '@/Services/getTransactionsService';
 import { saveTransaction } from '@/Services/SaveTransactionService';
 import { useToast } from '@/components/ToastProvider';
@@ -56,8 +55,7 @@ const Input = () => {
         <Nav />
         <div className="bg-[#1c1c1e] h-screen w-full flex flex-col overflow-hidden">
           <div className="dashboard-main">New Transaction</div>
-    
-          {/* FORM */}
+  
           <div className="p-5 max-w-6xl mx-auto w-full">
             <div>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,8 +63,7 @@ const Input = () => {
             </form>
             </div>
           </div>
-    
-          {/* TABULKA */}
+  
           <div className="flex-1 px-5">
             <TransactionTable transactions={transactions} />
           </div>

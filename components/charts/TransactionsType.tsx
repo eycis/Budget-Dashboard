@@ -18,7 +18,7 @@ const TransactionsType = ({transactions}: Props) => {
 
   const currentYear = new Date().getFullYear();
 
-  const[monthView, setMonthView] = useState(false);
+  const[monthView, setMonthView] = useState<boolean>(false);
 
   const lineOptions:ChartOptions<'line'> = {
       responsive: true,
