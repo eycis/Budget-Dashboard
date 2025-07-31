@@ -17,20 +17,23 @@ const NotificationForm = ({register, errors} : Props) => {
           <input
             placeholder='Decription'
              {...register("subject", {required: true})}
-            className='inputs'
+            className='input'
           />
+          {errors.subject && <p>This field is required</p>}
           <input
             placeholder='0,-'
             type="number"
            {...register("amount", {required: true})}
-            className='inputs'
+            className='input'
           />
+          {errors.amount && <p>This field is required</p>}
           <input
             type="date"
             placeholder='Date'
             {...register("dueDate", {required: true})}
-            className='inputs'
+            className='input'
           />
+          {errors.dueDate && <p>This field is required</p>}
           <div className='flex items-center gap-2'>
             <Switch
                 {...register("isRecurring", {required: true})}
@@ -39,6 +42,7 @@ const NotificationForm = ({register, errors} : Props) => {
             <span className='font-title text-sm text-white '>
               {ocurringNotification ? 'Ocurring' : 'One-Time-Thing'}
             </span>
+            {errors.isRecurring && <p>This field is required</p>}
           </div>
 
             <button type="submit" className="submit-button">

@@ -74,7 +74,7 @@
         @apply ml-10 px-5 w-1/4 h-10 rounded-2xl bg-[#2a2a2c] text-white text-lg font-title
     }
 
-    .inputs{
+    .input{
         @apply p-2 rounded-2xl w-[12rem] bg-[#2a2a2c] text-white font-title border-2 border-solid border-[#3a3aa3]
     }
 

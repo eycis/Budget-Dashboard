@@ -18,7 +18,7 @@ const TransactionForm = ({register, errors}: Props) => {
         <div className='grid grid-cols-5 gap-3 justify-items-center w-full max-w-6xl mx-auto p-3'>
         <div>
         <select 
-            className="inputs"
+            className="input"
             {...register("type", {required: true})}>
                 <option value="Expense">Expense</option>
                 <option value="Income">Income</option>
@@ -28,7 +28,7 @@ const TransactionForm = ({register, errors}: Props) => {
             </div>
           <div>
           <select
-            className="inputs"
+            className="input"
             {...register("category", {required: true})}>
             {errors.category && <p>This field is required</p>}
                 {options?.map((option, index) => (
@@ -39,7 +39,7 @@ const TransactionForm = ({register, errors}: Props) => {
             <div>
                 <input 
                     {...register("amount", {required: true})}
-                    className='inputs'
+                    className='input'
                     placeholder='0,-'>
                 </input>
                 {errors.category && <p>This field is required</p>}
@@ -49,7 +49,7 @@ const TransactionForm = ({register, errors}: Props) => {
                 {...register("description", {required: true})}
                 placeholder='Description'
                 maxLength={25}
-                className='inputs'
+                className='input'
                 >
             </input>
             {errors.category && <p>This field is required</p>}

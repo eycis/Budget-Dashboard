@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST (req: NextRequest) {
       try{
+        console.log("in api endpoint");
         const body = await req.json();
         const { dueDate, subject, isRecurring, user, amount} = body;
         
