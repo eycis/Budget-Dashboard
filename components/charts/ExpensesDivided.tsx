@@ -41,7 +41,8 @@ const ExpensesDivided = ({transactions} : Props) => {
 
     const categories : string [] = transactions.map(transaction => transaction.category)
       .filter((value, index, self) => self.indexOf(value) == index);
-    let categoriesTotals = categories.map(category => transactions.filter(transaction => transaction.category === category 
+
+    let categoriesTotals : number []= categories.map(category => transactions.filter(transaction => transaction.category === category 
       && transaction.type === 'Expense').reduce((sum, transaction) => sum + transaction.amount, 0));
 
 

@@ -9,10 +9,13 @@ interface Props {
 
 const InvestmentInTime = ({transactions} : Props) => {
   
-    const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('cz-CZ'))));
+    const dates : string [] = Array.from(new Set(transactions.map(transaction => new Date(transaction.date)
+      .toLocaleDateString('cz-CZ'))));
 
-    const investment = transactions.filter(transaction => transaction.category === 'Investment').map(transaction => transaction.amount);
-    const savings = transactions.filter(transaction => transaction.category === 'Savings').map(transaction => transaction.amount);
+    const investment : number [] = transactions.filter(transaction => transaction.category === 'Investment')
+      .map(transaction => transaction.amount);
+
+    const savings : number[] = transactions.filter(transaction => transaction.category === 'Savings').map(transaction => transaction.amount);
 
     const lineOptions:ChartOptions<'line'> = {
       responsive: true,

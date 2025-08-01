@@ -14,7 +14,7 @@ interface Props {
 
 const TopExpenses = ({transactions} : Props) => {
 
-  let sortedExpenses = transactions
+  let sortedExpenses : Transaction []= transactions
     .filter(transaction => transaction.type === 'Expense')
     .sort((a, b) => b.amount - a.amount)
     .slice(0, 5);

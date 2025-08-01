@@ -14,9 +14,9 @@ interface Props {
 
 const TransactionsType = ({transactions}: Props) => {
 
-  const currentMonth = new Date().getMonth() + 1;
+  const currentMonth : number = new Date().getMonth() + 1;
 
-  const currentYear = new Date().getFullYear();
+  const currentYear : number = new Date().getFullYear();
 
   const[monthView, setMonthView] = useState<boolean>(false);
 
@@ -38,10 +38,10 @@ const TransactionsType = ({transactions}: Props) => {
     };
 
   //TODO: sort dates:
-  const dates = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('cs-CZ')))).sort();
-  let incomeData = transactions.filter(transaction => transaction.type === 'Income').map(transaction => transaction.amount);
-  let expenseData = transactions.filter(transaction => transaction.type === 'Expense').map(transaction => transaction.amount);
-  let investmentData = transactions.filter(transaction => transaction.type === "Savings & Investment").map(transaction => transaction.amount)
+  const dates : string [] = Array.from(new Set(transactions.map(transaction => new Date(transaction.date).toLocaleDateString('cs-CZ')))).sort();
+  let incomeData : number [] = transactions.filter(transaction => transaction.type === 'Income').map(transaction => transaction.amount);
+  let expenseData : number [] = transactions.filter(transaction => transaction.type === 'Expense').map(transaction => transaction.amount);
+  let investmentData : number [] = transactions.filter(transaction => transaction.type === "Savings & Investment").map(transaction => transaction.amount)
 
 
   if(monthView == true)

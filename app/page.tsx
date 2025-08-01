@@ -24,9 +24,9 @@ const Dashboard = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [monthView, setMonthView] = useState<boolean>(false);
 
-  const currentMonth = new Date().getMonth() + 1;
+  const currentMonth : number = new Date().getMonth() + 1;
 
-  const currentYear = new Date().getFullYear();
+  const currentYear : number = new Date().getFullYear();
   
   const fetchTransactions = async() => {
     const result = await getTransactions();
@@ -59,7 +59,7 @@ const Dashboard = () => {
   let investment : number = transactions.filter(transaction => transaction.type === "Savings & Investment")
   .reduce((sum, transaction) => sum + transaction.amount, 0);  
 
-    if(monthView == true)
+    if(monthView === true)
     {
       investment = transactions.filter(transaction => transaction.type === "Savings & Investment" 
           && isSameMonth(transaction.date, currentMonth, currentYear))

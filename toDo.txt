@@ -8,15 +8,20 @@ Přidat na spodní stranu filtrování pro měsíce jako osu- done
         Line Chart - změnit i jméno komponenty- done
         Dashboard-done
 UI Input-done
-
-
-
 přepsat komponenty a pages
   
         Upcoming Payments
 transaction table fix h if empty
-a Input Notifications
+a Input Notifications - done done done
 
+
+přepiš kalkulace na více generic řešení
+vyřešit všechny todo
+vyřešit bug pro cashflow
+bug pro utilities
+monthview jednodušeji? 
+context
+odhlášení
 Upravit vzhled pro LG
 
 deploy na vercel ke konci? 

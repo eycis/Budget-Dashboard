@@ -11,9 +11,9 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 const UpcomingPayments = () => {
     
-    const currentMonth = new Date().getMonth() + 1;
+    const currentMonth : number = new Date().getMonth() + 1;
 
-    const currentYear = new Date().getFullYear();
+    const currentYear : number  = new Date().getFullYear();
 
     const [notifications, setNotifications] = useState<Notification[]>([]);
     const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -38,10 +38,10 @@ const UpcomingPayments = () => {
       fetchNotificationData();
     }, []);
 
-    const totalIncome = useMemo( () => transactions.filter(transaction => transaction.type === "Income")
+    const totalIncome : number = useMemo( () => transactions.filter(transaction => transaction.type === "Income")
     .reduce((sum, transaction) => sum+ transaction.amount, 0), [transactions]) ;  
 
-    const currentUpcomingPayments= useMemo( () => notifications.filter((notification) => {
+    const currentUpcomingPayments : number = useMemo( () => notifications.filter((notification) => {
       if(!notification.dueDate) return false;
       const month = notification.dueDate.substring(5,7);
       const year = notification.dueDate.substring(0,4);
